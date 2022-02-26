@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="ft_white">#FFF</color>
+    <color name="ft_bg_white">#FDFDFD</color>
+    <color name="ft_black">#000</color>
+    <color name="ft_orange">#F9A236</color>
+    <color name="ft_red">#FF0000</color>
+    <color name="ft_green">#03C60D</color>
+    <color name="ft_trans_orange">#9EF9A236</color>
+    <color name="ft_trans_dark_blue">#AD2A4293</color>
+    <color name="ft_dark_blue">#2A4293</color>
+    <color name="ft_grey">#EFEFEF</color>
+    <color name="ft_grey_1">#B5B5B5</color>
+    <color name="ft_grey_2">#969BA3</color>
+    <color name="ft_grey_3">#B9B9B9</color>
+    <color name="ft_grey_4">#F4F4F4</color>
+    <color name="ft_grey_5">#D3D3D3</color>
+    <color name="ft_grey_6">#F5F5F5</color>
+    <color name="ft_grey_7">#D8D8D8</color>
+    <color name="ft_blue">#1877F2</color>
+    <color name="ft_menu_unselected">#CDCDCD</color>
+    <color name="ft_menu_selected">#F9A236</color>
+
+    <color name="ft_splash_selected">#F9A236</color>
+    <color name="ft_splash_unselected">#E7E7E7</color>
+
+    <color name="tk_dialog_bg">#65000000</color>
+    <color name="tk_transparent">#00000000</color>
+    <color name="tk_weak_black">#32000000</color>
+
+
+    <color name="calendar_selected_day_bg">#F4D74B</color>
+    <color name="calendar_selected_range_bg">#F4D74B</color>
+
+    <color name="calendar_day_disabled_font">#D1D1D1</color>
+    <color name="calendar_day_selected_bg">#F4D74B</color>
+    <color name="calendar_day_range_selected_bg">#F9A236</color>
+    <color name="calendar_day_normal_font">#606060</color>
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.funnytimesvendorapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FunnyTimesVendorApp">
+        <activity
+            android:name=".SectionAuth.SectionDetails.ProviderLocationScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SectionAuth.SectionDetails.ProviderCategoryScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SectionAuth.SectionPassword.NewPasswordScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SectionAuth.SectionPassword.PasswordCodeConfirmScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SectionAuth.SectionPassword.PhonePasswordScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SectionAuth.CodeConfirmScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SectionAuth.PhoneConfirmScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SectionAuth.SignInScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SectionAuth.SignUpScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SectionOnBoard.OnBoardScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

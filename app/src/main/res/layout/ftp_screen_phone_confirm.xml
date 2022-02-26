@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SectionAuth.PhoneConfirmScreen">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:scaleX="-1"
+                android:src="@drawable/ft_arrow_back_icon"
+                app:tint="@color/black"
+
+                android:layout_marginEnd="@dimen/_10sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="تأكيد رقم الهاتف"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="سيتم إرسال رمز تحقق للرقم المرفق"
+            android:textColor="@color/ft_black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/ft_radius_stroke"
+            android:fontFamily="@font/montserrat_arabic"
+            android:inputType="textPassword"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp" >
+
+
+            <ImageView
+                android:id="@+id/ClearPhoneNum"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:src="@drawable/ft_clear_circle_close_icon"
+                android:alpha="0.6"
+                />
+
+            <EditText
+                android:id="@+id/PhoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_arabic"
+                android:background="@color/white"
+                android:lines="1"
+                android:gravity="end"
+                android:hint="رقم الهاتف"
+                android:textColor="@color/ft_black"
+                android:textColorHint="@color/ft_grey_1"
+                android:inputType="number"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_3sdp"
+                android:textSize="@dimen/_12ssp" />
+
+            <com.gbksoft.countrycodepickerlib.CountryCodePicker
+                android:id="@+id/CountryPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccp_textSize="@dimen/_10ssp"
+                app:ccp_arrowColor="@color/ft_black"
+                app:ccp_contentColor="@color/ft_black"
+                app:ccpDropDown_textColor="@color/ft_black"
+                android:layoutDirection="ltr"
+                app:ccp_defaultNameCode="@string/saudi_arabia_code"
+                />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/SendCodeToPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:background="@drawable/ft_radius_fill"
+        android:backgroundTint="@color/ft_orange"
+        android:fontFamily="@font/montserrat_arabic"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_7sdp"
+        android:text="تأكيد"
+        android:textColor="@color/ft_white"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

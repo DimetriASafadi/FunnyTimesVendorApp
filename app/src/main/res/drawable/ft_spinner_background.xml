@@ -1,0 +1,15 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape
+            android:shape="rectangle"/>
+    </item>
+    <item
+        android:width="@dimen/_7sdp"
+        android:height="@dimen/_7sdp"
+        android:gravity="end|center_vertical"
+        >
+        <bitmap
+            android:src="@drawable/ft_spinner_arrow_bottom_icon"
+            android:tint="@color/tk_weak_black"/>
+    </item>
+</layer-list>
