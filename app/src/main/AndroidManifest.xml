@@ -10,32 +10,60 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FunnyTimesVendorApp">
         <activity
+            android:name=".MainMenu"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".SectionAuth.SectionDetails.ProviderDetailsScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
             android:name=".SectionAuth.SectionDetails.ProviderLocationScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionAuth.SectionDetails.ProviderCategoryScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionAuth.SectionPassword.NewPasswordScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionAuth.SectionPassword.PasswordCodeConfirmScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionAuth.SectionPassword.PhonePasswordScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionAuth.CodeConfirmScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionAuth.PhoneConfirmScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionAuth.SignInScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionAuth.SignUpScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionOnBoard.OnBoardScreen"
             android:configChanges="locale|orientation"

@@ -3,17 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_circle_fill.xml" value="0.2985" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_radius_fill.xml" value="0.2985" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_spinner_background.xml" value="0.182" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_code_confirm.xml" value="0.3546875" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_main_menu.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_new_password.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_onboard.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_password_code_confirm.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_phone_confirm.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_phone_password.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_provider_category.xml" value="0.3546875" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_provider_details.xml" value="0.33" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_provider_location.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_sign_in.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_sign_up.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_splash.xml" value="0.35052083333333334" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/menu/tk_bottom_nav_menu.xml" value="0.3546875" />
       </map>
     </option>
   </component>

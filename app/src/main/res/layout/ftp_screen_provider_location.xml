@@ -6,4 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".SectionAuth.SectionDetails.ProviderLocationScreen">
 
+    <RelativeLayout
+        android:id="@+id/TopSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="حدد الموقع"
+            android:textColor="@color/ft_black"
+            android:textSize="@dimen/_12ssp" />
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ft_android_back_arrow"
+            app:tint="@color/ft_black" />
+
+    </RelativeLayout>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/roundedImageView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ft_auth_location_holder"
+        app:layout_constraintTop_toBottomOf="@+id/TopSection"
+        app:riv_corner_radius="@dimen/_10sdp"
+        tools:layout_editor_absoluteX="13dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:gravity="center"
+        android:text="حدد موقعك لكي يظهر عقارك للمستخدمين بنفس الموقع ويسهل الوصول لعقارك"
+        android:textColor="@color/ft_grey_1"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roundedImageView" />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/ft_radius_fill_light"
+        android:backgroundTint="@color/ft_orange"
+        android:fontFamily="@font/montserrat_arabic"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_9sdp"
+        android:text="تفعيل الموقع"
+        android:textColor="@color/ft_white"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:background="@drawable/ft_radius_fill_light"
+        android:backgroundTint="@color/ft_grey_8"
+        android:fontFamily="@font/montserrat_arabic"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_9sdp"
+        android:text="لا , سأفعلها لاحقاً"
+        android:textColor="@color/ft_light_black"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

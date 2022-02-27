@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ft_menu_home_icon"
+        android:title="الرئيسية"
+        android:enabled="true"
+        />
+
+    <item
+        android:id="@+id/nav_category"
+        android:icon="@drawable/ft_menu_orders_icon"
+        android:title="الحجوزات"
+        android:enabled="true"
+        />
+
+    <item
+        android:id="@+id/nav_favourite"
+        android:title=""
+        android:enabled="false"
+        />
+
+    <item
+        android:id="@+id/nav_user"
+        android:icon="@drawable/ft_menu_user_icon"
+        android:title="صفحتي"
+        android:enabled="true"
+        />
+
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/ft_menu_setting_icon"
+        android:title="الإعدادات"
+        />
+
+</menu>

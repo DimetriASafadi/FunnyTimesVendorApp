@@ -4,11 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.funnytimesvendorapp.R
 
-class ProviderLocationScreen : AppCompatActivity() {
+class ProviderDetailsScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ftp_screen_provider_location)
-
+        setContentView(R.layout.ftp_screen_provider_details)
 
 
 
