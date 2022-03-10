@@ -1,0 +1,59 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="@dimen/_20sdp"
+    android:background="@drawable/ft_radius_fill"
+    android:backgroundTint="@color/ft_white"
+    android:paddingVertical="@dimen/_20sdp"
+    >
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ft_check_circle_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/ft_dark_blue" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:text="تم إضافة رقم الهاتف بنجاح"
+        android:textColor="#ff000000"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="@id/imageView4"
+        app:layout_constraintStart_toStartOf="@id/imageView4"
+        app:layout_constraintTop_toBottomOf="@id/imageView4" />
+
+
+
+    <TextView
+        android:id="@+id/GoToHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/ft_radius_fill"
+        android:backgroundTint="@color/ft_dark_blue"
+        android:fontFamily="@font/montserrat_arabic"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_10sdp"
+        android:text="تم"
+        android:textColor="@color/ft_white"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

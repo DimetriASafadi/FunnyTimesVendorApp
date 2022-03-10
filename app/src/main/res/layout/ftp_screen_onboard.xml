@@ -42,12 +42,12 @@
         android:gravity="center"
         android:layout_marginBottom="@dimen/_10sdp"
         android:fontFamily="@font/montserrat_arabic"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/StartNow"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/StartNow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_10sdp"
@@ -56,7 +56,7 @@
         android:backgroundTint="@color/ft_dark_blue"
         android:fontFamily="@font/montserrat_arabic"
         android:gravity="center"
-        android:paddingVertical="@dimen/_8sdp"
+        android:paddingVertical="@dimen/_9sdp"
         android:text="إبدأ الآن"
         android:textColor="@color/ft_white"
         android:textSize="@dimen/_12ssp"
