@@ -1,5 +1,6 @@
 package com.example.funnytimesvendorapp.SectionAuth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -14,6 +15,7 @@ import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserID
 import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserToken
 import com.example.funnytimesvendorapp.R
+import com.example.funnytimesvendorapp.SectionAuth.SectionDetails.ProviderCategoryScreen
 import com.example.funnytimesvendorapp.databinding.FtpScreenCodeConfirmBinding
 import org.json.JSONException
 import org.json.JSONObject
@@ -25,6 +27,7 @@ class CodeConfirmScreen : AppCompatActivity() {
     val commonFuncs = CommonFuncs()
 
     var temptoken = ""
+    var phonenum = ""
     var comingFrom = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,7 @@ class CodeConfirmScreen : AppCompatActivity() {
         setContentView(view)
         temptoken = intent.getStringExtra("TempToken").toString()
         comingFrom = intent.getStringExtra("comingFrom").toString()
+        phonenum = intent.getStringExtra("phonenum").toString()
 
         binding.CodeResend.setOnClickListener {
             generate_code_Request()
@@ -65,12 +69,13 @@ class CodeConfirmScreen : AppCompatActivity() {
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url, Response.Listener<String> { response ->
                     Log.e("Response", response.toString())
-                    val data = JSONObject(response.toString()).getJSONObject("data")
-                    val userid = data.getJSONObject("user").getInt("id")
-                    commonFuncs.WriteOnSP(this,KeyUserToken,temptoken)
-                    commonFuncs.WriteOnSP(this,KeyUserID,userid.toString())
                     commonFuncs.hideLoadingDialog()
-                    commonFuncs.showCodeDoneDialog(this)
+                    val intent = Intent(this,ProviderCategoryScreen::class.java)
+                    intent.putExtra("phone",phonenum)
+                    intent.putExtra("token",temptoken)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
                 }, Response.ErrorListener { error ->
                     Log.e("Error", error.toString())
                     if (error.networkResponse != null && error.networkResponse.data != null) {

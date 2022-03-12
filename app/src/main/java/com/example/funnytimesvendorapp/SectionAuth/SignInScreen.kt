@@ -14,6 +14,7 @@ import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserID
 import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserToken
 import com.example.funnytimesvendorapp.MainMenu
 import com.example.funnytimesvendorapp.R
+import com.example.funnytimesvendorapp.SectionAuth.SectionDetails.ProviderCategoryScreen
 import com.example.funnytimesvendorapp.SectionAuth.SectionPassword.PhonePasswordScreen
 import com.example.funnytimesvendorapp.databinding.FtpScreenSignInBinding
 import org.json.JSONException
@@ -72,9 +73,18 @@ class SignInScreen : AppCompatActivity() {
                     val data = jsonobj.getJSONObject("data")
                     val token = data.getString("access_token")
                     val userid = data.getJSONObject("user").getInt("id")
-                    val userphone = data.getJSONObject("user").getString("phone").toString()
-                    val isactive = data.getJSONObject("user").getString("status")
-                    if (isactive == "active"){
+                    val is_owner = data.getJSONObject("user").getInt("is_owner")
+                    val phone = data.getJSONObject("user").getString("phone")
+                    val vendor:JSONObject? = data.getJSONObject("vendor")
+                    if (is_owner == 0 && vendor == null){
+                        commonFuncs.hideLoadingDialog()
+                        val intent = Intent(this,ProviderCategoryScreen::class.java)
+                        intent.putExtra("phone",phone)
+                        intent.putExtra("token",token)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        finish()
+                    }else{
                         commonFuncs.WriteOnSP(this,KeyUserID,userid.toString())
                         commonFuncs.WriteOnSP(this,KeyUserToken,token)
                         commonFuncs.hideLoadingDialog()
@@ -82,23 +92,6 @@ class SignInScreen : AppCompatActivity() {
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                         finish()
-                    }else{
-                        if (userphone == "null"){
-                            val intent = Intent(this,PhoneConfirmScreen::class.java)
-                            intent.putExtra("comingFrom","signin")
-                            intent.putExtra("TempToken",token)
-                            startActivity(intent)
-                            commonFuncs.hideLoadingDialog()
-                            finish()
-                        }else{
-                            val intent = Intent(this,CodeConfirmScreen::class.java)
-                            intent.putExtra("comingFrom","signin")
-                            intent.putExtra("TempToken",token)
-                            startActivity(intent)
-                            commonFuncs.hideLoadingDialog()
-                            finish()
-                        }
-
                     }
                 }, Response.ErrorListener { error ->
                     if (error.networkResponse != null && error.networkResponse.data != null) {

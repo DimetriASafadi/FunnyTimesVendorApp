@@ -56,7 +56,7 @@ class PhoneConfirmScreen : AppCompatActivity() {
     fun update_phone_Request(phonenum:String) {
         Log.e("PhoneNumber",phonenum)
         commonFuncs.showLoadingDialog(this)
-        val url = Constants.APIMain + "/api/vendor/auth/user/updatePhone"
+        val url = Constants.APIMain + "api/vendor/add/phone"
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url, Response.Listener<String> { response ->
@@ -66,6 +66,7 @@ class PhoneConfirmScreen : AppCompatActivity() {
                     val intent = Intent(this,CodeConfirmScreen::class.java)
                     intent.putExtra("comingFrom",comingFrom)
                     intent.putExtra("TempToken",temptoken)
+                    intent.putExtra("phonenum",phonenum)
                     startActivity(intent)
                     commonFuncs.hideLoadingDialog()
                 }, Response.ErrorListener { error ->
