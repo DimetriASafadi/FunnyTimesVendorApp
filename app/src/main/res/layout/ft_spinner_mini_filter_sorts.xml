@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/ft_white"
+    >
+    <TextView
+        android:id="@+id/SortName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="@color/ft_black"
+        android:fontFamily="@font/montserrat_arabic"
+        android:background="@color/ft_white"
+        android:text="الأشهر"
+        android:layout_margin="@dimen/_5sdp"
+        />
+
+
+</LinearLayout>

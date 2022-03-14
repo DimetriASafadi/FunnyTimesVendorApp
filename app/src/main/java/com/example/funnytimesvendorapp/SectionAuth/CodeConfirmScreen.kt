@@ -64,15 +64,15 @@ class CodeConfirmScreen : AppCompatActivity() {
     }
     fun verify_Request(code:String) {
         commonFuncs.showLoadingDialog(this)
-        val url = Constants.APIMain + "api/vendor/auth/verify"
+        val url = Constants.APIMain + "api/vendor/verify"
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url, Response.Listener<String> { response ->
                     Log.e("Response", response.toString())
                     commonFuncs.hideLoadingDialog()
                     val intent = Intent(this,ProviderCategoryScreen::class.java)
-                    intent.putExtra("phone",phonenum)
-                    intent.putExtra("token",temptoken)
+                    intent.putExtra("phonenum",phonenum)
+                    intent.putExtra("temptoken",temptoken)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()

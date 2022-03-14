@@ -40,6 +40,7 @@ class ProviderCategoryScreen : AppCompatActivity(), OnCategoryClick {
         val view = binding.root
         setContentView(view)
 
+
         phonenum = intent.getStringExtra("phonenum").toString()
         temptoken = intent.getStringExtra("temptoken").toString()
 
@@ -85,6 +86,11 @@ class ProviderCategoryScreen : AppCompatActivity(), OnCategoryClick {
                         Log.e("eResponsew", "RequestError:$error")
                     }
                 }) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val params = HashMap<String,String>()
+                    params["Authorization"] =  "Bearer $temptoken"
+                    return params
+                }
             }
             val requestQueue = Volley.newRequestQueue(this)
             requestQueue.add(stringRequest)

@@ -54,12 +54,6 @@ class SignInScreen : AppCompatActivity() {
             startActivity(Intent(this,SignUpScreen::class.java))
             finish()
         }
-        binding.ContAsGuest.setOnClickListener {
-            val intent = Intent(this,MainMenu::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-        }
     }
 
     fun login_Request(username:String,password:String) {
@@ -71,24 +65,24 @@ class SignInScreen : AppCompatActivity() {
                     Log.e("Response", response.toString())
                     val jsonobj = JSONObject(response.toString())
                     val data = jsonobj.getJSONObject("data")
-                    val token = data.getString("access_token")
+                    val temptoken = data.getString("access_token")
                     val userid = data.getJSONObject("user").getInt("id")
                     val is_owner = data.getJSONObject("user").getInt("is_owner")
-                    val phone = data.getJSONObject("user").getString("phone")
-                    val vendor:JSONObject? = data.getJSONObject("vendor")
-                    if (is_owner == 0 && vendor == null){
+                    val phonenum = data.getJSONObject("user").getString("phone")
+                    if (is_owner == 1 && !data.getJSONObject("user").isNull("vendor")){
+                        commonFuncs.WriteOnSP(this,KeyUserID,userid.toString())
+                        commonFuncs.WriteOnSP(this,KeyUserToken,temptoken)
                         commonFuncs.hideLoadingDialog()
-                        val intent = Intent(this,ProviderCategoryScreen::class.java)
-                        intent.putExtra("phone",phone)
-                        intent.putExtra("token",token)
+                        val intent = Intent(this,MainMenu::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                         finish()
                     }else{
-                        commonFuncs.WriteOnSP(this,KeyUserID,userid.toString())
-                        commonFuncs.WriteOnSP(this,KeyUserToken,token)
                         commonFuncs.hideLoadingDialog()
-                        val intent = Intent(this,MainMenu::class.java)
+                        val intent = Intent(this,ProviderCategoryScreen::class.java)
+                        intent.putExtra("phonenum",phonenum)
+                        intent.putExtra("temptoken",temptoken)
+                        intent.putExtra("comingFrom","signin")
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                         finish()
