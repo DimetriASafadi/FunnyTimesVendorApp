@@ -1,10 +1,12 @@
 package com.example.funnytimesvendorapp
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.example.funnytimesvendorapp.AddNewSection.NewChaletScreen
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.MainMenuSection.BooksSection.BooksFrag
 import com.example.funnytimesvendorapp.MainMenuSection.HomeSection.HomeFrag
@@ -64,6 +66,11 @@ class MainMenu : AppCompatActivity() {
             }
             false
         }
+        binding.AddButton.setOnClickListener {
+            startActivity(Intent(this,NewChaletScreen::class.java))
+        }
+
+
     }
     override fun onResume() {
         super.onResume()

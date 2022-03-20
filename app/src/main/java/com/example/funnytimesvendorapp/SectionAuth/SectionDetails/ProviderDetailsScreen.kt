@@ -127,7 +127,7 @@ class ProviderDetailsScreen : AppCompatActivity() {
             val requestBody: RequestBody = multipartBody.build()
             val request: okhttp3.Request = okhttp3.Request.Builder()
                 .addHeader("Authorization", "Bearer $temptoken")
-                .url(APIMain +"api/vendor/user/add/vendor")
+                .url(APIMain +"api/vendor-app/user/add/vendor")
                 .post(requestBody)
                 .build()
             client.newCall(request).enqueue(object : Callback {

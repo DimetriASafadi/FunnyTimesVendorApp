@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNewSection.NewChaletScreen">
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/TopSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="إضافة عقار"
+            android:textColor="@color/ft_black"
+            android:textSize="@dimen/_12ssp" />
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ft_android_back_arrow"
+            app:tint="@color/ft_black" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/TopSection"
+        android:layout_marginTop="@dimen/_15sdp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="اسم العقار"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/PropertyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_stroke"
+            android:fontFamily="@font/montserrat_arabic"
+            android:hint="اسم العقار"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:textColorHint="@color/ft_grey_2"
+            android:textColor="@color/ft_black"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="الوصف"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/PropertyDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_stroke"
+            android:fontFamily="@font/montserrat_arabic"
+            android:hint="وصف العقار ..."
+            android:imeOptions="actionNext"
+            android:textColorHint="@color/ft_grey_2"
+            android:textColor="@color/ft_black"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="سياسة المالك"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/PropertyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_stroke"
+            android:fontFamily="@font/montserrat_arabic"
+            android:hint="سياسة المالك"
+            android:imeOptions="actionNext"
+            android:textColorHint="@color/ft_grey_2"
+            android:textColor="@color/ft_black"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp" />
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="نوع الخدمة"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ft_radius_stroke"
+            android:paddingVertical="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            >
+            <Spinner
+                android:id="@+id/PropertyServiceSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="المدينة"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ft_radius_stroke"
+            android:paddingVertical="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            >
+            <Spinner
+                android:id="@+id/PropertyCitySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="الحي"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/PropertyDistric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_stroke"
+            android:fontFamily="@font/montserrat_arabic"
+            android:hint="الحي"
+            android:maxLines="1"
+            android:textColorHint="@color/ft_grey_2"
+            android:textColor="@color/ft_black"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp" />
+
+
+        <TextView
+            android:id="@+id/PropertyShowMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="إضغط لإختيار موقعك على الخريطة"
+            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/ft_radius_fill_light"
+            android:backgroundTint="@color/ft_orange"
+            android:paddingVertical="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/ft_white"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="آلية الحجز"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ft_radius_stroke"
+            android:paddingVertical="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            >
+            <Spinner
+                android:id="@+id/PropertyBookingSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="السعر (ثابت - متغير)"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_fill"
+            android:backgroundTint="@color/ft_grey"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/UserPhone"
+            tools:layout_editor_absoluteX="13dp">
+
+            <LinearLayout
+                android:id="@+id/StaticButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@drawable/ft_radius_fill"
+                android:gravity="center_horizontal"
+                android:paddingVertical="@dimen/_6sdp">
+
+                <TextView
+                    android:id="@+id/StaticText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:gravity="center_horizontal"
+                    android:text="ثابت"
+                    android:textColor="@color/ft_dark_blue" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/DynamicButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_horizontal"
+                android:paddingVertical="@dimen/_6sdp">
+
+                <TextView
+                    android:id="@+id/DynamicText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:gravity="center_horizontal"
+                    android:text="متغير"
+                    android:textColor="@color/ft_grey_1" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="سعر الفترة الصباحية"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/PropertyMorning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_stroke"
+            android:fontFamily="@font/montserrat_arabic"
+            android:hint="السعر"
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:textColorHint="@color/ft_grey_2"
+            android:textColor="@color/ft_black"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="سعر الفترة المسائية"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/PropertyEvening"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_stroke"
+            android:fontFamily="@font/montserrat_arabic"
+            android:hint="السعر"
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:textColorHint="@color/ft_grey_2"
+            android:textColor="@color/ft_black"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="السعر"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/PropertyPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_stroke"
+            android:fontFamily="@font/montserrat_arabic"
+            android:hint="السعر"
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:textColorHint="@color/ft_grey_2"
+            android:textColor="@color/ft_black"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/PropertyDynamicPriceSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="اليوم"
+                android:maxLines="1"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_10ssp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="السبت"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/ft_dark_blue"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="الأحد"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/ft_dark_blue"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="الإثنين"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/ft_dark_blue"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="الثلاثاء"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/ft_dark_blue"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="الأربعاء"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/ft_dark_blue"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="الخميس"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/ft_dark_blue"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="الجمعة"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/ft_dark_blue"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp"
+                />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            >
+
+            <TextView
+                android:id="@+id/PropertyMainPriceTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="الفترة الصباحية"
+                android:maxLines="1"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_10ssp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/PriceSaturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/ft_radius_stroke"
+                android:fontFamily="@font/montserrat_arabic"
+                android:hint="السعر"
+                android:maxLines="1"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/ft_grey_2"
+                android:textColor="@color/ft_black"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp" />
+            <EditText
+                android:id="@+id/PriceSunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/ft_radius_stroke"
+                android:fontFamily="@font/montserrat_arabic"
+                android:hint="السعر"
+                android:maxLines="1"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/ft_grey_2"
+                android:textColor="@color/ft_black"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp" />
+            <EditText
+                android:id="@+id/PriceMonday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/ft_radius_stroke"
+                android:fontFamily="@font/montserrat_arabic"
+                android:hint="السعر"
+                android:maxLines="1"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/ft_grey_2"
+                android:textColor="@color/ft_black"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp" />
+            <EditText
+                android:id="@+id/PriceTuseday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/ft_radius_stroke"
+                android:fontFamily="@font/montserrat_arabic"
+                android:hint="السعر"
+                android:maxLines="1"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/ft_grey_2"
+                android:textColor="@color/ft_black"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp" />
+            <EditText
+                android:id="@+id/PriceWednsday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/ft_radius_stroke"
+                android:fontFamily="@font/montserrat_arabic"
+                android:hint="السعر"
+                android:maxLines="1"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/ft_grey_2"
+                android:textColor="@color/ft_black"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp" />
+            <EditText
+                android:id="@+id/PriceThursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/ft_radius_stroke"
+                android:fontFamily="@font/montserrat_arabic"
+                android:hint="السعر"
+                android:maxLines="1"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/ft_grey_2"
+                android:textColor="@color/ft_black"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp" />
+            <EditText
+                android:id="@+id/PriceFriday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/ft_radius_stroke"
+                android:fontFamily="@font/montserrat_arabic"
+                android:hint="السعر"
+                android:maxLines="1"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/ft_grey_2"
+                android:textColor="@color/ft_black"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textSize="@dimen/_9ssp" />
+
+
+
+        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/PropertyEveningSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="2"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:text="الفترة المسائية"
+                    android:maxLines="1"
+                    android:textColor="@color/ft_dark_blue"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    />
+
+                <EditText
+                    android:id="@+id/EPriceSaturday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/ft_radius_stroke"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:hint="السعر"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/ft_grey_2"
+                    android:textColor="@color/ft_black"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:textSize="@dimen/_9ssp" />
+                <EditText
+                    android:id="@+id/EPriceSunday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/ft_radius_stroke"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:hint="السعر"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/ft_grey_2"
+                    android:textColor="@color/ft_black"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:textSize="@dimen/_9ssp" />
+                <EditText
+                    android:id="@+id/EPriceMonday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/ft_radius_stroke"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:hint="السعر"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/ft_grey_2"
+                    android:textColor="@color/ft_black"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:textSize="@dimen/_9ssp" />
+                <EditText
+                    android:id="@+id/EPriceTuseday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/ft_radius_stroke"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:hint="السعر"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/ft_grey_2"
+                    android:textColor="@color/ft_black"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:textSize="@dimen/_9ssp" />
+                <EditText
+                    android:id="@+id/EPriceWednsday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/ft_radius_stroke"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:hint="السعر"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/ft_grey_2"
+                    android:textColor="@color/ft_black"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:textSize="@dimen/_9ssp" />
+                <EditText
+                    android:id="@+id/EPriceThursday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/ft_radius_stroke"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:hint="السعر"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/ft_grey_2"
+                    android:textColor="@color/ft_black"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:textSize="@dimen/_9ssp" />
+                <EditText
+                    android:id="@+id/EPriceFriday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/ft_radius_stroke"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:hint="السعر"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/ft_grey_2"
+                    android:textColor="@color/ft_black"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:textSize="@dimen/_9ssp" />
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="العربون"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/PropertyDeposit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_stroke"
+            android:fontFamily="@font/montserrat_arabic"
+            android:hint="العربون"
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:textColorHint="@color/ft_grey_2"
+            android:textColor="@color/ft_black"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="مميزات العقار"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/PropertyAttributes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="مميزات العقار"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/PropertyPhotos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

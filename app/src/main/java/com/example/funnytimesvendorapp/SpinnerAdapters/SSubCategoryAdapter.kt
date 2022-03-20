@@ -15,7 +15,7 @@ class SSubCategoryAdapter  (val context: Context, var data: ArrayList<FTPSubCate
         val view: View
         val vh: ItemHolder
         if (convertView == null) {
-            view = inflater.inflate(R.layout.ft_spinner_mini_filter_sorts, parent, false)
+            view = inflater.inflate(R.layout.ftp_spinner_mini_filter_sorts, parent, false)
             vh = ItemHolder(view)
             view?.tag = vh
         } else {

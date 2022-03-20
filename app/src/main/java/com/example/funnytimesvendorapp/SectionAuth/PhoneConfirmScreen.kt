@@ -56,7 +56,7 @@ class PhoneConfirmScreen : AppCompatActivity() {
     fun update_phone_Request(phonenum:String) {
         Log.e("PhoneNumber",phonenum)
         commonFuncs.showLoadingDialog(this)
-        val url = Constants.APIMain + "api/vendor/add/phone"
+        val url = Constants.APIMain + "api/vendor-app/add/phone"
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url, Response.Listener<String> { response ->

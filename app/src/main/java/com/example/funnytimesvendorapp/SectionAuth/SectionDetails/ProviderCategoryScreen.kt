@@ -64,7 +64,7 @@ class ProviderCategoryScreen : AppCompatActivity(), OnCategoryClick {
 
 
     fun Provider_Request(){
-        var url = Constants.APIMain + "api/vendor/categories"
+        var url = Constants.APIMain + "api/vendor-app/categories"
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.GET, url, Response.Listener<String> { response ->

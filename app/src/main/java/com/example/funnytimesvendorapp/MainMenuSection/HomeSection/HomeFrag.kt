@@ -26,6 +26,13 @@ class HomeFrag: Fragment() {
         _binding = FtpFragHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        binding.SalesChart.setDrawBarShadow(false)
+        binding.SalesChart.setDrawValueAboveBar(true)
+        binding.SalesChart.setMaxVisibleValueCount(50)
+
+
+
+
 
         val weekdays = arrayOf(
             "Sun",
@@ -37,7 +44,7 @@ class HomeFrag: Fragment() {
             "Sat"
         ) // Your List / array with String Values For X-axis Labels
 
-        val xAxis: XAxis = binding.CustomChart.xAxis
+        val xAxis: XAxis = binding.SalesChart.xAxis
         xAxis.valueFormatter = IndexAxisValueFormatter(weekdays)
         val values: ArrayList<BarEntry> = ArrayList()
 
@@ -57,13 +64,13 @@ class HomeFrag: Fragment() {
 
         val set1: BarDataSet
 
-        if (binding.CustomChart.data != null &&
-            binding.CustomChart.data.dataSetCount > 0
+        if (binding.SalesChart.data != null &&
+            binding.SalesChart.data.dataSetCount > 0
         ) {
-            set1 = binding.CustomChart.data.getDataSetByIndex(0) as BarDataSet
+            set1 = binding.SalesChart.data.getDataSetByIndex(0) as BarDataSet
             set1.values = values
-            binding.CustomChart.data.notifyDataChanged()
-            binding.CustomChart.notifyDataSetChanged()
+            binding.SalesChart.data.notifyDataChanged()
+            binding.SalesChart.notifyDataSetChanged()
         } else {
             set1 = BarDataSet(values, "Data Set")
             set1.setColors(*ColorTemplate.VORDIPLOM_COLORS)
@@ -71,11 +78,11 @@ class HomeFrag: Fragment() {
             val dataSets: ArrayList<IBarDataSet> = ArrayList()
             dataSets.add(set1)
             val data = BarData(dataSets)
-            binding.CustomChart.data = data
-            binding.CustomChart.setFitBars(true)
+            binding.SalesChart.data = data
+            binding.SalesChart.setFitBars(true)
         }
 
-        binding.CustomChart.invalidate()
+        binding.SalesChart.invalidate()
 
 
 

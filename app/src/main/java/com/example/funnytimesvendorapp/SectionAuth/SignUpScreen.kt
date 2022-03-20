@@ -77,7 +77,7 @@ class SignUpScreen : AppCompatActivity() {
 
     fun sign_up_Request(username:String,password:String) {
         commonFuncs.showLoadingDialog(this)
-        val url = APIMain + "api/vendor/auth/signup"
+        val url = APIMain + "api/vendor-app/auth/signup"
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url, Response.Listener<String> { response ->

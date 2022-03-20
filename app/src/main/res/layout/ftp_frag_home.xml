@@ -7,7 +7,7 @@
     >
 
     <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/CustomChart"
+        android:id="@+id/SalesChart"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_250sdp"
         />

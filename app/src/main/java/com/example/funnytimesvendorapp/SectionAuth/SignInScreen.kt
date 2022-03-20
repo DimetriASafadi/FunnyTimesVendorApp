@@ -58,7 +58,7 @@ class SignInScreen : AppCompatActivity() {
 
     fun login_Request(username:String,password:String) {
         commonFuncs.showLoadingDialog(this)
-        val url = APIMain + "api/vendor/auth/login"
+        val url = APIMain + "api/vendor-app/auth/login"
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url, Response.Listener<String> { response ->
