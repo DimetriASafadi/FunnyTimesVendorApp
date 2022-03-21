@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddNewSection.NewChaletScreen">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
 
 
 
@@ -920,23 +927,9 @@
             android:textSize="@dimen/_12ssp" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="@font/montserrat_arabic"
-            android:text="مميزات العقار"
-            android:textColor="@color/ft_dark_blue"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        
         
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/PropertyAttributes"
+            android:id="@+id/PropertyAttributesRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -947,7 +940,7 @@
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/montserrat_arabic"
-            android:text="مميزات العقار"
+            android:text="ألبوم الصور"
             android:textColor="@color/ft_dark_blue"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -955,14 +948,52 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/PropertyPhotos"
+            android:id="@+id/PropertyPhotosRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
+
+        <LinearLayout
+            android:id="@+id/PropertyPickImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ft_radius_stroke"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_15sdp"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="تحميل فاتورة الموافقة"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_grey_1"
+                android:drawablePadding="@dimen/_3sdp"
+                android:textSize="@dimen/_12ssp"
+                app:drawableEndCompat="@drawable/ft_upload_cloud_icon"
+                app:drawableTint="@color/ft_grey_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(PNG OR JPEG)"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_grey_1"
+                android:drawablePadding="@dimen/_3sdp"
+                android:textSize="@dimen/_10ssp"
+                />
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

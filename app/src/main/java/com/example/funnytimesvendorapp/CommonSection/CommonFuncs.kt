@@ -85,7 +85,7 @@ class CommonFuncs {
             builder.setTitle(title)
         }
         builder.setMessage(messsage)
-        builder.setNeutralButton("حسناً"){ dialog, which ->
+        builder.setNeutralButton("حسناً"){ _, _ ->
         }
         builder.show()
     }
