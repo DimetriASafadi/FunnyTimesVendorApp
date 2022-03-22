@@ -15,6 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FunnyTimesVendorApp">
+        <activity
+            android:name=".AddNewSection.NewClinicScreen"
+            android:exported="false" />
+        <activity
+            android:name=".AddNewSection.NewFoodScreen"
+            android:exported="false" />
+        <activity
+            android:name=".AddNewSection.NewProductScreen"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCJWj9nnNCz2a39Lju45WEnA-gh1pTWL-0" />
 
         <activity
             android:name=".AddNewSection.NewChaletScreen"

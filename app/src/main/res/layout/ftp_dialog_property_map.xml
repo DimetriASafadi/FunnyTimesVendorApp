@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <fragment
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/PropMapFrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:textSize="@dimen/_12ssp"
+        android:textColor="#ffffffff"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/SubmitLocation"
+        android:background="@drawable/ft_radius_fill_light"
+        android:backgroundTint="@color/ft_orange"
+        android:layout_width="@dimen/_240sdp"
+        android:layout_height="@dimen/_37sdp"
+        android:layout_marginBottom="@dimen/_35sdp"
+        android:text="تأكيد وإغلاق"
+        android:fontFamily="@font/montserrat_arabic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

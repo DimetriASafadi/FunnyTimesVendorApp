@@ -1,11 +1,17 @@
 package com.example.funnytimesvendorapp.AddNewSection
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Dialog
+import android.content.res.ColorStateList
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import android.widget.AdapterView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
@@ -21,14 +27,22 @@ import com.example.funnytimesvendorapp.SpinnerAdapters.SPropertyBookSpinner
 import com.example.funnytimesvendorapp.SpinnerAdapters.SPropertyCityAdapter
 import com.example.funnytimesvendorapp.SpinnerAdapters.SPropertySubCatAdapter
 import com.example.funnytimesvendorapp.databinding.FtpScreenNewChaletBinding
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.gson.GsonBuilder
 import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.registerImagePicker
 import org.json.JSONException
 import org.json.JSONObject
 import java.nio.charset.Charset
+import java.util.*
 
-class NewChaletScreen : AppCompatActivity() {
+
+class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
 
     lateinit var binding:FtpScreenNewChaletBinding
     val commonFuncs = CommonFuncs()
@@ -39,6 +53,16 @@ class NewChaletScreen : AppCompatActivity() {
     val ftpPropPhotos = ArrayList<FTPPropPhoto>()
 
     var priceType = "static"
+    var bookType = 1
+    var selectedlat = ""
+    var selectedlng = ""
+
+
+    var mapDialog: Dialog? = null
+    lateinit var googleMap: GoogleMap
+    var marker:Marker? = null
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,21 +75,61 @@ class NewChaletScreen : AppCompatActivity() {
             finish()
         }
 
+
+        SetUpMapDialog()
+        val mapFragment =
+            supportFragmentManager.findFragmentById(R.id.PropMapFrag) as SupportMapFragment?
+        mapFragment!!.getMapAsync(this)
+
+        binding.PropertyShowMap.setOnClickListener {
+            mapDialog?.show()
+        }
+
+
         binding.StaticButton.setOnClickListener {
             binding.StaticButton.setBackgroundResource(R.drawable.ft_radius_fill)
-            binding.StaticText.setTextColor(resources.getColor(R.color.ft_dark_blue,null))
+            binding.StaticText.setTextColor(resources.getColor(R.color.ft_dark_blue, null))
             binding.DynamicButton.setBackgroundResource(0)
-            binding.DynamicText.setTextColor(resources.getColor(R.color.ft_grey_1,null))
+            binding.DynamicText.setTextColor(resources.getColor(R.color.ft_grey_1, null))
             priceType = "static"
+            if (bookType == 3) {
+                binding.PropertyEveningSection.visibility = View.VISIBLE
+                binding.PropertyMainPriceTV.text = "الفترة الصباحية"
+                binding.PropertyDynamicPriceSection.visibility = View.GONE
+                binding.PropertyNormalPriceSection.visibility = View.GONE
+                binding.PropertyPeriodPriceSection.visibility = View.VISIBLE
+            } else {
+                binding.PropertyEveningSection.visibility = View.GONE
+                binding.PropertyMainPriceTV.text = "السعر"
+                binding.PropertyDynamicPriceSection.visibility = View.GONE
+                binding.PropertyNormalPriceSection.visibility = View.VISIBLE
+                binding.PropertyPeriodPriceSection.visibility = View.GONE
+            }
+
         }
         binding.DynamicButton.setOnClickListener {
             binding.DynamicButton.setBackgroundResource(R.drawable.ft_radius_fill)
-            binding.DynamicText.setTextColor(resources.getColor(R.color.ft_dark_blue,null))
+            binding.DynamicText.setTextColor(resources.getColor(R.color.ft_dark_blue, null))
             binding.StaticButton.setBackgroundResource(0)
-            binding.StaticText.setTextColor(resources.getColor(R.color.ft_grey_1,null))
+            binding.StaticText.setTextColor(resources.getColor(R.color.ft_grey_1, null))
             priceType = "dynamic"
-
+            if (bookType == 3) {
+                binding.PropertyEveningSection.visibility = View.VISIBLE
+                binding.PropertyMainPriceTV.text = "الفترة الصباحية"
+                binding.PropertyDynamicPriceSection.visibility = View.VISIBLE
+                binding.PropertyNormalPriceSection.visibility = View.GONE
+                binding.PropertyPeriodPriceSection.visibility = View.GONE
+            } else {
+                binding.PropertyEveningSection.visibility = View.GONE
+                binding.PropertyMainPriceTV.text = "السعر"
+                binding.PropertyDynamicPriceSection.visibility = View.VISIBLE
+                binding.PropertyNormalPriceSection.visibility = View.GONE
+                binding.PropertyPeriodPriceSection.visibility = View.GONE
+            }
         }
+
+
+
 
         ftpPropertyBook.add(FTPPropertyBook(1,"أيام"))
         ftpPropertyBook.add(FTPPropertyBook(2,"ساعات"))
@@ -107,6 +171,29 @@ class NewChaletScreen : AppCompatActivity() {
 
     }
 
+    fun SetUpMapDialog() {
+        mapDialog = Dialog(this)
+        mapDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        mapDialog?.setCancelable(false)
+        mapDialog?.setContentView(R.layout.ftp_dialog_property_map)
+        val SubmitLocation = mapDialog?.findViewById<TextView>(R.id.SubmitLocation)
+        SubmitLocation!!.setOnClickListener {
+            if (selectedlat.isNullOrEmpty() || selectedlng.isNullOrEmpty()){
+                commonFuncs.showDefaultDialog(this,"الخطوة مهمة","يجب عليك الضغط على الخريطة وتحديد مكان العقار والتأكيد")
+            }else{
+                binding.PropertyShowMap.text = "لقد تم إختيار مكانك على الخريطة"
+                binding.PropertyShowMap.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.ft_green,null))
+                mapDialog!!.dismiss()
+            }
+        }
+        val window: Window = mapDialog?.window!!
+        window.setBackgroundDrawable(
+            ColorDrawable(resources
+                .getColor(R.color.tk_dialog_bg, null))
+        )
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+    }
+
     fun Chalet_tools_Request() {
         commonFuncs.showLoadingDialog(this)
         val url = Constants.APIMain + "api/vendor-app/create/1"
@@ -142,7 +229,32 @@ class NewChaletScreen : AppCompatActivity() {
                             position: Int,
                             id: Long
                         ) {
-
+                            bookType = sPropertyBookSpinner.getItem(position)!!.BookId
+                            if (bookType == 3){
+                                if (priceType == "dynamic"){
+                                    binding.PropertyEveningSection.visibility = View.VISIBLE
+                                    binding.PropertyMainPriceTV.text = "الفترة الصباحية"
+                                    binding.PropertyDynamicPriceSection.visibility = View.VISIBLE
+                                    binding.PropertyNormalPriceSection.visibility = View.GONE
+                                    binding.PropertyPeriodPriceSection.visibility = View.GONE
+                                }else{
+                                    binding.PropertyDynamicPriceSection.visibility = View.GONE
+                                    binding.PropertyNormalPriceSection.visibility = View.GONE
+                                    binding.PropertyPeriodPriceSection.visibility = View.VISIBLE
+                                }
+                            }else{
+                                if (priceType == "dynamic"){
+                                    binding.PropertyEveningSection.visibility = View.GONE
+                                    binding.PropertyMainPriceTV.text = "السعر"
+                                    binding.PropertyDynamicPriceSection.visibility = View.VISIBLE
+                                    binding.PropertyNormalPriceSection.visibility = View.GONE
+                                    binding.PropertyPeriodPriceSection.visibility = View.GONE
+                                }else{
+                                    binding.PropertyDynamicPriceSection.visibility = View.GONE
+                                    binding.PropertyNormalPriceSection.visibility = View.VISIBLE
+                                    binding.PropertyPeriodPriceSection.visibility = View.GONE
+                                }
+                            }
                         }
                     }
 
@@ -213,5 +325,30 @@ class NewChaletScreen : AppCompatActivity() {
             Log.e("Response", error.toString())
             commonFuncs.hideLoadingDialog()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (mapDialog != null){
+            if (mapDialog!!.isShowing){
+                mapDialog!!.dismiss()
+            }
+        }
+    }
+
+    override fun onMapReady(p0: GoogleMap) {
+        googleMap = p0
+
+        googleMap.setOnMapClickListener {
+            selectedlat = it.latitude.toString()
+            selectedlng = it.longitude.toString()
+            if (marker == null){
+                marker = googleMap.addMarker(MarkerOptions().position(LatLng(it.latitude,it.longitude)))
+            }else{
+                marker!!.remove()
+                marker = googleMap.addMarker(MarkerOptions().position(LatLng(it.latitude,it.longitude)))
+            }
+        }
+
     }
 }
