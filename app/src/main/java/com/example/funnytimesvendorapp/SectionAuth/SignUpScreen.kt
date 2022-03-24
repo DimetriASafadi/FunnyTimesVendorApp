@@ -20,6 +20,7 @@ class SignUpScreen : AppCompatActivity() {
 
     lateinit var binding: FtpScreenSignUpBinding
     val commonFuncs = CommonFuncs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FtpScreenSignUpBinding.inflate(layoutInflater)

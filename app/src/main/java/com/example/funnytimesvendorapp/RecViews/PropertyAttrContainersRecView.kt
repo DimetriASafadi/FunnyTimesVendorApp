@@ -29,6 +29,12 @@ class PropertyAttrContainersRecView (val data : ArrayList<FTPPropertyAttributeCo
         holder.ContainerAttributesRecycler.adapter = propertyAttributesRecView
 
     }
+
+    fun GetAttributesContainer():ArrayList<FTPPropertyAttributeContainer>{
+        notifyDataSetChanged()
+        return data
+    }
+
 }
 class AttrContainerViewHolder (view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
