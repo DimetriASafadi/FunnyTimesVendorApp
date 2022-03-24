@@ -36,6 +36,12 @@ class ProviderLocationScreen : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        commonFuncs.setLocale2(this,"ar")
+        if (commonFuncs.IsInSP(this, Constants.KeyAppLanguage)){
+            commonFuncs.setLocale2(this,commonFuncs.GetFromSP(this, Constants.KeyAppLanguage)!!)
+        }else{
+            commonFuncs.setLocale2(this,"ar")
+        }
         binding = FtpScreenProviderLocationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)

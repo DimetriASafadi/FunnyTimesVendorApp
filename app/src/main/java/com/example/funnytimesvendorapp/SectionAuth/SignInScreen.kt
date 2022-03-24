@@ -9,6 +9,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
+import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.CommonSection.Constants.APIMain
 import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserID
 import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserToken
@@ -28,6 +29,12 @@ class SignInScreen : AppCompatActivity() {
     val commonFuncs = CommonFuncs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        commonFuncs.setLocale2(this,"ar")
+        if (commonFuncs.IsInSP(this, Constants.KeyAppLanguage)){
+            commonFuncs.setLocale2(this,commonFuncs.GetFromSP(this, Constants.KeyAppLanguage)!!)
+        }else{
+            commonFuncs.setLocale2(this,"ar")
+        }
         binding = FtpScreenSignInBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -41,8 +48,8 @@ class SignInScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
             if (password.isNullOrEmpty()){
-                binding.SUserEmail.error = "لا يمكن ترك الحقل فارغ"
-                binding.SUserEmail.requestFocus()
+                binding.SUserPassword.error = "لا يمكن ترك الحقل فارغ"
+                binding.SUserPassword.requestFocus()
                 return@setOnClickListener
             }
             login_Request(username,password)

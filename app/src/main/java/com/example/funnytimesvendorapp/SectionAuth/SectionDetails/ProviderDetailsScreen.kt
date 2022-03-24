@@ -3,19 +3,21 @@ package com.example.funnytimesvendorapp.SectionAuth.SectionDetails
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
+import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.CommonSection.Constants.APIMain
 import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserToken
 import com.example.funnytimesvendorapp.MainMenu
 import com.example.funnytimesvendorapp.Models.FTPCategory
 import com.example.funnytimesvendorapp.Models.FTPSubCategory
-import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.SpinnerAdapters.SSubCategoryAdapter
 import com.example.funnytimesvendorapp.databinding.FtpScreenProviderDetailsBinding
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -24,6 +26,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.asRequestBody
 import okio.IOException
 import java.io.File
+
 
 class ProviderDetailsScreen : AppCompatActivity() {
 
@@ -50,6 +53,12 @@ class ProviderDetailsScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        commonFuncs.setLocale2(this,"ar")
+        if (commonFuncs.IsInSP(this, Constants.KeyAppLanguage)){
+            commonFuncs.setLocale2(this,commonFuncs.GetFromSP(this, Constants.KeyAppLanguage)!!)
+        }else{
+            commonFuncs.setLocale2(this,"ar")
+        }
         binding = FtpScreenProviderDetailsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -62,8 +71,32 @@ class ProviderDetailsScreen : AppCompatActivity() {
         lat = intent.getStringExtra("lat").toString()
         lng = intent.getStringExtra("lng").toString()
 
+        val startForProfileImageResult =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+                val resultCode = result.resultCode
+                val data = result.data
+
+                if (resultCode == Activity.RESULT_OK) {
+                    //Image Uri will not be null for RESULT_OK
+                    val uri: Uri = data?.data!!
+                    chosenpicuri = uri
+                    binding.ProImage.setImageURI(uri)
+                    chosenpic = 1
+                } else if (resultCode == ImagePicker.RESULT_ERROR) {
+                    Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
+                }
+            }
+
         binding.ProPickImage.setOnClickListener {
-            pickimage()
+//            pickimage()
+            ImagePicker.with(this)
+                .compress(1024)
+                .crop()//Final image size will be less than 1 MB(Optional)
+                .createIntent { intent ->
+                    startForProfileImageResult.launch(intent)
+                }
         }
         val ftpsubCategorys = ArrayList<FTPSubCategory>()
         ftpsubCategorys.addAll(ftpCategory.CategorySubs!!)
@@ -96,6 +129,8 @@ class ProviderDetailsScreen : AppCompatActivity() {
             }
             Add_Vendor_Request()
         }
+
+
     }
     fun Add_Vendor_Request(){
         try {
@@ -165,24 +200,40 @@ class ProviderDetailsScreen : AppCompatActivity() {
     }
 
     fun pickimage() {
-        ImagePicker.with(this)
-            .crop()
-            .compress(1024)
-            .start()
+//        ImagePicker.with(this)
+//            .crop()
+//            .galleryOnly()//Crop image(Optional), Check Customization for more option
+//            .compress(1024)			//Final image size will be less than 1 MB(Optional)
+//            .start()
+
+//        CropImage.activity()
+//            .setGuidelines(CropImageView.Guidelines.ON)
+//            .start(this);
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            //Image Uri will not be null for RESULT_OK
-            val uri: Uri = data?.data!!
-            chosenpicuri = uri
-            binding.ProImage.setImageURI(uri)
-            chosenpic = 1
-            Log.e("ImageUri",chosenpicuri.toString())
-        } else if (resultCode == ImagePicker.RESULT_ERROR) {
-            Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+//            val result = CropImage.getActivityResult(data)
+//            if (resultCode == RESULT_OK) {
+//                val resultUri = result.uri
+//                chosenpicuri = resultUri
+//                binding.ProImage.setImageURI(resultUri)
+//                chosenpic = 1
+//            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+//                val error = result.error
+//                Toast.makeText(this, error.message.toString(), Toast.LENGTH_SHORT).show()
+//                Log.e("EmodoError",error.message.toString())
+//            }
+//        }
+//    }
+
+    override fun onResume() {
+        super.onResume()
+        commonFuncs.setLocale2(this,"ar")
+        if (commonFuncs.IsInSP(this, Constants.KeyAppLanguage)){
+            commonFuncs.setLocale2(this,commonFuncs.GetFromSP(this, Constants.KeyAppLanguage)!!)
+        }else{
+            commonFuncs.setLocale2(this,"ar")
         }
     }
 

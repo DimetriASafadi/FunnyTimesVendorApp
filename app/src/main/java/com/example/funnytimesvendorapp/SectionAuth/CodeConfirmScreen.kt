@@ -64,7 +64,7 @@ class CodeConfirmScreen : AppCompatActivity() {
     }
     fun verify_Request(code:String) {
         commonFuncs.showLoadingDialog(this)
-        val url = Constants.APIMain + "api/vendor/verify"
+        val url = Constants.APIMain + "api/vendor-app/verify"
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url, Response.Listener<String> { response ->

@@ -36,6 +36,12 @@ class ProviderCategoryScreen : AppCompatActivity(), OnCategoryClick {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        commonFuncs.setLocale2(this,"ar")
+        if (commonFuncs.IsInSP(this, Constants.KeyAppLanguage)){
+            commonFuncs.setLocale2(this,commonFuncs.GetFromSP(this, Constants.KeyAppLanguage)!!)
+        }else {
+            commonFuncs.setLocale2(this, "ar")
+        }
         binding = FtpScreenProviderCategoryBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)

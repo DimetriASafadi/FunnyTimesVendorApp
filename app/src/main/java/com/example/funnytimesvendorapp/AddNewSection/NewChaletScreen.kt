@@ -1,7 +1,6 @@
 package com.example.funnytimesvendorapp.AddNewSection
 
 import android.app.Dialog
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -21,8 +20,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
-import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserToken
-import com.example.funnytimesvendorapp.MainMenu
 import com.example.funnytimesvendorapp.Models.*
 import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.RecViews.PropertyAttrContainersRecView
@@ -238,67 +235,67 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-    fun Add_Chalet_Request(){
-        try {
-            commonFuncs.showLoadingDialog(this)
-            val multipartBody = MultipartBody.Builder()
-            multipartBody.setType(MultipartBody.FORM)
-            multipartBody.addFormDataPart("name", name.toString())
-            multipartBody.addFormDataPart("category_id", category_id)
-            multipartBody.addFormDataPart("phone", phonenum)
-            if (!whatsapp.isNullOrEmpty()){
-                multipartBody.addFormDataPart("whatsapp", whatsapp)
-            }
-            if (!instagram.isNullOrEmpty()){
-                multipartBody.addFormDataPart("instagram", instagram)
-            }
-            if (!facebook.isNullOrEmpty()){
-                multipartBody.addFormDataPart("facebook", facebook)
-            }
-            if (!lat.isNullOrEmpty()){
-                multipartBody.addFormDataPart("lat", lat)
-            }
-            if (!lng.isNullOrEmpty()){
-                multipartBody.addFormDataPart("lng", lng)
-            }
-            val file1 = File(chosenpicuri.path)
-            val fileRequestBody = file1.asRequestBody("image/jpg".toMediaType())
-            val imagename = System.currentTimeMillis().toString()
-            multipartBody.addFormDataPart("img", imagename, fileRequestBody)
-            val requestBody: RequestBody = multipartBody.build()
-            val request: okhttp3.Request = okhttp3.Request.Builder()
-                .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,KeyUserToken)}")
-                .url(Constants.APIMain +"api/vendor-app/property/store")
-                .post(requestBody)
-                .build()
-            client.newCall(request).enqueue(object : Callback {
-                @Throws(IOException::class)
-                override fun onFailure(call: Call, e: java.io.IOException) {
-                    runOnUiThread {
-                        Log.e("onFailure","onFailure")
-                        Log.e("onFailure",call.toString())
-                        Log.e("onFailure",e.message.toString())
-                        Log.e("onFailure",e.toString())
-                        commonFuncs.hideLoadingDialog()
-                        commonFuncs.showDefaultDialog(this@NewChaletScreen,"فشل في العملية","حصل خطأ ما أثناء عملية الدفع , تأكد من اتصالك بالانترنت أو حاول مرة أخرى")
-                    }
-                }
-                @Throws(IOException::class)
-                override fun onResponse(call: Call, response: okhttp3.Response) {
-                    runOnUiThread {
-                        Log.e("onResponse",response.message.toString())
-                        commonFuncs.hideLoadingDialog()
-                        finish()
-                    }
-                }
-            })
-        } catch (e: IOException) {
-            Log.e("TryCatchFinal",e.message.toString()+"A7a")
-            e.printStackTrace()
-            commonFuncs.hideLoadingDialog()
-            commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
-        }
-    }
+//    fun Add_Chalet_Request(){
+//        try {
+//            commonFuncs.showLoadingDialog(this)
+//            val multipartBody = MultipartBody.Builder()
+//            multipartBody.setType(MultipartBody.FORM)
+//            multipartBody.addFormDataPart("name", name.toString())
+//            multipartBody.addFormDataPart("category_id", category_id)
+//            multipartBody.addFormDataPart("phone", phonenum)
+//            if (!whatsapp.isNullOrEmpty()){
+//                multipartBody.addFormDataPart("whatsapp", whatsapp)
+//            }
+//            if (!instagram.isNullOrEmpty()){
+//                multipartBody.addFormDataPart("instagram", instagram)
+//            }
+//            if (!facebook.isNullOrEmpty()){
+//                multipartBody.addFormDataPart("facebook", facebook)
+//            }
+//            if (!lat.isNullOrEmpty()){
+//                multipartBody.addFormDataPart("lat", lat)
+//            }
+//            if (!lng.isNullOrEmpty()){
+//                multipartBody.addFormDataPart("lng", lng)
+//            }
+//            val file1 = File(chosenpicuri.path)
+//            val fileRequestBody = file1.asRequestBody("image/jpg".toMediaType())
+//            val imagename = System.currentTimeMillis().toString()
+//            multipartBody.addFormDataPart("img", imagename, fileRequestBody)
+//            val requestBody: RequestBody = multipartBody.build()
+//            val request: okhttp3.Request = okhttp3.Request.Builder()
+//                .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,KeyUserToken)}")
+//                .url(Constants.APIMain +"api/vendor-app/property/store")
+//                .post(requestBody)
+//                .build()
+//            client.newCall(request).enqueue(object : Callback {
+//                @Throws(IOException::class)
+//                override fun onFailure(call: Call, e: java.io.IOException) {
+//                    runOnUiThread {
+//                        Log.e("onFailure","onFailure")
+//                        Log.e("onFailure",call.toString())
+//                        Log.e("onFailure",e.message.toString())
+//                        Log.e("onFailure",e.toString())
+//                        commonFuncs.hideLoadingDialog()
+//                        commonFuncs.showDefaultDialog(this@NewChaletScreen,"فشل في العملية","حصل خطأ ما أثناء عملية الدفع , تأكد من اتصالك بالانترنت أو حاول مرة أخرى")
+//                    }
+//                }
+//                @Throws(IOException::class)
+//                override fun onResponse(call: Call, response: okhttp3.Response) {
+//                    runOnUiThread {
+//                        Log.e("onResponse",response.message.toString())
+//                        commonFuncs.hideLoadingDialog()
+//                        finish()
+//                    }
+//                }
+//            })
+//        } catch (e: IOException) {
+//            Log.e("TryCatchFinal",e.message.toString()+"A7a")
+//            e.printStackTrace()
+//            commonFuncs.hideLoadingDialog()
+//            commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
+//        }
+//    }
 
 
 

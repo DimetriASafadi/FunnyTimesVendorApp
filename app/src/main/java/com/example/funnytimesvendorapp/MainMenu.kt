@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.funnytimesvendorapp.AddNewSection.NewChaletScreen
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
+import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.MainMenuSection.BooksSection.BooksFrag
 import com.example.funnytimesvendorapp.MainMenuSection.HomeSection.HomeFrag
 import com.example.funnytimesvendorapp.MainMenuSection.SettingSection.SettingFrag
@@ -20,6 +21,11 @@ class MainMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         commonFuncs.setLocale2(this,"ar")
+        if (commonFuncs.IsInSP(this, Constants.KeyAppLanguage)){
+            commonFuncs.setLocale2(this,commonFuncs.GetFromSP(this, Constants.KeyAppLanguage)!!)
+        }else{
+            commonFuncs.setLocale2(this,"ar")
+        }
         binding = FtpScreenMainMenuBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
