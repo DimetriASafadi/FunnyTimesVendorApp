@@ -2,8 +2,12 @@ package com.example.funnytimesvendorapp.AddNewSection
 
 import android.app.Dialog
 import android.content.res.ColorStateList
+import android.database.Cursor
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.provider.DocumentsContract
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +24,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
+import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserToken
 import com.example.funnytimesvendorapp.Models.*
 import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.RecViews.PropertyAttrContainersRecView
@@ -46,7 +51,6 @@ import org.json.JSONObject
 import java.io.File
 import java.nio.charset.Charset
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
@@ -68,7 +72,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
     var propselectedlat = ""
     var propselectedlng = ""
     var propbookType = 1
-    var proppriceType = "static"
+    var proppriceType = "fix"
     var propprice = ""
     var propmorningprice = ""
     var propeveningprice = ""
@@ -84,6 +88,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
 
     val client = OkHttpClient()
 
+    lateinit var propertyAttrContainersRecView:PropertyAttrContainersRecView
 
 
 
@@ -116,7 +121,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             binding.StaticText.setTextColor(resources.getColor(R.color.ft_dark_blue, null))
             binding.DynamicButton.setBackgroundResource(0)
             binding.DynamicText.setTextColor(resources.getColor(R.color.ft_grey_1, null))
-            proppriceType = "static"
+            proppriceType = "fix"
             if (propbookType == 3) {
                 binding.PropertyEveningSection.visibility = View.VISIBLE
                 binding.PropertyMainPriceTV.text = "الفترة الصباحية"
@@ -137,7 +142,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             binding.DynamicText.setTextColor(resources.getColor(R.color.ft_dark_blue, null))
             binding.StaticButton.setBackgroundResource(0)
             binding.StaticText.setTextColor(resources.getColor(R.color.ft_grey_1, null))
-            proppriceType = "dynamic"
+            proppriceType = "change"
             if (propbookType == 3) {
                 binding.PropertyEveningSection.visibility = View.VISIBLE
                 binding.PropertyMainPriceTV.text = "الفترة الصباحية"
@@ -179,6 +184,12 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                 propchosenimage = "selected"
                 for (i in 0 until images.size) {
                     if (ftpPropPhotos.size < 20){
+//                        Log.e("FTPPropPhoto",getRealPath(images[i].uri))
+                        Log.e("FTPPropPhoto",images[i].uri.path.toString())
+                        Log.e("FTPPropPhoto",images[i].uri.toString())
+                        Log.e("FTPPropPhoto",images[i].bucketName)
+                        Log.e("FTPPropPhoto",images[i].name)
+                        Log.e("FTPPropPhoto",images[i].bucketId.toString())
                         ftpPropPhotos.add(FTPPropPhoto(null,"new",images[i].uri.toString(),images[i].uri))
                     }else{
                         Toast.makeText(this, "لقد وصلت الحد الأعلى للصور", Toast.LENGTH_SHORT).show()
@@ -209,25 +220,91 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-            var propname = ""
-            var propdescription = ""
-            var proppolicy = ""
-            var proptype = ""
-            var propcity = ""
-            var propdistric = ""
-            var propselectedlat = ""
-            var propselectedlng = ""
-            var propbookType = 1
-            var proppriceType = "static"
-            var propprice = ""
-            var propmorningprice = ""
-            var propeveningprice = ""
-            var propdepositprice = ""
-            var propchosenimage = ""
-
             if (propname.isNullOrEmpty()){
-
+                binding.PropertyName.error = "لا يمكن ترك الحقل فارغ"
+                binding.PropertyName.requestFocus()
+                return@setOnClickListener
             }
+            if (propdescription.isNullOrEmpty()){
+                binding.PropertyDesc.error = "لا يمكن ترك الحقل فارغ"
+                binding.PropertyDesc.requestFocus()
+                return@setOnClickListener
+            }
+            if (proppolicy.isNullOrEmpty()){
+                binding.PropertyPolicy.error = "لا يمكن ترك الحقل فارغ"
+                binding.PropertyPolicy.requestFocus()
+                return@setOnClickListener
+            }
+            if (propdistric.isNullOrEmpty()){
+                binding.PropertyDistric.error = "لا يمكن ترك الحقل فارغ"
+                binding.PropertyDistric.requestFocus()
+                return@setOnClickListener
+            }
+            if (propselectedlat.isNullOrEmpty() || propselectedlng.isNullOrEmpty()){
+                Toast.makeText(this, "يجب عليك إختيار موقعك على الخريطة", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            if (propbookType == 3){
+                if (proppriceType == "change"){
+                    for (edittext in prices1){
+                        if (edittext.text.isNullOrEmpty()){
+                            edittext.error = "لا يمكن ترك الحقل فارغ"
+                            edittext.requestFocus()
+                            return@setOnClickListener
+                        }
+                    }
+                    for (edittext in prices2){
+                        if (edittext.text.isNullOrEmpty()){
+                            edittext.error = "لا يمكن ترك الحقل فارغ"
+                            edittext.requestFocus()
+                            return@setOnClickListener
+                        }
+                    }
+                }else{
+                    if (propmorningprice.isNullOrEmpty()){
+                        binding.PropertyMorning.error = "لا يمكن ترك الحقل فارغ"
+                        binding.PropertyMorning.requestFocus()
+                        return@setOnClickListener
+                    }
+                    if (propeveningprice.isNullOrEmpty()){
+                        binding.PropertyEvening.error = "لا يمكن ترك الحقل فارغ"
+                        binding.PropertyEvening.requestFocus()
+                        return@setOnClickListener
+                    }
+                }
+            }else{
+                if (proppriceType == "change"){
+                    for (edittext in prices1){
+                        if (edittext.text.isNullOrEmpty()){
+                            edittext.error = "لا يمكن ترك الحقل فارغ"
+                            edittext.requestFocus()
+                            return@setOnClickListener
+                        }
+                    }
+                }else{
+                    if (propprice.isNullOrEmpty()){
+                        binding.PropertyPrice.error = "لا يمكن ترك الحقل فارغ"
+                        binding.PropertyPrice.requestFocus()
+                        return@setOnClickListener
+                    }
+                }
+            }
+
+            if (propdepositprice.isNullOrEmpty()){
+                binding.PropertyDeposit.error = "لا يمكن ترك الحقل فارغ"
+                binding.PropertyDeposit.requestFocus()
+                return@setOnClickListener
+            }
+
+
+            if (propchosenimage.isNullOrEmpty()){
+                Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل لعقارك", Toast.LENGTH_LONG).show()
+            }
+
+            Add_Chalet_Request()
+
+
         }
 
     }
@@ -235,67 +312,111 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-//    fun Add_Chalet_Request(){
-//        try {
-//            commonFuncs.showLoadingDialog(this)
-//            val multipartBody = MultipartBody.Builder()
-//            multipartBody.setType(MultipartBody.FORM)
-//            multipartBody.addFormDataPart("name", name.toString())
-//            multipartBody.addFormDataPart("category_id", category_id)
-//            multipartBody.addFormDataPart("phone", phonenum)
-//            if (!whatsapp.isNullOrEmpty()){
-//                multipartBody.addFormDataPart("whatsapp", whatsapp)
-//            }
-//            if (!instagram.isNullOrEmpty()){
-//                multipartBody.addFormDataPart("instagram", instagram)
-//            }
-//            if (!facebook.isNullOrEmpty()){
-//                multipartBody.addFormDataPart("facebook", facebook)
-//            }
-//            if (!lat.isNullOrEmpty()){
-//                multipartBody.addFormDataPart("lat", lat)
-//            }
-//            if (!lng.isNullOrEmpty()){
-//                multipartBody.addFormDataPart("lng", lng)
-//            }
-//            val file1 = File(chosenpicuri.path)
-//            val fileRequestBody = file1.asRequestBody("image/jpg".toMediaType())
-//            val imagename = System.currentTimeMillis().toString()
-//            multipartBody.addFormDataPart("img", imagename, fileRequestBody)
-//            val requestBody: RequestBody = multipartBody.build()
-//            val request: okhttp3.Request = okhttp3.Request.Builder()
-//                .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,KeyUserToken)}")
-//                .url(Constants.APIMain +"api/vendor-app/property/store")
-//                .post(requestBody)
-//                .build()
-//            client.newCall(request).enqueue(object : Callback {
-//                @Throws(IOException::class)
-//                override fun onFailure(call: Call, e: java.io.IOException) {
-//                    runOnUiThread {
-//                        Log.e("onFailure","onFailure")
-//                        Log.e("onFailure",call.toString())
-//                        Log.e("onFailure",e.message.toString())
-//                        Log.e("onFailure",e.toString())
-//                        commonFuncs.hideLoadingDialog()
-//                        commonFuncs.showDefaultDialog(this@NewChaletScreen,"فشل في العملية","حصل خطأ ما أثناء عملية الدفع , تأكد من اتصالك بالانترنت أو حاول مرة أخرى")
-//                    }
-//                }
-//                @Throws(IOException::class)
-//                override fun onResponse(call: Call, response: okhttp3.Response) {
-//                    runOnUiThread {
-//                        Log.e("onResponse",response.message.toString())
-//                        commonFuncs.hideLoadingDialog()
-//                        finish()
-//                    }
-//                }
-//            })
-//        } catch (e: IOException) {
-//            Log.e("TryCatchFinal",e.message.toString()+"A7a")
-//            e.printStackTrace()
-//            commonFuncs.hideLoadingDialog()
-//            commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
-//        }
-//    }
+    fun Add_Chalet_Request(){
+        try {
+            commonFuncs.showLoadingDialog(this)
+            val multipartBody = MultipartBody.Builder()
+            multipartBody.setType(MultipartBody.FORM)
+            multipartBody.addFormDataPart("name", propname)
+            multipartBody.addFormDataPart("description", propdepositprice)
+            multipartBody.addFormDataPart("policy", proppolicy)
+            multipartBody.addFormDataPart("sub_category_id", proptype)
+            multipartBody.addFormDataPart("city_id", propcity)
+            multipartBody.addFormDataPart("address", propdistric)
+            multipartBody.addFormDataPart("type", propbookType.toString())
+            multipartBody.addFormDataPart("priceType", proppriceType)
+
+            if (propbookType == 3){
+                if (proppriceType == "change"){
+                    multipartBody.addFormDataPart("Sat2", binding.PriceSaturday.text.toString())
+                    multipartBody.addFormDataPart("Sun2", binding.PriceSunday.text.toString())
+                    multipartBody.addFormDataPart("Mon2", binding.PriceMonday.text.toString())
+                    multipartBody.addFormDataPart("Tue2", binding.PriceTuseday.text.toString())
+                    multipartBody.addFormDataPart("Wed2", binding.PriceWednsday.text.toString())
+                    multipartBody.addFormDataPart("Thu2", binding.PriceThursday.text.toString())
+                    multipartBody.addFormDataPart("Fri2", binding.PriceFriday.text.toString())
+                    multipartBody.addFormDataPart("Sat3", binding.EPriceSaturday.text.toString())
+                    multipartBody.addFormDataPart("Sun3", binding.EPriceSunday.text.toString())
+                    multipartBody.addFormDataPart("Mon3", binding.EPriceMonday.text.toString())
+                    multipartBody.addFormDataPart("Tue3", binding.EPriceTuseday.text.toString())
+                    multipartBody.addFormDataPart("Wed3", binding.EPriceWednsday.text.toString())
+                    multipartBody.addFormDataPart("Thu3", binding.EPriceThursday.text.toString())
+                    multipartBody.addFormDataPart("Fri3", binding.EPriceFriday.text.toString())
+                }else{
+                    multipartBody.addFormDataPart("priceOnDay", propmorningprice)
+                    multipartBody.addFormDataPart("priceOnNight", propeveningprice)
+                }
+            }else{
+                if (proppriceType == "change"){
+                    multipartBody.addFormDataPart("Sat", binding.PriceSaturday.text.toString())
+                    multipartBody.addFormDataPart("Sun", binding.PriceSunday.text.toString())
+                    multipartBody.addFormDataPart("Mon", binding.PriceMonday.text.toString())
+                    multipartBody.addFormDataPart("Tue", binding.PriceTuseday.text.toString())
+                    multipartBody.addFormDataPart("Wed", binding.PriceWednsday.text.toString())
+                    multipartBody.addFormDataPart("Thu", binding.PriceThursday.text.toString())
+                    multipartBody.addFormDataPart("Fri", binding.PriceFriday.text.toString())
+                }else{
+                    multipartBody.addFormDataPart("price", propprice)
+
+                }
+            }
+            multipartBody.addFormDataPart("deposit", propdepositprice)
+            multipartBody.addFormDataPart("lat", propselectedlat)
+            multipartBody.addFormDataPart("lng", propselectedlng)
+
+            for(photo in ftpPropPhotos){
+                val file1 = getFileFromUri(photo.PhotoUri!!)
+//                val file1 = File(getRealPath(photo.PhotoUri!!))
+                val fileRequestBody = file1!!.asRequestBody("image/jpg".toMediaType())
+                val imagename = System.currentTimeMillis().toString()
+                multipartBody.addFormDataPart("imgs[]", imagename, fileRequestBody)
+            }
+
+            for (container in propertyAttrContainersRecView.GetAttributesContainer()){
+                for (attribute in container.ContainerAttributes!!){
+                    if (attribute.AttributeType == "value"){
+                        multipartBody.addFormDataPart("attr[${container.ContainerId}][${attribute.AttributeId}]", attribute.AttributeValue.toString())
+                    }else{
+                        multipartBody.addFormDataPart("attr[${container.ContainerId}][${attribute.AttributeId}]", "on")
+                    }
+
+                }
+            }
+
+            val requestBody: RequestBody = multipartBody.build()
+            val request: okhttp3.Request = okhttp3.Request.Builder()
+                .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,KeyUserToken)}")
+                .url(Constants.APIMain +"api/vendor-app/property/store")
+                .post(requestBody)
+                .build()
+            client.newCall(request).enqueue(object : Callback {
+                @Throws(IOException::class)
+                override fun onFailure(call: Call, e: java.io.IOException) {
+                    runOnUiThread {
+                        Log.e("onFailure","onFailure")
+                        Log.e("onFailure",call.toString())
+                        Log.e("onFailure",e.message.toString())
+                        Log.e("onFailure",e.toString())
+                        commonFuncs.hideLoadingDialog()
+                        commonFuncs.showDefaultDialog(this@NewChaletScreen,"فشل في العملية","حصل خطأ ما أثناء عملية الدفع , تأكد من اتصالك بالانترنت أو حاول مرة أخرى")
+                    }
+                }
+                @Throws(IOException::class)
+                override fun onResponse(call: Call, response: okhttp3.Response) {
+                    runOnUiThread {
+                        Log.e("onResponse",response.message.toString())
+                        commonFuncs.hideLoadingDialog()
+                        finish()
+                    }
+                }
+            })
+        } catch (e: IOException) {
+            Log.e("TryCatchFinal",e.message.toString()+"A7a")
+            e.printStackTrace()
+            commonFuncs.hideLoadingDialog()
+            commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
+        }
+    }
 
 
 
@@ -340,7 +461,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                     ftpPropertyCity.addAll(gson.fromJson(cities.toString(),Array<FTPPropertyCity>::class.java).toList())
 
                     val ftpPropertyAttributeContainer = ArrayList<FTPPropertyAttributeContainer>()
-                    val propertyAttrContainersRecView = PropertyAttrContainersRecView(ftpPropertyAttributeContainer,this)
+                    propertyAttrContainersRecView = PropertyAttrContainersRecView(ftpPropertyAttributeContainer,this)
                     binding.PropertyAttributesRecycler.layoutManager = LinearLayoutManager(this,
                     LinearLayoutManager.VERTICAL,
                     false)
@@ -360,7 +481,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                         ) {
                             propbookType = sPropertyBookSpinner.getItem(position)!!.BookId
                             if (propbookType == 3){
-                                if (proppriceType == "dynamic"){
+                                if (proppriceType == "change"){
                                     binding.PropertyEveningSection.visibility = View.VISIBLE
                                     binding.PropertyMainPriceTV.text = "الفترة الصباحية"
                                     binding.PropertyDynamicPriceSection.visibility = View.VISIBLE
@@ -372,7 +493,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                                     binding.PropertyPeriodPriceSection.visibility = View.VISIBLE
                                 }
                             }else{
-                                if (proppriceType == "dynamic"){
+                                if (proppriceType == "change"){
                                     binding.PropertyEveningSection.visibility = View.GONE
                                     binding.PropertyMainPriceTV.text = "السعر"
                                     binding.PropertyDynamicPriceSection.visibility = View.VISIBLE
@@ -415,11 +536,8 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                             id: Long
                         ) {
                             propcity = sPropertyCityAdapter.getItem(position)!!.CityId.toString()
-                     //       ftpPropertyAttributeContainer.clear()
                         }
                     }
-
-
                     propertyAttrContainersRecView.notifyDataSetChanged()
                     commonFuncs.hideLoadingDialog()
 
@@ -479,4 +597,87 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
         }
 
     }
+
+
+    fun getFileFromUri(uri: Uri): File? {
+        if (uri.path == null) {
+            return null
+        }
+        var realPath = String()
+        val databaseUri: Uri
+        val selection: String?
+        val selectionArgs: Array<String>?
+        if (uri.path!!.contains("/document/image:")) {
+            databaseUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            selection = "_id=?"
+            selectionArgs = arrayOf(DocumentsContract.getDocumentId(uri).split(":")[1])
+        } else {
+            databaseUri = uri
+            selection = null
+            selectionArgs = null
+        }
+        try {
+            val column = "_data"
+            val projection = arrayOf(column)
+            val cursor = contentResolver.query(
+                databaseUri,
+                projection,
+                selection,
+                selectionArgs,
+                null
+            )
+            cursor?.let {
+                if (it.moveToFirst()) {
+                    val columnIndex = cursor.getColumnIndexOrThrow(column)
+                    realPath = cursor.getString(columnIndex)
+                }
+                cursor.close()
+            }
+        } catch (e: Exception) {
+            Log.i("GetFileUri Exception:", e.message ?: "")
+        }
+        val path = if (realPath.isNotEmpty()) realPath else {
+            when {
+                uri.path!!.contains("/document/raw:") -> uri.path!!.replace(
+                    "/document/raw:",
+                    ""
+                )
+                uri.path!!.contains("/document/primary:") -> uri.path!!.replace(
+                    "/document/primary:",
+                    "/storage/emulated/0/"
+                )
+                else -> return null
+            }
+        }
+        return File(path)
+    }
+//
+//    fun getRealPath(uri:Uri):String{
+//        var realPath = ""
+//        val wholeID = DocumentsContract.getDocumentId(uri)
+//        // Split at colon, use second item in the array
+//        // Split at colon, use second item in the array
+//        val id = wholeID.split(":").toTypedArray()[1]
+//        val column = arrayOf(MediaStore.Images.Media.DATA)
+//        // where id is equal to
+//        // where id is equal to
+//        val sel = MediaStore.Images.Media._ID + "=?"
+//        val cursor: Cursor? = contentResolver.query(
+//            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+//            column,
+//            sel,
+//            arrayOf(id),
+//            null
+//        )
+//        var columnIndex = 0
+//        if (cursor != null) {
+//            columnIndex = cursor.getColumnIndex(column[0])
+//            if (cursor.moveToFirst()) {
+//                realPath = cursor.getString(columnIndex)
+//            }
+//            cursor.close()
+//        }
+//
+//        return realPath;
+//    }
 }

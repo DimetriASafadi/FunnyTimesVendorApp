@@ -80,6 +80,7 @@ class ProviderDetailsScreen : AppCompatActivity() {
                     //Image Uri will not be null for RESULT_OK
                     val uri: Uri = data?.data!!
                     chosenpicuri = uri
+                    Log.e("chosenpicuri",chosenpicuri.path.toString())
                     binding.ProImage.setImageURI(uri)
                     chosenpic = 1
                 } else if (resultCode == ImagePicker.RESULT_ERROR) {
