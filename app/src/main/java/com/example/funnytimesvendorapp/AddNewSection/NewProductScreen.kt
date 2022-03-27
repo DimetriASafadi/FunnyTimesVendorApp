@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
@@ -14,11 +15,15 @@ import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.Models.FTPProductAttributeContainer
 import com.example.funnytimesvendorapp.Models.FTPProductType
+import com.example.funnytimesvendorapp.Models.FTPPropPhoto
 import com.example.funnytimesvendorapp.RecViews.ProductAttrContainersRecView
+import com.example.funnytimesvendorapp.RecViews.PropertyPhotoRecView
 import com.example.funnytimesvendorapp.SpinnerAdapters.SProductTypeAdapter
 import com.example.funnytimesvendorapp.SpinnerAdapters.SPropertySubCatAdapter
 import com.example.funnytimesvendorapp.databinding.FtpScreenNewProductBinding
 import com.google.gson.GsonBuilder
+import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
+import com.nguyenhoanglam.imagepicker.ui.imagepicker.registerImagePicker
 import org.json.JSONException
 import org.json.JSONObject
 import java.nio.charset.Charset
@@ -29,12 +34,66 @@ class NewProductScreen : AppCompatActivity() {
 
     val commonFuncs = CommonFuncs()
     val ftpProductType = ArrayList<FTPProductType>()
+    val ftpPropPhotos = ArrayList<FTPPropPhoto>()
+
     lateinit var binding:FtpScreenNewProductBinding
+
+    var productname = ""
+    var producttype = ""
+    var productprice = ""
+    var productquantity = ""
+    var productdesc = ""
+    var productdidimage = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FtpScreenNewProductBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        val propertyPhotoRecView = PropertyPhotoRecView(ftpPropPhotos,this)
+        binding.ProductPhotosRecycler.layoutManager = LinearLayoutManager(this,
+            LinearLayoutManager.HORIZONTAL,
+            false)
+        binding.ProductPhotosRecycler.adapter = propertyPhotoRecView
+        val config = ImagePickerConfig(
+            statusBarColor = "#F9A236",
+            isLightStatusBar = true,
+            isFolderMode = true,
+            isMultipleMode = true,
+            maxSize = 20,
+            subDirectory = "Photos",
+            // See more at configuration attributes table below
+        )
+        val launcher = registerImagePicker { images ->
+            if(images.isNotEmpty()){
+                productdidimage = "selected"
+                for (i in 0 until images.size) {
+                    if (ftpPropPhotos.size < 20){
+//                        Log.e("FTPPropPhoto",getRealPath(images[i].uri))
+                        Log.e("FTPPropPhoto",images[i].uri.path.toString())
+                        Log.e("FTPPropPhoto",images[i].uri.toString())
+                        Log.e("FTPPropPhoto",images[i].bucketName)
+                        Log.e("FTPPropPhoto",images[i].name)
+                        Log.e("FTPPropPhoto",images[i].bucketId.toString())
+                        ftpPropPhotos.add(FTPPropPhoto(null,"new",images[i].uri.toString(),images[i].uri))
+                    }else{
+                        Toast.makeText(this, "لقد وصلت الحد الأعلى للصور", Toast.LENGTH_SHORT).show()
+                        break
+                    }
+                }
+                propertyPhotoRecView.notifyDataSetChanged()
+            }
+        }
+        binding.PickImages.setOnClickListener {
+            launcher.launch(config)
+        }
+        binding.ProductAdd.setOnClickListener {
+            productname = binding.ProductName.text.toString()
+            productprice = binding.ProductPrice.text.toString()
+            productquantity = binding.ProductQuantity.text.toString()
+            productdesc = binding.ProductDesc.text.toString()
+        }
 
 
 
@@ -79,6 +138,7 @@ class NewProductScreen : AppCompatActivity() {
                             position: Int,
                             id: Long
                         ) {
+                            producttype = sProductTypeAdapter.getItem(position)!!.TypeId.toString()
                             ftpProductAttributeContainer.clear()
                             ftpProductAttributeContainer.addAll(sProductTypeAdapter.getItem(position)!!.TypeAttrContianers!!)
                             productAttrContainersRecView.notifyDataSetChanged()

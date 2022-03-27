@@ -32,6 +32,13 @@ class NewClinicScreen : AppCompatActivity() {
     val ftpClinicType = ArrayList<FTPClinicType>()
     val ftpPropPhotos = ArrayList<FTPPropPhoto>()
     val commonFuncs = CommonFuncs()
+
+    var clinicname = ""
+    var clinictype = ""
+    var clinicdescription = ""
+    var clinicdidservices = ""
+    var clinicdidimage = ""
+
     lateinit var binding:FtpScreenNewClinicBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +66,15 @@ class NewClinicScreen : AppCompatActivity() {
         )
         val launcher = registerImagePicker { images ->
             if(images.isNotEmpty()){
+                clinicdidimage = "selected"
                 for (i in 0 until images.size) {
                     if (ftpPropPhotos.size < 20){
+//                        Log.e("FTPPropPhoto",getRealPath(images[i].uri))
+                        Log.e("FTPPropPhoto",images[i].uri.path.toString())
+                        Log.e("FTPPropPhoto",images[i].uri.toString())
+                        Log.e("FTPPropPhoto",images[i].bucketName)
+                        Log.e("FTPPropPhoto",images[i].name)
+                        Log.e("FTPPropPhoto",images[i].bucketId.toString())
                         ftpPropPhotos.add(FTPPropPhoto(null,"new",images[i].uri.toString(),images[i].uri))
                     }else{
                         Toast.makeText(this, "لقد وصلت الحد الأعلى للصور", Toast.LENGTH_SHORT).show()
@@ -70,13 +84,32 @@ class NewClinicScreen : AppCompatActivity() {
                 propertyPhotoRecView.notifyDataSetChanged()
             }
         }
-        binding.PropertyPickImage.setOnClickListener {
+        binding.PickImages.setOnClickListener {
             launcher.launch(config)
         }
 
+        binding.ClinicAdd.setOnClickListener {
+            clinicname = binding.ClinicName.text.toString()
+            clinicdescription = binding.ClinicDesc.text.toString()
+            if (clinicname.isNullOrEmpty()){
+                binding.ClinicName.error = "لا يمكن ترك الحقل فارغ"
+                binding.ClinicName.requestFocus()
+                return@setOnClickListener
+            }
+            if (clinicdescription.isNullOrEmpty()){
+                binding.ClinicDesc.error = "لا يمكن ترك الحقل فارغ"
+                binding.ClinicDesc.requestFocus()
+                return@setOnClickListener
+            }
+            if (clinicdidimage.isNullOrEmpty()){
+                Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل لعقارك", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+
+
+        }
         Clinic_tools_Request()
-
-
     }
 
     fun Clinic_tools_Request() {
@@ -102,7 +135,7 @@ class NewClinicScreen : AppCompatActivity() {
                             position: Int,
                             id: Long
                         ) {
-
+                            clinictype = sClinicTypeAdapter.getItem(position)!!.TypeId.toString()
                         }
                     }
                     commonFuncs.hideLoadingDialog()

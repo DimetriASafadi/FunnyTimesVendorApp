@@ -953,7 +953,7 @@
             />
 
         <LinearLayout
-            android:id="@+id/PropertyPickImage"
+            android:id="@+id/PickImages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ft_radius_stroke"

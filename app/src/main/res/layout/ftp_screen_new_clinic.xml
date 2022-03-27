@@ -183,7 +183,7 @@
             />
 
         <LinearLayout
-            android:id="@+id/PropertyPickImage"
+            android:id="@+id/PickImages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ft_radius_stroke"
@@ -218,7 +218,22 @@
 
         </LinearLayout>
 
-
+        <TextView
+            android:id="@+id/ClinicAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="إضافة"
+            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:background="@drawable/ft_radius_fill_light"
+            android:backgroundTint="@color/ft_orange"
+            android:paddingVertical="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/ft_white"
+            android:textStyle="bold"
+            />
     </LinearLayout>
 
 

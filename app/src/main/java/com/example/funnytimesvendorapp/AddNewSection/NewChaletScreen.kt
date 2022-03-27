@@ -199,7 +199,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                 propertyPhotoRecView.notifyDataSetChanged()
             }
         }
-        binding.PropertyPickImage.setOnClickListener {
+        binding.PickImages.setOnClickListener {
             launcher.launch(config)
 
         }
@@ -300,6 +300,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
 
             if (propchosenimage.isNullOrEmpty()){
                 Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل لعقارك", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
             }
 
             Add_Chalet_Request()
