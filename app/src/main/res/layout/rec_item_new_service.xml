@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:gravity="center_vertical"
+    >
+    <ImageView
+        android:id="@+id/ServiceDelete"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ft_delete_trash_remove_icon"
+        app:tint="@color/ft_red" />
+
+    <EditText
+        android:id="@+id/ServiceName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/ft_radius_stroke"
+        android:hint="اسم الخدمة"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:textSize="@dimen/_10ssp"
+        android:textColorHint="@color/ft_grey_2"
+        android:textColor="@color/ft_black"
+        android:fontFamily="@font/montserrat_arabic"
+        />
+
+    <EditText
+        android:id="@+id/ServicePrice"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/ft_radius_stroke"
+        android:fontFamily="@font/montserrat_arabic"
+        android:hint="سعر الخدمة"
+        android:inputType="number"
+        android:gravity="center"
+        android:maxLines="1"
+        android:imeOptions="actionDone"
+        android:textColorHint="@color/ft_grey_2"
+        android:textColor="@color/ft_black"
+        android:textSize="@dimen/_9ssp" />
+
+
+</LinearLayout>

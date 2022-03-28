@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funnytimesvendorapp.Models.FTPProductAttribute
-import com.example.funnytimesvendorapp.Models.FTPPropertyAttribute
 import com.example.funnytimesvendorapp.R
 
 class ProductAttributesRecView (val data : ArrayList<FTPProductAttribute>, val context: Context) : RecyclerView.Adapter<ProdAttrViewHolder>() {

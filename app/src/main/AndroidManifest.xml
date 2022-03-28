@@ -21,13 +21,19 @@
 
         <activity
             android:name=".AddNewSection.NewClinicScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".AddNewSection.NewFoodScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".AddNewSection.NewProductScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
