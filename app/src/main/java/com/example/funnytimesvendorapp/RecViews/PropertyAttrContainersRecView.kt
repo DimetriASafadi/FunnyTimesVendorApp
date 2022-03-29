@@ -12,6 +12,7 @@ import com.example.funnytimesvendorapp.R
 
 class PropertyAttrContainersRecView (val data : ArrayList<FTPPropertyAttributeContainer>, val context: Context) : RecyclerView.Adapter<AttrContainerViewHolder>() {
 
+    lateinit var propertyAttributesRecView:PropertyAttributesRecView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AttrContainerViewHolder {
         return AttrContainerViewHolder(LayoutInflater.from(context).inflate(R.layout.rec_item_prop_attribute_container, parent, false))    }
 
@@ -25,14 +26,18 @@ class PropertyAttrContainersRecView (val data : ArrayList<FTPPropertyAttributeCo
         holder.ContainerAttributesRecycler.layoutManager = LinearLayoutManager(context,
             LinearLayoutManager.VERTICAL,
             false)
-        val propertyAttributesRecView = PropertyAttributesRecView(data[position].ContainerAttributes!!,context)
+        propertyAttributesRecView = PropertyAttributesRecView(data[position].ContainerAttributes!!,context)
         holder.ContainerAttributesRecycler.adapter = propertyAttributesRecView
 
     }
 
     fun GetAttributesContainer():ArrayList<FTPPropertyAttributeContainer>{
+        propertyAttributesRecView.notifyDataSetChanged()
         notifyDataSetChanged()
         return data
+    }
+    fun CheckValuesEmpty():Boolean{
+        return propertyAttributesRecView.CheckAttributesEmpty()
     }
 
 }

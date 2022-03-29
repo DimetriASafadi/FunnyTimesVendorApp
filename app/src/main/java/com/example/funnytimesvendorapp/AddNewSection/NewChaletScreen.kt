@@ -297,17 +297,18 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                 return@setOnClickListener
             }
 
+            if (propertyAttrContainersRecView.CheckValuesEmpty()){
+                Toast.makeText(this, "لا يجب عليك ترك أي قيم فارغة في خصائص العقار", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
 
             if (propchosenimage.isNullOrEmpty()){
                 Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل لعقارك", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-
             Add_Chalet_Request()
-
-
         }
-
     }
 
 

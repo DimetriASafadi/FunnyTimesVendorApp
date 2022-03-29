@@ -12,6 +12,7 @@ import com.example.funnytimesvendorapp.R
 
 class ProductAttrContainersRecView (val data : ArrayList<FTPProductAttributeContainer>, val context: Context) : RecyclerView.Adapter<ProdAttrContainerViewHolder>() {
 
+    lateinit var productAttributesRecView:ProductAttributesRecView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdAttrContainerViewHolder {
         return ProdAttrContainerViewHolder(LayoutInflater.from(context).inflate(R.layout.rec_item_prop_attribute_container, parent, false))    }
 
@@ -25,9 +26,15 @@ class ProductAttrContainersRecView (val data : ArrayList<FTPProductAttributeCont
         holder.ContainerAttributesRecycler.layoutManager = LinearLayoutManager(context,
             LinearLayoutManager.VERTICAL,
             false)
-        val productAttributesRecView = ProductAttributesRecView(data[position].ContainerAttributes!!,context)
+        productAttributesRecView = ProductAttributesRecView(data[position].ContainerAttributes!!,context)
         holder.ContainerAttributesRecycler.adapter = productAttributesRecView
 
+    }
+
+    fun GetProductAttributes():ArrayList<FTPProductAttributeContainer>{
+        productAttributesRecView.notifyDataSetChanged()
+        notifyDataSetChanged()
+        return data
     }
 }
 class ProdAttrContainerViewHolder (view: View) : RecyclerView.ViewHolder(view) {

@@ -23,6 +23,10 @@ import com.example.funnytimesvendorapp.databinding.FtpScreenNewFoodBinding
 import com.google.gson.GsonBuilder
 import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.registerImagePicker
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.asRequestBody
+import okio.IOException
 import org.json.JSONException
 import org.json.JSONObject
 import java.nio.charset.Charset
@@ -41,6 +45,9 @@ class NewFoodScreen : AppCompatActivity() {
     var foodprice = ""
     var fooddesc = ""
     var fooddidimage = ""
+
+    val client = OkHttpClient()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,13 +113,72 @@ class NewFoodScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
             if (fooddidimage.isNullOrEmpty()){
-                Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل لعقارك", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
+            Add_Food_Request()
         }
 
         Food_tools_Request()
 
+    }
+
+    fun Add_Food_Request(){
+        try {
+            commonFuncs.showLoadingDialog(this)
+            val multipartBody = MultipartBody.Builder()
+            multipartBody.setType(MultipartBody.FORM)
+            multipartBody.addFormDataPart("name", foodname)
+            multipartBody.addFormDataPart("description", fooddesc)
+            multipartBody.addFormDataPart("category_id", "3")
+            multipartBody.addFormDataPart("sub_category_id", foodtype)
+            multipartBody.addFormDataPart("price", foodprice)
+
+            for(photo in ftpPropPhotos){
+                val file1 = commonFuncs.getFileFromUri(photo.PhotoUri!!,this)
+                val fileRequestBody = file1!!.asRequestBody("image/jpg".toMediaType())
+                val imagename = System.currentTimeMillis().toString()
+                multipartBody.addFormDataPart("imgs[]", imagename, fileRequestBody)
+            }
+
+
+            val requestBody: RequestBody = multipartBody.build()
+            val request: okhttp3.Request = okhttp3.Request.Builder()
+                .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,
+                    Constants.KeyUserToken
+                )}")
+                .url(Constants.APIMain +"api/vendor-app/food/store")
+                .post(requestBody)
+                .build()
+            client.newCall(request).enqueue(object : Callback {
+                @Throws(IOException::class)
+                override fun onFailure(call: Call, e: java.io.IOException) {
+                    runOnUiThread {
+                        Log.e("onFailure","onFailure")
+                        Log.e("onFailure",call.toString())
+                        Log.e("onFailure",e.message.toString())
+                        Log.e("onFailure",e.toString())
+                        commonFuncs.hideLoadingDialog()
+                        commonFuncs.showDefaultDialog(this@NewFoodScreen,"فشل في العملية","حصل خطأ ما أثناء عملية الدفع , تأكد من اتصالك بالانترنت أو حاول مرة أخرى")
+                    }
+                }
+                @Throws(IOException::class)
+                override fun onResponse(call: Call, response: okhttp3.Response) {
+                    runOnUiThread {
+                        Log.e("onResponse",response.message.toString())
+                        Log.e("onResponse",response.toString())
+                        Log.e("onResponse",response.code.toString())
+                        commonFuncs.hideLoadingDialog()
+                        finish()
+                    }
+                }
+            })
+        } catch (e: IOException) {
+            Log.e("TryCatchFinal",e.message.toString()+"A7a")
+            e.printStackTrace()
+            commonFuncs.hideLoadingDialog()
+            commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
+        }
     }
 
 

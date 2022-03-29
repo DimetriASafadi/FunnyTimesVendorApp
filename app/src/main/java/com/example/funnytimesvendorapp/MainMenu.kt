@@ -8,6 +8,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.funnytimesvendorapp.AddNewSection.NewChaletScreen
 import com.example.funnytimesvendorapp.AddNewSection.NewClinicScreen
+import com.example.funnytimesvendorapp.AddNewSection.NewFoodScreen
+import com.example.funnytimesvendorapp.AddNewSection.NewProductScreen
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.MainMenuSection.BooksSection.BooksFrag
@@ -74,7 +76,7 @@ class MainMenu : AppCompatActivity() {
             false
         }
         binding.AddButton.setOnClickListener {
-            startActivity(Intent(this,NewClinicScreen::class.java))
+            startActivity(Intent(this,NewProductScreen::class.java))
         }
 
 

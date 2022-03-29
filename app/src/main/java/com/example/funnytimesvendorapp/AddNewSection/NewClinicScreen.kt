@@ -134,7 +134,7 @@ class NewClinicScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
             if (clinicdidimage.isNullOrEmpty()){
-                Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل لعقارك", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
@@ -150,6 +150,7 @@ class NewClinicScreen : AppCompatActivity() {
             multipartBody.setType(MultipartBody.FORM)
             multipartBody.addFormDataPart("name", clinicname)
             multipartBody.addFormDataPart("description", clinicdescription)
+            multipartBody.addFormDataPart("category_id", "2")
             multipartBody.addFormDataPart("sub_category_id", clinictype)
 
             val services = newServicesRecView.GetServices()
@@ -191,6 +192,8 @@ class NewClinicScreen : AppCompatActivity() {
                 override fun onResponse(call: Call, response: okhttp3.Response) {
                     runOnUiThread {
                         Log.e("onResponse",response.message.toString())
+                        Log.e("onResponse",response.toString())
+                        Log.e("onResponse",response.code.toString())
                         commonFuncs.hideLoadingDialog()
                         finish()
                     }

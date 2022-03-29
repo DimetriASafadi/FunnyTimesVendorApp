@@ -1,6 +1,9 @@
 package com.example.funnytimesvendorapp.RecViews
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +23,7 @@ class PropertyAttributesRecView (val data : ArrayList<FTPPropertyAttribute>, val
     override fun getItemCount(): Int {
         return data?.size ?: 0
     }
-    override fun onBindViewHolder(holder: PropAttrViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PropAttrViewHolder, @SuppressLint("RecyclerView") position: Int) {
 
         holder.AttributeSelected.isChecked = data[position].IsSelected
         holder.AttributeName.text = data[position].AttributeName
@@ -31,6 +34,29 @@ class PropertyAttributesRecView (val data : ArrayList<FTPPropertyAttribute>, val
         }else if (data[position].AttributeType == "check"){
             holder.AttributeValue.visibility = View.GONE
         }
+
+        holder.AttributeValue.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                data[position].AttributeValue = holder.AttributeValue.text.toString()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        })
+    }
+    fun CheckAttributesEmpty():Boolean{
+            for (attr in data){
+                if (attr.AttributeType == "value"){
+                    if ( attr.IsSelected && attr.AttributeValue.isNullOrEmpty()){
+                        return true
+                    }
+                }
+
+            }
+            return false
     }
 
 
