@@ -4,9 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funnytimesvendorapp.Models.FTPProductAttribute
@@ -22,15 +20,13 @@ class ProductAttributesRecView (val data : ArrayList<FTPProductAttribute>, val c
     }
     override fun onBindViewHolder(holder: ProdAttrViewHolder, position: Int) {
 
+        holder.AttributeValue.visibility = View.GONE
         holder.AttributeSelected.isChecked = data[position].IsSelected
         holder.AttributeName.text = data[position].AttributeName
-        if (data[position].AttributeType == "value"){
-            holder.AttributeValue.addTextChangedListener {
-                data[position].AttributeValue = holder.AttributeValue.text.toString()
-            }
-        }else if (data[position].AttributeType == "check"){
-            holder.AttributeValue.visibility = View.GONE
+        holder.AttributeSelected.setOnCheckedChangeListener { p0, p1 ->
+            data[position].IsSelected = holder.AttributeSelected.isChecked
         }
+
 
     }
 }

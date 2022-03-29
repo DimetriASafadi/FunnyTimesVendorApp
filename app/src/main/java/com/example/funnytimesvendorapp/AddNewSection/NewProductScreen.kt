@@ -152,9 +152,12 @@ class NewProductScreen : AppCompatActivity() {
             multipartBody.addFormDataPart("sub_category_id", producttype)
             multipartBody.addFormDataPart("price", productprice)
 
+            productAttrContainersRecView.notifyDataSetChanged()
             for (container in productAttrContainersRecView.GetProductAttributes()){
                 for (attribute in container.ContainerAttributes!!){
+                    if (attribute.IsSelected){
                         multipartBody.addFormDataPart("attr[${container.ContainerId}][${attribute.AttributeId}]", "on")
+                    }
                 }
             }
 
@@ -173,7 +176,7 @@ class NewProductScreen : AppCompatActivity() {
                 .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,
                     Constants.KeyUserToken
                 )}")
-                .url(Constants.APIMain +"api/vendor-app/food/store")
+                .url(Constants.APIMain +"api/vendor-app/shop/store")
                 .post(requestBody)
                 .build()
             client.newCall(request).enqueue(object : Callback {
