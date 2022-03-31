@@ -16,6 +16,7 @@ import com.example.funnytimesvendorapp.MainMenuSection.BooksSection.BooksFrag
 import com.example.funnytimesvendorapp.MainMenuSection.HomeSection.HomeFrag
 import com.example.funnytimesvendorapp.MainMenuSection.SettingSection.SettingFrag
 import com.example.funnytimesvendorapp.MainMenuSection.UserSection.UserFrag
+import com.example.funnytimesvendorapp.MyProductSection.MyProductScreen
 import com.example.funnytimesvendorapp.databinding.FtpScreenMainMenuBinding
 
 class MainMenu : AppCompatActivity() {
@@ -76,7 +77,7 @@ class MainMenu : AppCompatActivity() {
             false
         }
         binding.AddButton.setOnClickListener {
-            startActivity(Intent(this,NewProductScreen::class.java))
+            startActivity(Intent(this,MyProductScreen::class.java))
         }
 
 
