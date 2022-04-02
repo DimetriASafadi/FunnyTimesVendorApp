@@ -3,6 +3,7 @@ package com.example.funnytimesvendorapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants.KeyAppLanguage
 import com.example.funnytimesvendorapp.CommonSection.Constants.KeyOpenBefore
@@ -26,6 +27,7 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.ftp_screen_splash)
         if (commonFuncs.GetFromSP(this,KeyOpenBefore) == "Yes"){
             if (commonFuncs.GetFromSP(this,KeyUserToken) != "NoValue"){
+                Log.e("Token",commonFuncs.GetFromSP(this,KeyUserToken).toString())
                 finishSplashToMainMenu()
             }else{
                 finishSplashToSignIn()

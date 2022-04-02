@@ -376,12 +376,13 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
 
             for (container in propertyAttrContainersRecView.GetAttributesContainer()){
                 for (attribute in container.ContainerAttributes!!){
-                    if (attribute.AttributeType == "value"){
-                        multipartBody.addFormDataPart("attr[${container.ContainerId}][${attribute.AttributeId}]", attribute.AttributeValue.toString())
-                    }else{
-                        multipartBody.addFormDataPart("attr[${container.ContainerId}][${attribute.AttributeId}]", "on")
+                    if (attribute.IsSelected){
+                        if (attribute.AttributeType == "value"){
+                            multipartBody.addFormDataPart("attr[${container.ContainerId}][${attribute.AttributeId}]", attribute.AttributeValue.toString())
+                        }else{
+                            multipartBody.addFormDataPart("attr[${container.ContainerId}][${attribute.AttributeId}]", "on")
+                        }
                     }
-
                 }
             }
 

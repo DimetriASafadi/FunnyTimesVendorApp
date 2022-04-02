@@ -16,9 +16,14 @@ class PropertyPhotoRecView (val data : ArrayList<FTPPropPhoto>, val context: Con
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropPhotoViewHolder {
         return PropPhotoViewHolder(LayoutInflater.from(context).inflate(R.layout.rec_item_prop_photo, parent, false))    }
 
+    private var deletedPhotos = ArrayList<Int>()
+
+
     override fun getItemCount(): Int {
         return data?.size ?: 0
     }
+
+
     override fun onBindViewHolder(holder: PropPhotoViewHolder, position: Int) {
 
         if (data[position].PhotoType == "new"){
@@ -31,11 +36,21 @@ class PropertyPhotoRecView (val data : ArrayList<FTPPropPhoto>, val context: Con
                 .into(holder.PropertyImage)
         }
         holder.ProductDelete.setOnClickListener {
+            if (data[position].PhotoType != "new"){
+                deletedPhotos.add(data[position].PhotoId!!)
+            }
             data.removeAt(position)
             notifyDataSetChanged()
         }
 
     }
+
+    fun getDeletedPhotos():ArrayList<Int>{
+        return deletedPhotos
+    }
+
+
+
 }
 class PropPhotoViewHolder (view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to

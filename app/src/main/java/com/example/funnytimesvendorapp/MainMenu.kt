@@ -12,6 +12,7 @@ import com.example.funnytimesvendorapp.AddNewSection.NewFoodScreen
 import com.example.funnytimesvendorapp.AddNewSection.NewProductScreen
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
+import com.example.funnytimesvendorapp.EditsSection.EditChaletScreen
 import com.example.funnytimesvendorapp.MainMenuSection.BooksSection.BooksFrag
 import com.example.funnytimesvendorapp.MainMenuSection.HomeSection.HomeFrag
 import com.example.funnytimesvendorapp.MainMenuSection.SettingSection.SettingFrag
@@ -77,7 +78,10 @@ class MainMenu : AppCompatActivity() {
             false
         }
         binding.AddButton.setOnClickListener {
-            startActivity(Intent(this,MyProductScreen::class.java))
+
+            val intent = Intent(this,EditChaletScreen::class.java)
+            intent.putExtra("PropId","42")
+            startActivity(intent)
         }
 
 

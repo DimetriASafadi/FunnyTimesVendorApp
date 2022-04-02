@@ -26,8 +26,12 @@ class PropertyAttributesRecView (val data : ArrayList<FTPPropertyAttribute>, val
     override fun onBindViewHolder(holder: PropAttrViewHolder, @SuppressLint("RecyclerView") position: Int) {
 
         holder.AttributeSelected.isChecked = data[position].IsSelected
+        holder.AttributeSelected.setOnCheckedChangeListener { p0, p1 ->
+            data[position].IsSelected = holder.AttributeSelected.isChecked
+        }
         holder.AttributeName.text = data[position].AttributeName
         if (data[position].AttributeType == "value"){
+            holder.AttributeValue.setText(data[position].AttributeValue.toString())
             holder.AttributeValue.addTextChangedListener {
                     data[position].AttributeValue = holder.AttributeValue.text.toString()
             }
