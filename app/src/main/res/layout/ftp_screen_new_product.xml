@@ -72,7 +72,7 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/ft_radius_stroke"
         android:fontFamily="@font/montserrat_arabic"
-        android:hint="اسم العقار"
+        android:hint="اسم المنتج"
         android:maxLines="1"
         android:textColorHint="@color/ft_grey_2"
         android:textColor="@color/ft_black"

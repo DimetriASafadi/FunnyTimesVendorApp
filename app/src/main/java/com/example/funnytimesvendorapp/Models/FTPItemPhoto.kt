@@ -4,7 +4,7 @@ import android.net.Uri
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class FTPPropPhoto(
+data class FTPItemPhoto(
     @SerializedName("id")
     var PhotoId:Int? = null,
     var PhotoType:String = "old",

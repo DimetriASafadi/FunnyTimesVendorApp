@@ -15,11 +15,10 @@ import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.Models.FTPProductAttributeContainer
 import com.example.funnytimesvendorapp.Models.FTPProductType
-import com.example.funnytimesvendorapp.Models.FTPPropPhoto
+import com.example.funnytimesvendorapp.Models.FTPItemPhoto
 import com.example.funnytimesvendorapp.RecViews.ProductAttrContainersRecView
 import com.example.funnytimesvendorapp.RecViews.PropertyPhotoRecView
 import com.example.funnytimesvendorapp.SpinnerAdapters.SProductTypeAdapter
-import com.example.funnytimesvendorapp.SpinnerAdapters.SPropertySubCatAdapter
 import com.example.funnytimesvendorapp.databinding.FtpScreenNewProductBinding
 import com.google.gson.GsonBuilder
 import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
@@ -38,7 +37,7 @@ class NewProductScreen : AppCompatActivity() {
 
     val commonFuncs = CommonFuncs()
     val ftpProductType = ArrayList<FTPProductType>()
-    val ftpPropPhotos = ArrayList<FTPPropPhoto>()
+    val ftpPropPhotos = ArrayList<FTPItemPhoto>()
     val client = OkHttpClient()
 
 
@@ -83,7 +82,7 @@ class NewProductScreen : AppCompatActivity() {
                         Log.e("FTPPropPhoto",images[i].bucketName)
                         Log.e("FTPPropPhoto",images[i].name)
                         Log.e("FTPPropPhoto",images[i].bucketId.toString())
-                        ftpPropPhotos.add(FTPPropPhoto(null,"new",images[i].uri.toString(),images[i].uri))
+                        ftpPropPhotos.add(FTPItemPhoto(null,"new",images[i].uri.toString(),images[i].uri))
                     }else{
                         Toast.makeText(this, "لقد وصلت الحد الأعلى للصور", Toast.LENGTH_SHORT).show()
                         break

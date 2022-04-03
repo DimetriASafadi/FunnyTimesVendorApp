@@ -20,14 +20,24 @@ class NewServicesRecView (val data : ArrayList<FTPNewService>, val context: Cont
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NSerViewHolder {
         return NSerViewHolder(LayoutInflater.from(context).inflate(R.layout.rec_item_new_service, parent, false))    }
 
+    private val deletedServices = ArrayList<Int>()
+
     override fun getItemCount(): Int {
         return data?.size ?: 0
     }
     override fun onBindViewHolder(holder: NSerViewHolder, @SuppressLint("RecyclerView") position: Int) {
 
         holder.ServiceDelete.setOnClickListener {
+            if (data[position].ServiceId != null){
+                deletedServices.add(data[position].ServiceId!!)
+            }
             data.removeAt(position)
             notifyDataSetChanged()
+        }
+
+        if (data[position].ServiceId != null){
+            holder.ServiceName.setText(data[position].ServiceName)
+            holder.ServicePrice.setText(data[position].ServicePrice)
         }
 
         holder.ServiceName.addTextChangedListener(object :TextWatcher{
@@ -65,6 +75,9 @@ class NewServicesRecView (val data : ArrayList<FTPNewService>, val context: Cont
             }
         }
         return false
+    }
+    fun getDeletedPhotos():ArrayList<Int>{
+        return deletedServices
     }
 
 }

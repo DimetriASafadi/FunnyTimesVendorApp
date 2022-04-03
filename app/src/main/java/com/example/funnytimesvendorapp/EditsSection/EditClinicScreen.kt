@@ -1,12 +1,12 @@
-package com.example.funnytimesvendorapp.AddNewSection
+package com.example.funnytimesvendorapp.EditsSection
 
 import android.graphics.Paint
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
@@ -15,52 +15,51 @@ import com.android.volley.toolbox.Volley
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.Models.FTPClinicType
-import com.example.funnytimesvendorapp.Models.FTPNewService
 import com.example.funnytimesvendorapp.Models.FTPItemPhoto
+import com.example.funnytimesvendorapp.Models.FTPNewService
 import com.example.funnytimesvendorapp.RecViews.NewServicesRecView
 import com.example.funnytimesvendorapp.RecViews.PropertyPhotoRecView
 import com.example.funnytimesvendorapp.SpinnerAdapters.SClinicTypeAdapter
-import com.example.funnytimesvendorapp.databinding.FtpScreenNewClinicBinding
+import com.example.funnytimesvendorapp.databinding.FtpScreenEditClinicBinding
 import com.google.gson.GsonBuilder
 import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.registerImagePicker
-import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.asRequestBody
-import okio.IOException
+import okhttp3.OkHttpClient
 import org.json.JSONException
 import org.json.JSONObject
 import java.nio.charset.Charset
 
-class NewClinicScreen : AppCompatActivity() {
+class EditClinicScreen : AppCompatActivity() {
+
 
     val ftpClinicType = ArrayList<FTPClinicType>()
     val ftpPropPhotos = ArrayList<FTPItemPhoto>()
     val ftpNewServices = ArrayList<FTPNewService>()
     val commonFuncs = CommonFuncs()
+
     lateinit var newServicesRecView: NewServicesRecView
+    lateinit var propertyPhotoRecView: PropertyPhotoRecView
 
     val client = OkHttpClient()
 
 
+    var clinicid = ""
     var clinicname = ""
     var clinictype = ""
     var clinicdescription = ""
     var clinicdidservices = ""
     var clinicdidimage = ""
 
-    lateinit var binding:FtpScreenNewClinicBinding
+    lateinit var binding:FtpScreenEditClinicBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = FtpScreenNewClinicBinding.inflate(layoutInflater)
+        binding = FtpScreenEditClinicBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
 
-
-
-
-        val propertyPhotoRecView = PropertyPhotoRecView(ftpPropPhotos,this)
+        clinicid = intent.getStringExtra("ItemId").toString()
+        propertyPhotoRecView = PropertyPhotoRecView(ftpPropPhotos,this)
         binding.ClinicPhotosRecycler.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.HORIZONTAL,
             false)
@@ -109,7 +108,6 @@ class NewClinicScreen : AppCompatActivity() {
             newServicesRecView.notifyDataSetChanged()
         }
 
-
         binding.ClinicAdd.setOnClickListener {
             clinicname = binding.ClinicName.text.toString()
             clinicdescription = binding.ClinicDesc.text.toString()
@@ -138,74 +136,74 @@ class NewClinicScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            Add_Service_Request()
 
         }
+
         Clinic_tools_Request()
+
     }
-    fun Add_Service_Request(){
+
+    fun GetSetCurrentData() {
+        Log.e("GetSetCurrentData", "GetSetCurrentData")
+        commonFuncs.showLoadingDialog(this)
+        val url = Constants.APIMain + "api/vendor-app/service/$clinicid"
         try {
-            commonFuncs.showLoadingDialog(this)
-            val multipartBody = MultipartBody.Builder()
-            multipartBody.setType(MultipartBody.FORM)
-            multipartBody.addFormDataPart("name", clinicname)
-            multipartBody.addFormDataPart("description", clinicdescription)
-            multipartBody.addFormDataPart("category_id", "2")
-            multipartBody.addFormDataPart("sub_category_id", clinictype)
-
-            val services = newServicesRecView.GetServices()
-            for (i in 0 until services.size){
-                multipartBody.addFormDataPart("services[service$i][name]", services[i].ServiceName.toString())
-                multipartBody.addFormDataPart("services[service$i][price]", services[i].ServicePrice.toString())
-            }
+            val stringRequest = object : StringRequest(
+                Request.Method.GET, url, Response.Listener<String> { response ->
+                    Log.e("Response", response.toString())
+                    val jsonobj = JSONObject(response.toString())
+                    val data = jsonobj.getJSONObject("data")
+                    val gallery = data.getJSONArray("gallery")
+                    val services = data.getJSONArray("services")
+                    val gson = GsonBuilder().create()
+                    ftpPropPhotos.clear()
+                    ftpPropPhotos.addAll(gson.fromJson(gallery.toString(),Array<FTPItemPhoto>::class.java).toList())
+                    propertyPhotoRecView.notifyDataSetChanged()
 
 
-            for(photo in ftpPropPhotos){
-                val file1 = commonFuncs.getFileFromUri(photo.PhotoUri!!,this)
-//                val file1 = File(getRealPath(photo.PhotoUri!!))
-                val fileRequestBody = file1!!.asRequestBody("image/jpg".toMediaType())
-                val imagename = System.currentTimeMillis().toString()
-                multipartBody.addFormDataPart("imgs[]", imagename, fileRequestBody)
-            }
+                    ftpNewServices.addAll(gson.fromJson(services.toString(),Array<FTPNewService>::class.java).toList())
+                    newServicesRecView.notifyDataSetChanged()
 
-            val requestBody: RequestBody = multipartBody.build()
-            val request: okhttp3.Request = okhttp3.Request.Builder()
-                .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,
-                    Constants.KeyUserToken
-                )}")
-                .url(Constants.APIMain +"api/vendor-app/service/store")
-                .post(requestBody)
-                .build()
-            client.newCall(request).enqueue(object : Callback {
-                @Throws(IOException::class)
-                override fun onFailure(call: Call, e: java.io.IOException) {
-                    runOnUiThread {
-                        Log.e("onFailure","onFailure")
-                        Log.e("onFailure",call.toString())
-                        Log.e("onFailure",e.message.toString())
-                        Log.e("onFailure",e.toString())
-                        commonFuncs.hideLoadingDialog()
-                        commonFuncs.showDefaultDialog(this@NewClinicScreen,"فشل في العملية","حصل خطأ ما أثناء عملية الدفع , تأكد من اتصالك بالانترنت أو حاول مرة أخرى")
+                    for (i in 0 until ftpClinicType.size){
+                        if (ftpClinicType[i].TypeId == data.getInt("sub_category_id")){
+                            binding.ClinicTypeSpinner.setSelection(i)
+                        }
                     }
-                }
-                @Throws(IOException::class)
-                override fun onResponse(call: Call, response: okhttp3.Response) {
-                    runOnUiThread {
-                        Log.e("onResponse",response.message.toString())
-                        Log.e("onResponse",response.toString())
-                        Log.e("onResponse",response.code.toString())
-                        commonFuncs.hideLoadingDialog()
-                        finish()
+                    binding.ClinicName.setText(data.getString("name").toString())
+                    binding.ClinicDesc.setText(data.getString("description").toString())
+
+
+
+                    commonFuncs.hideLoadingDialog()
+                }, Response.ErrorListener { error ->
+                    if (error.networkResponse != null && error.networkResponse.data != null) {
+                        val errorw = String(error.networkResponse.data, Charset.forName("UTF-8"))
+                        val err = JSONObject(errorw)
+                        val errMessage = err.getJSONObject("status").getString("message")
+                        commonFuncs.showDefaultDialog(this,"فشل الإتصال",errMessage)
+                        Log.e("eResponser", errorw.toString())
+                    } else {
+                        commonFuncs.showDefaultDialog(this,"فشل الإتصال","تفقد إتصالك بالشبكة")
+                        Log.e("eResponsew", "RequestError:$error")
                     }
+                    commonFuncs.hideLoadingDialog()
+                }) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val map = java.util.HashMap<String, String>()
+                    if (commonFuncs.IsInSP(this@EditClinicScreen, Constants.KeyUserToken)){
+                        map["Authorization"] = "Bearer "+commonFuncs.GetFromSP(this@EditClinicScreen, Constants.KeyUserToken)
+                    }
+                    return map
                 }
-            })
-        } catch (e: IOException) {
-            Log.e("TryCatchFinal",e.message.toString()+"A7a")
-            e.printStackTrace()
+            }
+            val requestQueue = Volley.newRequestQueue(this)
+            requestQueue.add(stringRequest)
+        }catch (error: JSONException){
+            Log.e("Response", error.toString())
             commonFuncs.hideLoadingDialog()
-            commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
         }
     }
+
 
     fun Clinic_tools_Request() {
         commonFuncs.showLoadingDialog(this)
@@ -234,6 +232,7 @@ class NewClinicScreen : AppCompatActivity() {
                         }
                     }
                     commonFuncs.hideLoadingDialog()
+                    GetSetCurrentData()
                 }, Response.ErrorListener { error ->
                     if (error.networkResponse != null && error.networkResponse.data != null) {
                         val errorw = String(error.networkResponse.data, Charset.forName("UTF-8"))
@@ -249,8 +248,8 @@ class NewClinicScreen : AppCompatActivity() {
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val map = HashMap<String,String>()
-                    if (commonFuncs.IsInSP(this@NewClinicScreen, Constants.KeyUserToken)){
-                        map["Authorization"] = "Bearer "+commonFuncs.GetFromSP(this@NewClinicScreen, Constants.KeyUserToken)
+                    if (commonFuncs.IsInSP(this@EditClinicScreen, Constants.KeyUserToken)){
+                        map["Authorization"] = "Bearer "+commonFuncs.GetFromSP(this@EditClinicScreen, Constants.KeyUserToken)
                     }
                     return map
                 }
@@ -263,5 +262,4 @@ class NewClinicScreen : AppCompatActivity() {
             commonFuncs.hideLoadingDialog()
         }
     }
-
 }

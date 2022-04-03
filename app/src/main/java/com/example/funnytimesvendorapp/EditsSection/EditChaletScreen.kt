@@ -53,7 +53,7 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
 
     val ftpPropertySubCat = ArrayList<FTPPropertySubCat>()
     val ftpPropertyCity = ArrayList<FTPPropertyCity>()
-    val ftpPropPhotos = ArrayList<FTPPropPhoto>()
+    val ftpPropPhotos = ArrayList<FTPItemPhoto>()
     val ftpPropertyAttributeContainer = ArrayList<FTPPropertyAttributeContainer>()
 
     lateinit var propertyPhotoRecView:PropertyPhotoRecView
@@ -85,7 +85,7 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
         val view = binding.root
         setContentView(view)
 
-        propid = intent.getStringExtra("PropId").toString()
+        propid = intent.getStringExtra("ItemId").toString()
         propertyPhotoRecView = PropertyPhotoRecView(ftpPropPhotos,this)
         SetUpMapDialog()
         val mapFragment =
@@ -128,7 +128,7 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                         Log.e("FTPPropPhoto",images[i].bucketName)
                         Log.e("FTPPropPhoto",images[i].name)
                         Log.e("FTPPropPhoto",images[i].bucketId.toString())
-                        ftpPropPhotos.add(FTPPropPhoto(null,"new",images[i].uri.toString(),images[i].uri))
+                        ftpPropPhotos.add(FTPItemPhoto(null,"new",images[i].uri.toString(),images[i].uri))
                     }else{
                         Toast.makeText(this, "لقد وصلت الحد الأعلى للصور", Toast.LENGTH_SHORT).show()
                         break
@@ -268,7 +268,6 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
         }
     }
-
     fun Chalet_tools_Request() {
         commonFuncs.showLoadingDialog(this)
         val url = Constants.APIMain + "api/vendor-app/create/1"
@@ -345,7 +344,7 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                     val gallery = data.getJSONArray("gallery")
                     val gson = GsonBuilder().create()
                     ftpPropPhotos.clear()
-                    ftpPropPhotos.addAll(gson.fromJson(gallery.toString(),Array<FTPPropPhoto>::class.java).toList())
+                    ftpPropPhotos.addAll(gson.fromJson(gallery.toString(),Array<FTPItemPhoto>::class.java).toList())
                     propertyPhotoRecView.notifyDataSetChanged()
 
 
@@ -456,7 +455,6 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
         )
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
     }
-
     override fun onDestroy() {
         super.onDestroy()
         if (mapDialog != null){
@@ -465,11 +463,8 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
-
     override fun onMapReady(p0: GoogleMap) {
         googleMap = p0
-
-
         googleMap.setOnMapClickListener {
             propselectedlat = it.latitude.toString()
             propselectedlng = it.longitude.toString()

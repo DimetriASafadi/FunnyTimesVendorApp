@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.funnytimesvendorapp.Models.FTPPropPhoto
+import com.example.funnytimesvendorapp.Models.FTPItemPhoto
 import com.example.funnytimesvendorapp.R
 import com.makeramen.roundedimageview.RoundedImageView
 import de.hdodenhof.circleimageview.CircleImageView
 
-class PropertyPhotoRecView (val data : ArrayList<FTPPropPhoto>, val context: Context) : RecyclerView.Adapter<PropPhotoViewHolder>() {
+class PropertyPhotoRecView (val data : ArrayList<FTPItemPhoto>, val context: Context) : RecyclerView.Adapter<PropPhotoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropPhotoViewHolder {
         return PropPhotoViewHolder(LayoutInflater.from(context).inflate(R.layout.rec_item_prop_photo, parent, false))    }

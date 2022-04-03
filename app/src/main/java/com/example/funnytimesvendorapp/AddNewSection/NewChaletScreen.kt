@@ -2,12 +2,8 @@ package com.example.funnytimesvendorapp.AddNewSection
 
 import android.app.Dialog
 import android.content.res.ColorStateList
-import android.database.Cursor
 import android.graphics.drawable.ColorDrawable
-import android.net.Uri
 import android.os.Bundle
-import android.provider.DocumentsContract
-import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -48,7 +44,6 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okio.IOException
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.File
 import java.nio.charset.Charset
 import java.util.*
 
@@ -61,7 +56,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
     val ftpPropertyBook = ArrayList<FTPPropertyBook>()
     val ftpPropertySubCat = ArrayList<FTPPropertySubCat>()
     val ftpPropertyCity = ArrayList<FTPPropertyCity>()
-    val ftpPropPhotos = ArrayList<FTPPropPhoto>()
+    val ftpPropPhotos = ArrayList<FTPItemPhoto>()
 
     var propname = ""
     var propdescription = ""
@@ -190,7 +185,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                         Log.e("FTPPropPhoto",images[i].bucketName)
                         Log.e("FTPPropPhoto",images[i].name)
                         Log.e("FTPPropPhoto",images[i].bucketId.toString())
-                        ftpPropPhotos.add(FTPPropPhoto(null,"new",images[i].uri.toString(),images[i].uri))
+                        ftpPropPhotos.add(FTPItemPhoto(null,"new",images[i].uri.toString(),images[i].uri))
                     }else{
                         Toast.makeText(this, "لقد وصلت الحد الأعلى للصور", Toast.LENGTH_SHORT).show()
                         break
