@@ -21,7 +21,10 @@ import com.example.funnytimesvendorapp.databinding.FtpScreenEditFoodBinding
 import com.google.gson.GsonBuilder
 import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.registerImagePicker
-import okhttp3.OkHttpClient
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.asRequestBody
+import okio.IOException
 import org.json.JSONException
 import org.json.JSONObject
 import java.nio.charset.Charset
@@ -116,12 +119,75 @@ class EditFoodScreen : AppCompatActivity() {
                 Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-
+            Edit_Food_Request()
 
         }
+    }
+
+    fun Edit_Food_Request(){
+        try {
+            commonFuncs.showLoadingDialog(this)
+            val multipartBody = MultipartBody.Builder()
+            multipartBody.setType(MultipartBody.FORM)
+            multipartBody.addFormDataPart("name", foodname)
+            multipartBody.addFormDataPart("description", fooddesc)
+            multipartBody.addFormDataPart("category_id", "3")
+            multipartBody.addFormDataPart("sub_category_id", foodtype)
+            multipartBody.addFormDataPart("price", foodprice)
+            multipartBody.addFormDataPart("_method", "PATCH")
+
+            for(photo in ftpPropPhotos){
+                if (photo.PhotoType == "new"){
+                    val file1 = commonFuncs.getFileFromUri(photo.PhotoUri!!,this)
+//                val file1 = File(getRealPath(photo.PhotoUri!!))
+                    val fileRequestBody = file1!!.asRequestBody("image/jpg".toMediaType())
+                    val imagename = System.currentTimeMillis().toString()
+                    multipartBody.addFormDataPart("imgs[]", imagename, fileRequestBody)
+                }
+            }
+
+            for (id in propertyPhotoRecView.getDeletedPhotos()){
+                multipartBody.addFormDataPart("deletedPhotos[]", id.toString())
+            }
 
 
+            val requestBody: RequestBody = multipartBody.build()
+            val request: okhttp3.Request = okhttp3.Request.Builder()
+                .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,
+                    Constants.KeyUserToken
+                )}")
+                .url(Constants.APIMain +"api/vendor-app/food/$foodid")
+                .post(requestBody)
+                .build()
+            client.newCall(request).enqueue(object : Callback {
+                @Throws(IOException::class)
+                override fun onFailure(call: Call, e: java.io.IOException) {
+                    runOnUiThread {
+                        Log.e("onFailure","onFailure")
+                        Log.e("onFailure",call.toString())
+                        Log.e("onFailure",e.message.toString())
+                        Log.e("onFailure",e.toString())
+                        commonFuncs.hideLoadingDialog()
+                        commonFuncs.showDefaultDialog(this@EditFoodScreen,"فشل في العملية","حصل خطأ ما أثناء عملية الدفع , تأكد من اتصالك بالانترنت أو حاول مرة أخرى")
+                    }
+                }
+                @Throws(IOException::class)
+                override fun onResponse(call: Call, response: okhttp3.Response) {
+                    runOnUiThread {
+                        Log.e("onResponse",response.toString())
 
+                        Log.e("onResponse",response.message.toString())
+                        commonFuncs.hideLoadingDialog()
+                        finish()
+                    }
+                }
+            })
+        } catch (e: IOException) {
+            Log.e("TryCatchFinal",e.message.toString()+"A7a")
+            e.printStackTrace()
+            commonFuncs.hideLoadingDialog()
+            commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
+        }
     }
 
     fun GetSetCurrentData() {

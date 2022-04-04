@@ -185,6 +185,10 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                         Log.e("FTPPropPhoto",images[i].bucketName)
                         Log.e("FTPPropPhoto",images[i].name)
                         Log.e("FTPPropPhoto",images[i].bucketId.toString())
+                        val file1 = commonFuncs.getFileFromUri(images[i].uri,this)
+
+
+
                         ftpPropPhotos.add(FTPItemPhoto(null,"new",images[i].uri.toString(),images[i].uri))
                     }else{
                         Toast.makeText(this, "لقد وصلت الحد الأعلى للصور", Toast.LENGTH_SHORT).show()

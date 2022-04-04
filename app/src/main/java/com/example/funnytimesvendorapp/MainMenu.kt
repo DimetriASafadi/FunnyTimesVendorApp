@@ -12,10 +12,7 @@ import com.example.funnytimesvendorapp.AddNewSection.NewFoodScreen
 import com.example.funnytimesvendorapp.AddNewSection.NewProductScreen
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
-import com.example.funnytimesvendorapp.EditsSection.EditChaletScreen
-import com.example.funnytimesvendorapp.EditsSection.EditClinicScreen
-import com.example.funnytimesvendorapp.EditsSection.EditFoodScreen
-import com.example.funnytimesvendorapp.EditsSection.EditProductScreen
+import com.example.funnytimesvendorapp.EditsSection.*
 import com.example.funnytimesvendorapp.MainMenuSection.BooksSection.BooksFrag
 import com.example.funnytimesvendorapp.MainMenuSection.HomeSection.HomeFrag
 import com.example.funnytimesvendorapp.MainMenuSection.SettingSection.SettingFrag
@@ -82,8 +79,8 @@ class MainMenu : AppCompatActivity() {
         }
         binding.AddButton.setOnClickListener {
 
-            val intent = Intent(this,EditClinicScreen::class.java)
-            intent.putExtra("ItemId","40")
+            val intent = Intent(this,EditProductScreen::class.java)
+            intent.putExtra("ItemId","48")
             startActivity(intent)
         }
 

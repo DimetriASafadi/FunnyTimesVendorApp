@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ class NewServicesRecView (val data : ArrayList<FTPNewService>, val context: Cont
                 deletedServices.add(data[position].ServiceId!!)
             }
             data.removeAt(position)
+            Log.e("AfterDelete",data.toString())
             notifyDataSetChanged()
         }
 
@@ -39,6 +41,9 @@ class NewServicesRecView (val data : ArrayList<FTPNewService>, val context: Cont
             holder.ServiceName.setText(data[position].ServiceName)
             holder.ServicePrice.setText(data[position].ServicePrice)
         }
+
+        holder.ServiceName.setText(data[position].ServiceName)
+        holder.ServicePrice.setText(data[position].ServicePrice)
 
         holder.ServiceName.addTextChangedListener(object :TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -65,7 +70,6 @@ class NewServicesRecView (val data : ArrayList<FTPNewService>, val context: Cont
     }
 
     fun GetServices():ArrayList<FTPNewService>{
-        notifyDataSetChanged()
         return data
     }
     fun CheckServiceIsEmpty():Boolean{
@@ -76,7 +80,7 @@ class NewServicesRecView (val data : ArrayList<FTPNewService>, val context: Cont
         }
         return false
     }
-    fun getDeletedPhotos():ArrayList<Int>{
+    fun getDeletedServices():ArrayList<Int>{
         return deletedServices
     }
 

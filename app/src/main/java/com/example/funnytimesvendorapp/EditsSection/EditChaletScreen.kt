@@ -187,7 +187,6 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
 
 
     }
-
     fun Edit_Chalet_Request(){
         try {
             commonFuncs.showLoadingDialog(this)
@@ -431,7 +430,6 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             commonFuncs.hideLoadingDialog()
         }
     }
-
     fun SetUpMapDialog() {
         mapDialog = Dialog(this)
         mapDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)

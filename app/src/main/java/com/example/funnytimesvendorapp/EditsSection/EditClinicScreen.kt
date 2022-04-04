@@ -24,7 +24,10 @@ import com.example.funnytimesvendorapp.databinding.FtpScreenEditClinicBinding
 import com.google.gson.GsonBuilder
 import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.registerImagePicker
-import okhttp3.OkHttpClient
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.asRequestBody
+import okio.IOException
 import org.json.JSONException
 import org.json.JSONObject
 import java.nio.charset.Charset
@@ -57,7 +60,9 @@ class EditClinicScreen : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-
+        binding.backBtn.setOnClickListener {
+            finish()
+        }
         clinicid = intent.getStringExtra("ItemId").toString()
         propertyPhotoRecView = PropertyPhotoRecView(ftpPropPhotos,this)
         binding.ClinicPhotosRecycler.layoutManager = LinearLayoutManager(this,
@@ -104,7 +109,8 @@ class EditClinicScreen : AppCompatActivity() {
             false)
         binding.ClinicServicesRecycler.adapter = newServicesRecView
         binding.AddService.setOnClickListener {
-            ftpNewServices.add(FTPNewService(null,null,null))
+            ftpNewServices.add(FTPNewService(null,"",""))
+            Log.e("AfterDelete",ftpNewServices.toString())
             newServicesRecView.notifyDataSetChanged()
         }
 
@@ -131,16 +137,97 @@ class EditClinicScreen : AppCompatActivity() {
                 Toast.makeText(this, "لا يمكنك ترك الحقول فارغة", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            if (clinicdidimage.isNullOrEmpty()){
+            if (ftpPropPhotos.size == 0){
                 Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
-
+            Edit_Clinic_Request()
         }
 
         Clinic_tools_Request()
 
+    }
+
+    fun Edit_Clinic_Request(){
+        try {
+            commonFuncs.showLoadingDialog(this)
+            val multipartBody = MultipartBody.Builder()
+            multipartBody.setType(MultipartBody.FORM)
+            multipartBody.addFormDataPart("name", clinicname)
+            multipartBody.addFormDataPart("description", clinicdescription)
+            multipartBody.addFormDataPart("category_id", "2")
+            multipartBody.addFormDataPart("sub_category_id", clinictype)
+            multipartBody.addFormDataPart("_method", "PATCH")
+
+            val services = newServicesRecView.GetServices()
+            for (i in 0 until services.size){
+                if (services[i].ServiceId == null){
+                    multipartBody.addFormDataPart("services[service$i][name]", services[i].ServiceName.toString())
+                    multipartBody.addFormDataPart("services[service$i][price]", services[i].ServicePrice.toString())
+                }else{
+                    var oldid = services[i].ServiceId
+                    multipartBody.addFormDataPart("services_old[$oldid][name]", services[i].ServiceName.toString())
+                    multipartBody.addFormDataPart("services_old[$oldid][price]", services[i].ServicePrice.toString())
+                }
+
+            }
+
+            for(photo in ftpPropPhotos){
+                if (photo.PhotoType == "new"){
+                    val file1 = commonFuncs.getFileFromUri(photo.PhotoUri!!,this)
+//                val file1 = File(getRealPath(photo.PhotoUri!!))
+                    val fileRequestBody = file1!!.asRequestBody("image/jpg".toMediaType())
+                    val imagename = System.currentTimeMillis().toString()
+                    multipartBody.addFormDataPart("imgs[]", imagename, fileRequestBody)
+                }
+            }
+
+            for (id in newServicesRecView.getDeletedServices()){
+                multipartBody.addFormDataPart("services_deleted[]", id.toString())
+            }
+
+            for (id in propertyPhotoRecView.getDeletedPhotos()){
+                multipartBody.addFormDataPart("deletedPhotos[]", id.toString())
+            }
+
+
+            val requestBody: RequestBody = multipartBody.build()
+            val request: okhttp3.Request = okhttp3.Request.Builder()
+                .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,
+                    Constants.KeyUserToken
+                )}")
+                .url(Constants.APIMain +"api/vendor-app/service/$clinicid")
+                .post(requestBody)
+                .build()
+            client.newCall(request).enqueue(object : Callback {
+                @Throws(IOException::class)
+                override fun onFailure(call: Call, e: java.io.IOException) {
+                    runOnUiThread {
+                        Log.e("onFailure","onFailure")
+                        Log.e("onFailure",call.toString())
+                        Log.e("onFailure",e.message.toString())
+                        Log.e("onFailure",e.toString())
+                        commonFuncs.hideLoadingDialog()
+                        commonFuncs.showDefaultDialog(this@EditClinicScreen,"فشل في العملية","حصل خطأ ما أثناء عملية الدفع , تأكد من اتصالك بالانترنت أو حاول مرة أخرى")
+                    }
+                }
+                @Throws(IOException::class)
+                override fun onResponse(call: Call, response: okhttp3.Response) {
+                    runOnUiThread {
+                        Log.e("onResponse",response.toString())
+
+                        Log.e("onResponse",response.message.toString())
+                        commonFuncs.hideLoadingDialog()
+                    }
+                }
+            })
+        } catch (e: IOException) {
+            Log.e("TryCatchFinal",e.message.toString()+"A7a")
+            e.printStackTrace()
+            commonFuncs.hideLoadingDialog()
+            commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
+        }
     }
 
     fun GetSetCurrentData() {

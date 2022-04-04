@@ -19,6 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FunnyTimesVendorApp">
         <activity
+            android:name=".EditsSection.EditChaletPriceScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
             android:name=".EditsSection.EditClinicScreen"
             android:configChanges="locale|orientation"
             android:exported="true"

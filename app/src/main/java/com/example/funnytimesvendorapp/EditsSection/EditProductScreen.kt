@@ -23,7 +23,10 @@ import com.example.funnytimesvendorapp.databinding.FtpScreenEditProductBinding
 import com.google.gson.GsonBuilder
 import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.registerImagePicker
-import okhttp3.OkHttpClient
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.asRequestBody
+import okio.IOException
 import org.json.JSONException
 import org.json.JSONObject
 import java.nio.charset.Charset
@@ -102,10 +105,122 @@ class EditProductScreen : AppCompatActivity() {
             launcher.launch(config)
         }
 
+        binding.ProductAdd.setOnClickListener {
+            productname = binding.ProductName.text.toString()
+            productprice = binding.ProductPrice.text.toString()
+            productquantity = binding.ProductQuantity.text.toString()
+            productdesc = binding.ProductDesc.text.toString()
+
+            if (productname.isNullOrEmpty()){
+                binding.ProductName.error = "لا يمكن ترك الحقل فارغ"
+                binding.ProductName.requestFocus()
+                return@setOnClickListener
+            }
+            if (productprice.isNullOrEmpty()){
+                binding.ProductPrice.error = "لا يمكن ترك الحقل فارغ"
+                binding.ProductPrice.requestFocus()
+                return@setOnClickListener
+            }
+            if (productquantity.isNullOrEmpty()){
+                binding.ProductQuantity.error = "لا يمكن ترك الحقل فارغ"
+                binding.ProductQuantity.requestFocus()
+                return@setOnClickListener
+            }
+            if (productdesc.isNullOrEmpty()){
+                binding.ProductDesc.error = "لا يمكن ترك الحقل فارغ"
+                binding.ProductDesc.requestFocus()
+                return@setOnClickListener
+            }
+            if (productdidimage.isNullOrEmpty()){
+                Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+
+            Edit_Product_Request()
+        }
+
 
 
         Product_tools_Request()
 
+    }
+
+    fun Edit_Product_Request(){
+        try {
+            commonFuncs.showLoadingDialog(this)
+            val multipartBody = MultipartBody.Builder()
+            multipartBody.setType(MultipartBody.FORM)
+            multipartBody.addFormDataPart("name", productname)
+            multipartBody.addFormDataPart("description", productdesc)
+            multipartBody.addFormDataPart("category_id", "4")
+            multipartBody.addFormDataPart("sub_category_id", producttype)
+            multipartBody.addFormDataPart("price", productprice)
+            multipartBody.addFormDataPart("_method", "PATCH")
+
+
+            productAttrContainersRecView.notifyDataSetChanged()
+            for (container in productAttrContainersRecView.GetProductAttributes()){
+                for (attribute in container.ContainerAttributes!!){
+                    if (attribute.IsSelected){
+                        multipartBody.addFormDataPart("attr[${container.ContainerId}][${attribute.AttributeId}]", "on")
+                        Log.e("attrs","attr[${container.ContainerId}][${attribute.AttributeId}]")
+
+                    }
+                }
+            }
+
+            for(photo in ftpPropPhotos){
+                if (photo.PhotoType == "new"){
+                    val file1 = commonFuncs.getFileFromUri(photo.PhotoUri!!,this)
+//                val file1 = File(getRealPath(photo.PhotoUri!!))
+                    val fileRequestBody = file1!!.asRequestBody("image/jpg".toMediaType())
+                    val imagename = System.currentTimeMillis().toString()
+                    multipartBody.addFormDataPart("imgs[]", imagename, fileRequestBody)
+                }
+            }
+
+            for (id in propertyPhotoRecView.getDeletedPhotos()){
+                multipartBody.addFormDataPart("deletedPhotos[]", id.toString())
+            }
+
+
+            val requestBody: RequestBody = multipartBody.build()
+            val request: okhttp3.Request = okhttp3.Request.Builder()
+                .addHeader("Authorization", "Bearer ${commonFuncs.GetFromSP(this,
+                    Constants.KeyUserToken
+                )}")
+                .url(Constants.APIMain +"api/vendor-app/shop/$productid")
+                .post(requestBody)
+                .build()
+            client.newCall(request).enqueue(object : Callback {
+                @Throws(IOException::class)
+                override fun onFailure(call: Call, e: java.io.IOException) {
+                    runOnUiThread {
+                        Log.e("onFailure","onFailure")
+                        Log.e("onFailure",call.toString())
+                        Log.e("onFailure",e.message.toString())
+                        Log.e("onFailure",e.toString())
+                        commonFuncs.hideLoadingDialog()
+                        commonFuncs.showDefaultDialog(this@EditProductScreen,"فشل في العملية","حصل خطأ ما أثناء عملية الدفع , تأكد من اتصالك بالانترنت أو حاول مرة أخرى")
+                    }
+                }
+                @Throws(IOException::class)
+                override fun onResponse(call: Call, response: okhttp3.Response) {
+                    runOnUiThread {
+                        Log.e("onResponse",response.toString())
+
+                        Log.e("onResponse",response.message.toString())
+                        commonFuncs.hideLoadingDialog()
+                    }
+                }
+            })
+        } catch (e: IOException) {
+            Log.e("TryCatchFinal",e.message.toString()+"A7a")
+            e.printStackTrace()
+            commonFuncs.hideLoadingDialog()
+            commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
+        }
     }
 
     fun GetSetCurrentData() {
