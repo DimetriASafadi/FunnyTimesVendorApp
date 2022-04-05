@@ -51,7 +51,7 @@
             >
 
             <AutoCompleteTextView
-                android:id="@+id/HomeSearch"
+                android:id="@+id/SearchBar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -78,7 +78,7 @@
                 android:layout_height="@dimen/_28sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                    android:src="@drawable/ft_filter_home_icon" />
+                android:src="@drawable/ft_filter_home_icon" />
 
 
         </RelativeLayout>

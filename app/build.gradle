@@ -114,4 +114,7 @@ dependencies {
     // RatingBar library
     implementation 'com.github.ome450901:SimpleRatingBar:1.5.1'
 
+    // Range Seek Bar library
+    implementation 'com.github.guojilong:RangeSeekBar:v1.0.7'
+
 }

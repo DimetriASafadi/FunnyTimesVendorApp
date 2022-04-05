@@ -131,11 +131,10 @@ class EditProductScreen : AppCompatActivity() {
                 binding.ProductDesc.requestFocus()
                 return@setOnClickListener
             }
-            if (productdidimage.isNullOrEmpty()){
+            if (ftpPropPhotos.size == 0){
                 Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-
 
             Edit_Product_Request()
         }
@@ -155,6 +154,7 @@ class EditProductScreen : AppCompatActivity() {
             multipartBody.addFormDataPart("description", productdesc)
             multipartBody.addFormDataPart("category_id", "4")
             multipartBody.addFormDataPart("sub_category_id", producttype)
+            multipartBody.addFormDataPart("stock", productquantity)
             multipartBody.addFormDataPart("price", productprice)
             multipartBody.addFormDataPart("_method", "PATCH")
 

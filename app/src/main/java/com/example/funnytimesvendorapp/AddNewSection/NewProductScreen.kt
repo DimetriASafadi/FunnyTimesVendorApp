@@ -149,6 +149,7 @@ class NewProductScreen : AppCompatActivity() {
             multipartBody.addFormDataPart("description", productdesc)
             multipartBody.addFormDataPart("category_id", "4")
             multipartBody.addFormDataPart("sub_category_id", producttype)
+            multipartBody.addFormDataPart("stock", productquantity)
             multipartBody.addFormDataPart("price", productprice)
 
             productAttrContainersRecView.notifyDataSetChanged()

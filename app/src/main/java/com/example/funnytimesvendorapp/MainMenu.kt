@@ -79,7 +79,7 @@ class MainMenu : AppCompatActivity() {
         }
         binding.AddButton.setOnClickListener {
 
-            val intent = Intent(this,EditProductScreen::class.java)
+            val intent = Intent(this,MyProductScreen::class.java)
             intent.putExtra("ItemId","48")
             startActivity(intent)
         }
