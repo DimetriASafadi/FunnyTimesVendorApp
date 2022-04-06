@@ -116,7 +116,7 @@ class EditFoodScreen : AppCompatActivity() {
                 binding.FoodDesc.requestFocus()
                 return@setOnClickListener
             }
-            if (fooddidimage.isNullOrEmpty()){
+            if (ftpPropPhotos.size == 0){
                 Toast.makeText(this, "يجب عليك اختيار صورة واحدة على الأقل", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }

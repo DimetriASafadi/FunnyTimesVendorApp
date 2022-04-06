@@ -144,6 +144,7 @@ class MyProductScreen : AppCompatActivity() {
     fun Category_Request(){
         var url = Constants.APIMain + "api/vendor-app/categories"
         try {
+            commonFuncs.showLoadingDialog(this)
             val stringRequest = object : StringRequest(
                 Request.Method.GET, url, Response.Listener<String> { response ->
                     Log.e("Response", response.toString())
@@ -152,6 +153,7 @@ class MyProductScreen : AppCompatActivity() {
                     val gson = GsonBuilder().create()
                     ftpCategory.addAll(gson.fromJson(data.toString(),Array<FTPCategory>::class.java).toList())
                     SetUpFilterDialog()
+                    commonFuncs.hideLoadingDialog()
                 }, Response.ErrorListener { error ->
                     if (error.networkResponse != null && error.networkResponse.data != null) {
                         val errorw = String(error.networkResponse.data, Charset.forName("UTF-8"))
@@ -163,6 +165,8 @@ class MyProductScreen : AppCompatActivity() {
                         commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
                         Log.e("eResponsew", "RequestError:$error")
                     }
+                    commonFuncs.hideLoadingDialog()
+
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val params = HashMap<String,String>()
@@ -176,6 +180,7 @@ class MyProductScreen : AppCompatActivity() {
             requestQueue.add(stringRequest)
         }catch (error: JSONException){
             Log.e("Response", error.toString())
+            commonFuncs.hideLoadingDialog()
         }
     }
 
@@ -253,6 +258,7 @@ class MyProductScreen : AppCompatActivity() {
 
     fun FilterSearch_Request(isBar:Boolean){
 
+
         var url = Constants.APIMain + "api/vendor-app/filter/?"
         if (isBar){
             name = binding.SearchBar.text.toString()
@@ -279,6 +285,7 @@ class MyProductScreen : AppCompatActivity() {
             }
         }
         try {
+            commonFuncs.showLoadingDialog(this)
             val stringRequest = object : StringRequest(
                 Request.Method.GET, url, Response.Listener<String> { response ->
                     Log.e("Response", response.toString())
@@ -289,6 +296,7 @@ class MyProductScreen : AppCompatActivity() {
                     ftpMyItem.clear()
                     ftpMyItem.addAll(gson.fromJson(products.toString(),Array<FTPMyItem>::class.java).toList())
                     myItemsRecView.notifyDataSetChanged()
+                    commonFuncs.hideLoadingDialog()
                 }, Response.ErrorListener { error ->
                     if (error.networkResponse != null && error.networkResponse.data != null) {
                         val errorw = String(error.networkResponse.data, Charset.forName("UTF-8"))
@@ -300,6 +308,7 @@ class MyProductScreen : AppCompatActivity() {
                         commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
                         Log.e("eResponsew", "RequestError:$error")
                     }
+                    commonFuncs.hideLoadingDialog()
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val params = HashMap<String,String>()
@@ -313,6 +322,8 @@ class MyProductScreen : AppCompatActivity() {
             requestQueue.add(stringRequest)
         }catch (error: JSONException){
             Log.e("Response", error.toString())
+            commonFuncs.hideLoadingDialog()
+
         }
     }
 
