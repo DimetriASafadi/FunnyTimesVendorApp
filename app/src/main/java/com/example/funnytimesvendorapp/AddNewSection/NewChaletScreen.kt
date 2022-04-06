@@ -322,6 +322,7 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             multipartBody.addFormDataPart("description", propdepositprice)
             multipartBody.addFormDataPart("policy", proppolicy)
             multipartBody.addFormDataPart("sub_category_id", proptype)
+            multipartBody.addFormDataPart("category_id", "1")
             multipartBody.addFormDataPart("city_id", propcity)
             multipartBody.addFormDataPart("address", propdistric)
             multipartBody.addFormDataPart("type", propbookType.toString())
@@ -368,6 +369,9 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             for(photo in ftpPropPhotos){
                 val file1 = commonFuncs.getFileFromUri(photo.PhotoUri!!,this)
 //                val file1 = File(getRealPath(photo.PhotoUri!!))
+                Log.e("File",file1?.path.toString())
+                Log.e("File",file1?.absolutePath.toString())
+                Log.e("File",file1?.name.toString())
                 val fileRequestBody = file1!!.asRequestBody("image/jpg".toMediaType())
                 val imagename = System.currentTimeMillis().toString()
                 multipartBody.addFormDataPart("imgs[]", imagename, fileRequestBody)
@@ -407,6 +411,10 @@ class NewChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                 override fun onResponse(call: Call, response: okhttp3.Response) {
                     runOnUiThread {
                         Log.e("onResponse",response.message.toString())
+                        Log.e("onResponse",response.toString())
+                        Log.e("onResponse",response.code.toString())
+                        Log.e("onResponse",response.body?.string().toString())
+
                         commonFuncs.hideLoadingDialog()
                         finish()
                     }

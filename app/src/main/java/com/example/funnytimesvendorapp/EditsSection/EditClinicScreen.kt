@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
@@ -143,6 +144,18 @@ class EditClinicScreen : AppCompatActivity() {
             }
 
             Edit_Clinic_Request()
+        }
+
+        binding.ClinicDelete.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("تأكيد الحذف")
+                .setMessage("هل أنت متأكد من خيار الحذف ؟")
+                .setPositiveButton("نعم") { _, _ ->
+                    Delete_Clinic_Request()
+                }
+                .setNegativeButton("لا") { _, _ ->
+                }
+                .show()
         }
 
         Clinic_tools_Request()
@@ -341,6 +354,44 @@ class EditClinicScreen : AppCompatActivity() {
                     return map
                 }
 
+            }
+            val requestQueue = Volley.newRequestQueue(this)
+            requestQueue.add(stringRequest)
+        }catch (error: JSONException){
+            Log.e("Response", error.toString())
+            commonFuncs.hideLoadingDialog()
+        }
+    }
+
+    fun Delete_Clinic_Request() {
+        commonFuncs.showLoadingDialog(this)
+        val url = Constants.APIMain + "api/vendor-app/service/$clinicid"
+        try {
+            val stringRequest = object : StringRequest(
+                Request.Method.DELETE, url, Response.Listener<String> { response ->
+                    Log.e("Response", response.toString())
+                    commonFuncs.hideLoadingDialog()
+                    finish()
+                }, Response.ErrorListener { error ->
+                    if (error.networkResponse != null && error.networkResponse.data != null) {
+                        val errorw = String(error.networkResponse.data, Charset.forName("UTF-8"))
+                        val err = JSONObject(errorw)
+                        val errMessage = err.getJSONObject("status").getString("message")
+                        commonFuncs.showDefaultDialog(this,"فشل الإتصال",errMessage)
+                        Log.e("eResponser", errorw.toString())
+                    } else {
+                        commonFuncs.showDefaultDialog(this,"فشل الإتصال","تفقد إتصالك بالشبكة")
+                        Log.e("eResponsew", "RequestError:$error")
+                    }
+                    commonFuncs.hideLoadingDialog()
+                }) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val map = java.util.HashMap<String, String>()
+                    if (commonFuncs.IsInSP(this@EditClinicScreen, Constants.KeyUserToken)){
+                        map["Authorization"] = "Bearer "+commonFuncs.GetFromSP(this@EditClinicScreen, Constants.KeyUserToken)
+                    }
+                    return map
+                }
             }
             val requestQueue = Volley.newRequestQueue(this)
             requestQueue.add(stringRequest)

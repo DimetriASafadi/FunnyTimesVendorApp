@@ -967,7 +967,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="تحميل فاتورة الموافقة"
+                android:text="تحميل صور العقار"
                 android:fontFamily="@font/montserrat_arabic"
                 android:textColor="@color/ft_grey_1"
                 android:drawablePadding="@dimen/_3sdp"

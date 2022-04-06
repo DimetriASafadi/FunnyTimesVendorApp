@@ -215,7 +215,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="تحميل فاتورة الموافقة"
+                    android:text="تحميل صور للخدمة"
                     android:fontFamily="@font/montserrat_arabic"
                     android:textColor="@color/ft_grey_1"
                     android:drawablePadding="@dimen/_3sdp"
@@ -236,22 +236,49 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/ClinicAdd"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="تعديل"
-                android:gravity="center"
-                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:orientation="horizontal"
                 android:layout_marginVertical="@dimen/_10sdp"
-                android:background="@drawable/ft_radius_fill_light"
-                android:backgroundTint="@color/ft_orange"
-                android:paddingVertical="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_arabic"
-                android:textSize="@dimen/_11ssp"
-                android:textColor="@color/ft_white"
-                android:textStyle="bold"
-                />
+
+                >
+                <TextView
+                    android:id="@+id/ClinicAdd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="تعديل"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:background="@drawable/ft_radius_fill_light"
+                    android:backgroundTint="@color/ft_orange"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textSize="@dimen/_11ssp"
+                    android:textColor="@color/ft_white"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/ClinicDelete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="حذف"
+                    android:gravity="center"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/ft_radius_stroke_red"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textSize="@dimen/_11ssp"
+                    android:textColor="@color/ft_red"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

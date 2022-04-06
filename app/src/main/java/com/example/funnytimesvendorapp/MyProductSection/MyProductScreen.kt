@@ -89,7 +89,6 @@ class MyProductScreen : AppCompatActivity() {
         })
 
 
-        get_myProducts_Request()
 
         Category_Request()
 
@@ -263,12 +262,15 @@ class MyProductScreen : AppCompatActivity() {
 //            if (!name.isNullOrEmpty()){
 //                url = url+"&name=$name"
 //            }
-            if (!pricefrom.isNullOrEmpty()){
-                url = url+"&price[from]=$pricefrom"
+            if (pricefrom != "0" && priceto != "0"){
+                if (!pricefrom.isNullOrEmpty()){
+                    url = url+"&price[from]=$pricefrom"
+                }
+                if (!priceto.isNullOrEmpty()){
+                    url = url+"&price[to]=$priceto"
+                }
             }
-            if (!priceto.isNullOrEmpty()){
-                url = url+"&price[to]=$priceto"
-            }
+
             if (!sub_category_id.isNullOrEmpty()){
                 url = url+"&sub_category_id=$sub_category_id"
             }
@@ -322,6 +324,13 @@ class MyProductScreen : AppCompatActivity() {
                 filterDialog!!.dismiss()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        get_myProducts_Request()
+
+
     }
 
 }

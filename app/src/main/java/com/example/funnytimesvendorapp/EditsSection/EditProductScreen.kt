@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
@@ -139,7 +140,17 @@ class EditProductScreen : AppCompatActivity() {
             Edit_Product_Request()
         }
 
-
+        binding.ProductDelete.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("تأكيد الحذف")
+                .setMessage("هل أنت متأكد من خيار الحذف ؟")
+                .setPositiveButton("نعم") { _, _ ->
+                    Delete_Shop_Request()
+                }
+                .setNegativeButton("لا") { _, _ ->
+                }
+                .show()
+        }
 
         Product_tools_Request()
 
@@ -179,7 +190,6 @@ class EditProductScreen : AppCompatActivity() {
                     multipartBody.addFormDataPart("imgs[]", imagename, fileRequestBody)
                 }
             }
-
             for (id in propertyPhotoRecView.getDeletedPhotos()){
                 multipartBody.addFormDataPart("deletedPhotos[]", id.toString())
             }
@@ -239,11 +249,7 @@ class EditProductScreen : AppCompatActivity() {
                     ftpPropPhotos.addAll(gson.fromJson(gallery.toString(),Array<FTPItemPhoto>::class.java).toList())
                     propertyPhotoRecView.notifyDataSetChanged()
 
-                    for (i in 0 until ftpProductType.size){
-                        if (ftpProductType[i].TypeId == data.getInt("sub_category_id")){
-                            binding.ProductTypeSpinner.setSelection(i)
-                        }
-                    }
+
                     binding.ProductName.setText(data.getString("name").toString())
                     binding.ProductPrice.setText(data.getString("price").toString())
                     binding.ProductQuantity.setText(data.getString("stock").toString())
@@ -277,6 +283,12 @@ class EditProductScreen : AppCompatActivity() {
                                 }
                             }
                             productAttrContainersRecView.notifyDataSetChanged()
+                        }
+                    }
+
+                    for (i in 0 until ftpProductType.size){
+                        if (ftpProductType[i].TypeId == data.getInt("sub_category_id")){
+                            binding.ProductTypeSpinner.setSelection(i)
                         }
                     }
 
@@ -355,6 +367,44 @@ class EditProductScreen : AppCompatActivity() {
                     return map
                 }
 
+            }
+            val requestQueue = Volley.newRequestQueue(this)
+            requestQueue.add(stringRequest)
+        }catch (error: JSONException){
+            Log.e("Response", error.toString())
+            commonFuncs.hideLoadingDialog()
+        }
+    }
+
+    fun Delete_Shop_Request() {
+        commonFuncs.showLoadingDialog(this)
+        val url = Constants.APIMain + "api/vendor-app/shop/$productid"
+        try {
+            val stringRequest = object : StringRequest(
+                Request.Method.DELETE, url, Response.Listener<String> { response ->
+                    Log.e("Response", response.toString())
+                    commonFuncs.hideLoadingDialog()
+                    finish()
+                }, Response.ErrorListener { error ->
+                    if (error.networkResponse != null && error.networkResponse.data != null) {
+                        val errorw = String(error.networkResponse.data, Charset.forName("UTF-8"))
+                        val err = JSONObject(errorw)
+                        val errMessage = err.getJSONObject("status").getString("message")
+                        commonFuncs.showDefaultDialog(this,"فشل الإتصال",errMessage)
+                        Log.e("eResponser", errorw.toString())
+                    } else {
+                        commonFuncs.showDefaultDialog(this,"فشل الإتصال","تفقد إتصالك بالشبكة")
+                        Log.e("eResponsew", "RequestError:$error")
+                    }
+                    commonFuncs.hideLoadingDialog()
+                }) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val map = java.util.HashMap<String, String>()
+                    if (commonFuncs.IsInSP(this@EditProductScreen, Constants.KeyUserToken)){
+                        map["Authorization"] = "Bearer "+commonFuncs.GetFromSP(this@EditProductScreen, Constants.KeyUserToken)
+                    }
+                    return map
+                }
             }
             val requestQueue = Volley.newRequestQueue(this)
             requestQueue.add(stringRequest)

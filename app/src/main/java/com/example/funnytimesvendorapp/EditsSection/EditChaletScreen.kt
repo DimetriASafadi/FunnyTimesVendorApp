@@ -12,6 +12,7 @@ import android.view.Window
 import android.widget.AdapterView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
@@ -185,6 +186,19 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             Edit_Chalet_Request()
         }
 
+        binding.PropertyDelete.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("تأكيد الحذف")
+                .setMessage("هل أنت متأكد من خيار الحذف ؟")
+                .setPositiveButton("نعم") { _, _ ->
+                    Delete_Property_Request()
+                }
+                .setNegativeButton("لا") { _, _ ->
+                }
+                .show()
+
+        }
+
 
     }
     fun Edit_Chalet_Request(){
@@ -196,6 +210,7 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             multipartBody.addFormDataPart("description", propdescription)
             multipartBody.addFormDataPart("policy", proppolicy)
             multipartBody.addFormDataPart("sub_category_id", proptype)
+            Log.e("proptype",proptype)
             multipartBody.addFormDataPart("city_id", propcity)
             multipartBody.addFormDataPart("address", propdistric)
             multipartBody.addFormDataPart("lat", propselectedlat)
@@ -355,11 +370,7 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                     binding.PropertyDistric.setText(data.getString("address").toString())
                     propselectedlat = data.getString("lat").toString()
                     propselectedlng = data.getString("lng").toString()
-                    for (i in 0 until ftpPropertySubCat.size){
-                        if (ftpPropertySubCat[i].SubCatId == data.getInt("sub_category_id")){
-                            binding.PropertyServiceSpinner.setSelection(i)
-                        }
-                    }
+
 
                     sPropertySubCatAdapter = SPropertySubCatAdapter(this,ftpPropertySubCat)
                     binding.PropertyServiceSpinner.adapter = sPropertySubCatAdapter
@@ -393,7 +404,12 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
                         }
                     }
 
-                    binding.PropertyServiceSpinner.setSelection(0)
+                    for (i in 0 until ftpPropertySubCat.size){
+                        if (ftpPropertySubCat[i].SubCatId == data.getInt("sub_category_id")){
+                            binding.PropertyServiceSpinner.setSelection(i)
+                        }
+                    }
+
 
 
                     propertyAttrContainersRecView.notifyDataSetChanged()
@@ -430,6 +446,47 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
             commonFuncs.hideLoadingDialog()
         }
     }
+
+
+    fun Delete_Property_Request() {
+        commonFuncs.showLoadingDialog(this)
+        val url = Constants.APIMain + "api/vendor-app/property/$propid"
+        try {
+            val stringRequest = object : StringRequest(
+                Request.Method.DELETE, url, Response.Listener<String> { response ->
+                    Log.e("Response", response.toString())
+                    commonFuncs.hideLoadingDialog()
+                    finish()
+                }, Response.ErrorListener { error ->
+                    if (error.networkResponse != null && error.networkResponse.data != null) {
+                        val errorw = String(error.networkResponse.data, Charset.forName("UTF-8"))
+                        val err = JSONObject(errorw)
+                        val errMessage = err.getJSONObject("status").getString("message")
+                        commonFuncs.showDefaultDialog(this,"فشل الإتصال",errMessage)
+                        Log.e("eResponser", errorw.toString())
+                    } else {
+                        commonFuncs.showDefaultDialog(this,"فشل الإتصال","تفقد إتصالك بالشبكة")
+                        Log.e("eResponsew", "RequestError:$error")
+                    }
+                    commonFuncs.hideLoadingDialog()
+                }) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val map = HashMap<String,String>()
+                    if (commonFuncs.IsInSP(this@EditChaletScreen, Constants.KeyUserToken)){
+                        map["Authorization"] = "Bearer "+commonFuncs.GetFromSP(this@EditChaletScreen, Constants.KeyUserToken)
+                    }
+                    return map
+                }
+            }
+            val requestQueue = Volley.newRequestQueue(this)
+            requestQueue.add(stringRequest)
+        }catch (error: JSONException){
+            Log.e("Response", error.toString())
+            commonFuncs.hideLoadingDialog()
+        }
+    }
+
+
     fun SetUpMapDialog() {
         mapDialog = Dialog(this)
         mapDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)

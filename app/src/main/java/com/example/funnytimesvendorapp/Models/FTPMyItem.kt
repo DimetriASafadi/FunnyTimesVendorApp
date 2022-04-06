@@ -9,7 +9,9 @@ data class FTPMyItem(
     var ItemId:Int? = null,
     @SerializedName("name")
     var ItemName:String? = "",
-    @SerializedName("rate")
+    @SerializedName("type")
+    var ItemType:String? = "",
+    @SerializedName("star")
     var ItemRate:Int? = null,
     @SerializedName("img")
     var ItemImg:String? = "",

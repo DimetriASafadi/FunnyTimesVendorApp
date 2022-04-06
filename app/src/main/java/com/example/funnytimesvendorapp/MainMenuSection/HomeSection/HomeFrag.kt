@@ -1,10 +1,12 @@
 package com.example.funnytimesvendorapp.MainMenuSection.HomeSection
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.funnytimesvendorapp.MyProductSection.MyProductScreen
 import com.example.funnytimesvendorapp.databinding.FtpFragHomeBinding
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -26,6 +28,10 @@ class HomeFrag: Fragment() {
         _binding = FtpFragHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
+
+        binding.TestBtn.setOnClickListener {
+            startActivity(Intent(requireActivity(),MyProductScreen::class.java))
+        }
         binding.SalesChart.setDrawBarShadow(false)
         binding.SalesChart.setDrawValueAboveBar(true)
         binding.SalesChart.setMaxVisibleValueCount(50)
