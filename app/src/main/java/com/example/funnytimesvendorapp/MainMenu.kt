@@ -79,7 +79,7 @@ class MainMenu : AppCompatActivity() {
         }
         binding.AddButton.setOnClickListener {
 
-            val intent = Intent(this,NewChaletScreen::class.java)
+            val intent = Intent(this,NewClinicScreen::class.java)
             startActivity(intent)
         }
 
