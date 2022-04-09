@@ -5,17 +5,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-
-    <Button
-        android:id="@+id/TestBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="عقاراتي"
-        />
+    
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/SalesChart"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_250sdp"
+        />
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/OrBokRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MyItemsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
 
 </LinearLayout>

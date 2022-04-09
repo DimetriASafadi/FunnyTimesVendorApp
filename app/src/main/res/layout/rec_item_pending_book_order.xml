@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_10sdp"
+    >
+    <LinearLayout
+        android:id="@+id/WholeOrBok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/OrBokImage"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            app:riv_corner_radius="@dimen/_5sdp"
+            android:src="@color/ft_orange"
+
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            >
+            <TextView
+                android:id="@+id/OrBokName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محمد خالد عبدالمجيد"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_black"
+                android:alpha="0.9"
+                android:maxLines="1"
+                android:layout_marginVertical="@dimen/_1sdp"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            <TextView
+                android:id="@+id/OrBokId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#E3YU99OP7M"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_grey_9"
+                android:textSize="@dimen/_9ssp"
+                android:maxLines="1"
+                android:layout_marginVertical="@dimen/_1sdp"
+                />
+
+            <TextView
+                android:id="@+id/OrBokCreationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2021/8/8"
+                android:drawableStart="@drawable/ft_watch_clock_time_icon"
+                android:drawablePadding="@dimen/_3sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_grey_3"
+                android:textSize="@dimen/_9ssp"
+                android:maxLines="1"
+                android:layout_marginVertical="@dimen/_1sdp"
+                />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/OrBokDecline"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:src="@drawable/ft_decline_exit_cancel_icon"
+            android:layout_marginEnd="@dimen/_12sdp"
+            />
+        <ImageView
+            android:id="@+id/OrBokAccept"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:src="@drawable/ft_accept_check_icon"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
