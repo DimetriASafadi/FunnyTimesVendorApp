@@ -1,6 +1,5 @@
 package com.example.funnytimesvendorapp.MainMenuSection.HomeSection
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,17 +13,18 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
-import com.example.funnytimesvendorapp.Models.FTPFoodType
 import com.example.funnytimesvendorapp.Models.FTPMyItem
 import com.example.funnytimesvendorapp.Models.FTPOrdBok
-import com.example.funnytimesvendorapp.MyProductSection.MyProductScreen
+import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.RecViews.MyItemsRecView
 import com.example.funnytimesvendorapp.RecViews.OrBokRecView
 import com.example.funnytimesvendorapp.databinding.FtpFragHomeBinding
+import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
@@ -53,51 +53,7 @@ class HomeFrag: Fragment() {
         _binding = FtpFragHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.SalesChart.setDrawBarShadow(false)
-        binding.SalesChart.setDrawValueAboveBar(true)
-        binding.SalesChart.setMaxVisibleValueCount(50)
-        val weekdays = arrayOf(
-            "Sun",
-            "Mon",
-            "Tue",
-            "Wed",
-            "Thu",
-            "Fri",
-            "Sat"
-        ) // Your List / array with String Values For X-axis Labels
-        val xAxis: XAxis = binding.SalesChart.xAxis
-        xAxis.valueFormatter = IndexAxisValueFormatter(weekdays)
-        val values: ArrayList<BarEntry> = ArrayList()
-            values.add(BarEntry(0.0f, 10.0f))
-            values.add(BarEntry(1.0f, 20.0f))
-            values.add(BarEntry(2.0f, 30.0f))
-            values.add(BarEntry(3.0f, 40.0f))
-            values.add(BarEntry(4.0f, 50.0f))
-            values.add(BarEntry(5.0f, 60.0f))
-            values.add(BarEntry(6.0f, 70.0f))
-            values.add(BarEntry(7.0f, 80.0f))
-            values.add(BarEntry(8.0f, 90.0f))
-            values.add(BarEntry(9.0f, 50.0f))
-            values.add(BarEntry(10.0f, 40.0f))
-        val set1: BarDataSet
-        if (binding.SalesChart.data != null &&
-            binding.SalesChart.data.dataSetCount > 0
-        ) {
-            set1 = binding.SalesChart.data.getDataSetByIndex(0) as BarDataSet
-            set1.values = values
-            binding.SalesChart.data.notifyDataChanged()
-            binding.SalesChart.notifyDataSetChanged()
-        } else {
-            set1 = BarDataSet(values, "Data Set")
-            set1.setColors(*ColorTemplate.VORDIPLOM_COLORS)
-            set1.setDrawValues(false)
-            val dataSets: ArrayList<IBarDataSet> = ArrayList()
-            dataSets.add(set1)
-            val data = BarData(dataSets)
-            binding.SalesChart.data = data
-            binding.SalesChart.setFitBars(true)
-        }
-        binding.SalesChart.invalidate()
+        SetUpChart()
 
 
         orBokRecView = OrBokRecView(fTPOrdBoks,requireContext())
@@ -168,6 +124,84 @@ class HomeFrag: Fragment() {
             Log.e("Response", error.toString())
             commonFuncs.hideLoadingDialog()
         }
+    }
+
+
+    fun SetUpChart(){
+
+        binding.SalesChart.setTouchEnabled(true)
+        binding.SalesChart.isClickable = false
+        binding.SalesChart.isDoubleTapToZoomEnabled = false
+        binding.SalesChart.isDoubleTapToZoomEnabled = false
+
+        binding.SalesChart.setDrawBorders(false)
+        binding.SalesChart.setDrawGridBackground(false)
+
+        binding.SalesChart.description.isEnabled = false
+        binding.SalesChart.legend.isEnabled = false
+
+        binding.SalesChart.axisLeft.setDrawGridLines(false)
+        binding.SalesChart.axisLeft.setDrawLabels(true)
+        binding.SalesChart.axisLeft.setDrawAxisLine(false)
+
+        binding.SalesChart.xAxis.setDrawGridLines(false)
+        binding.SalesChart.xAxis.setDrawLabels(true)
+        binding.SalesChart.xAxis.setDrawAxisLine(false)
+
+        binding.SalesChart.axisRight.setDrawGridLines(false)
+        binding.SalesChart.axisRight.setDrawLabels(true)
+        binding.SalesChart.axisRight.setDrawAxisLine(false)
+
+
+        binding.SalesChart.setDrawBarShadow(false)
+        binding.SalesChart.setDrawValueAboveBar(false)
+        val weekdays = arrayOf(
+            "Sun",
+            "Mon",
+            "Tue"
+        ) // Your List / array with String Values For X-axis Labels
+        val xAxis: XAxis = binding.SalesChart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.valueFormatter = IndexAxisValueFormatter(weekdays)
+        xAxis.axisMinimum = 0f
+        xAxis.axisMaximum = 5f
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.textSize = 12f
+        xAxis.granularity = 1f
+
+        xAxis.isGranularityEnabled = true
+
+        xAxis.textColor = resources.getColor(R.color.ft_black,null)
+        xAxis.setDrawAxisLine(true)
+        xAxis.setDrawGridLines(true)
+        val values: ArrayList<BarEntry> = ArrayList()
+        values.add(BarEntry(0.0f, 50.0f))
+        values.add(BarEntry(1.0f, 20.0f))
+        values.add(BarEntry(2.0f, 40.0f))
+        val set1: BarDataSet
+        if (binding.SalesChart.data != null &&
+            binding.SalesChart.data.dataSetCount > 0
+        ) {
+            set1 = binding.SalesChart.data.getDataSetByIndex(0) as BarDataSet
+            set1.values = values
+            binding.SalesChart.data.notifyDataChanged()
+            binding.SalesChart.notifyDataSetChanged()
+        } else {
+            set1 = BarDataSet(values, "Data Set")
+            set1.setColors(*ColorTemplate.VORDIPLOM_COLORS)
+            set1.setDrawValues(false)
+            val dataSets: ArrayList<IBarDataSet> = ArrayList()
+            dataSets.add(set1)
+            val data = BarData(dataSets)
+            binding.SalesChart.data = data
+            binding.SalesChart.setFitBars(true)
+        }
+        binding.SalesChart.setTouchEnabled(true)
+        binding.SalesChart.setPinchZoom(false)
+        binding.SalesChart.isDoubleTapToZoomEnabled = false
+        binding.SalesChart.setScaleEnabled(false);
+        binding.SalesChart.invalidate()
+
     }
 
 }

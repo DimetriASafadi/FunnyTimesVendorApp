@@ -1,22 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
     
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/SalesChart"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_250sdp"
-        />
+        android:layout_height="@dimen/_40sdp">
+
+        
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@drawable/ft_calendar_icon"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/SalesChart"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_fill_light"
+            android:backgroundTint="@color/ft_dark_blue"
+            >
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:src="@drawable/ft_money_dollar_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/img1"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_toEndOf="@+id/img1"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="مبيعات اليوم"
+                android:textColor="@color/ft_white"
+                android:textSize="@dimen/_11ssp" />
+
+            <TextView
+                android:id="@+id/SailsTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img1"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_toEndOf="@+id/img1"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="$550.40"
+                android:textColor="@color/ft_white"
+                android:textSize="@dimen/_11ssp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="@drawable/ft_radius_fill_light"
+            android:backgroundTint="@color/ft_grey_6"
+            >
+
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:src="@drawable/ft_box_books_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/img2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_toEndOf="@+id/img2"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="حجوزات اليوم"
+                android:textColor="@color/ft_grey_11"
+                android:textSize="@dimen/_11ssp" />
+
+            <TextView
+                android:id="@+id/BooksCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_toEndOf="@+id/img2"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="55"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_11ssp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical"
+        android:background="@drawable/ft_radius_fill"
+        android:backgroundTint="@color/ft_grey_6"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_arabic"
+            android:padding="@dimen/_10sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="المبيعات الأسبوعية"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_10ssp" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/SalesChart"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            />
+
+        <TextView
+            android:id="@+id/LastUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/ft_radius_fill"
+            android:backgroundTint="@color/ft_grey_10"
+            android:drawableEnd="@drawable/ft_time_remain_clock_icon"
+            android:drawablePadding="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:text="تم التحديث منذ 7 دقائق"
+            android:textColor="@color/ft_grey_11"
+            android:textSize="@dimen/_9ssp"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
     
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الطلبات الجديدة"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textSize="@dimen/_12ssp"
+        android:layout_margin="@dimen/_10sdp"
+        android:textColor="@color/ft_dark_blue"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/OrBokRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+
+    <TextView
+        android:id="@+id/MyItemsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="عقاراتي"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textSize="@dimen/_12ssp"
+        android:layout_margin="@dimen/_10sdp"
+        android:textColor="@color/ft_dark_blue"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MyItemsRecycler"
         android:layout_width="match_parent"
