@@ -14,6 +14,7 @@ import com.android.volley.toolbox.Volley
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.Models.FTPMyItem
+import com.example.funnytimesvendorapp.Models.FTPOrBokBar
 import com.example.funnytimesvendorapp.Models.FTPOrdBok
 import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.RecViews.MyItemsRecView
@@ -46,6 +47,12 @@ class HomeFrag: Fragment() {
     val ftpMyItem = ArrayList<FTPMyItem>()
     lateinit var myItemsRecView: MyItemsRecView
 
+    val ftpOrBokBar = ArrayList<FTPOrBokBar>()
+
+    val xdata = ArrayList<String>()
+    val ydata = ArrayList<BarEntry>()
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,7 +60,6 @@ class HomeFrag: Fragment() {
         _binding = FtpFragHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        SetUpChart()
 
 
         orBokRecView = OrBokRecView(fTPOrdBoks,requireContext())
@@ -85,11 +91,18 @@ class HomeFrag: Fragment() {
                     Log.e("Response", response.toString())
                     val jsonobj = JSONObject(response.toString())
                     val data = jsonobj.getJSONObject("data")
+                    val bookingCount = data.getJSONArray("bookingCount")
                     val order = data.getJSONArray("order")
                     val product = data.getJSONArray("product")
                     val gson = GsonBuilder().create()
                     fTPOrdBoks.addAll(gson.fromJson(order.toString(),Array<FTPOrdBok>::class.java).toList())
                     ftpMyItem.addAll(gson.fromJson(product.toString(),Array<FTPMyItem>::class.java).toList())
+                    ftpOrBokBar.addAll(gson.fromJson(bookingCount.toString(),Array<FTPOrBokBar>::class.java).toList())
+                    xdata.addAll(GetXLineData())
+                    ydata.addAll(GetYLineData())
+
+                    SetUpChart()
+
                     orBokRecView.notifyDataSetChanged()
                     myItemsRecView.notifyDataSetChanged()
                     commonFuncs.hideLoadingDialog()
@@ -155,16 +168,11 @@ class HomeFrag: Fragment() {
 
         binding.SalesChart.setDrawBarShadow(false)
         binding.SalesChart.setDrawValueAboveBar(false)
-        val weekdays = arrayOf(
-            "Sun",
-            "Mon",
-            "Tue"
-        ) // Your List / array with String Values For X-axis Labels
         val xAxis: XAxis = binding.SalesChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
-        xAxis.valueFormatter = IndexAxisValueFormatter(weekdays)
+        xAxis.valueFormatter = IndexAxisValueFormatter(xdata)
         xAxis.axisMinimum = 0f
-        xAxis.axisMaximum = 5f
+        xAxis.axisMaximum = xdata.size.toFloat()
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.textSize = 12f
         xAxis.granularity = 1f
@@ -174,21 +182,20 @@ class HomeFrag: Fragment() {
         xAxis.textColor = resources.getColor(R.color.ft_black,null)
         xAxis.setDrawAxisLine(true)
         xAxis.setDrawGridLines(true)
-        val values: ArrayList<BarEntry> = ArrayList()
-        values.add(BarEntry(0.0f, 50.0f))
-        values.add(BarEntry(1.0f, 20.0f))
-        values.add(BarEntry(2.0f, 40.0f))
         val set1: BarDataSet
         if (binding.SalesChart.data != null &&
             binding.SalesChart.data.dataSetCount > 0
         ) {
             set1 = binding.SalesChart.data.getDataSetByIndex(0) as BarDataSet
-            set1.values = values
+            set1.values = ydata
+          //  set1.setColors(resources.getColor(R.color.ft_orange,null))
+            set1.setColor(resources.getColor(R.color.ft_orange,null))
             binding.SalesChart.data.notifyDataChanged()
             binding.SalesChart.notifyDataSetChanged()
         } else {
-            set1 = BarDataSet(values, "Data Set")
-            set1.setColors(*ColorTemplate.VORDIPLOM_COLORS)
+            set1 = BarDataSet(ydata, "Data Set")
+          //  set1.setColors(resources.getColor(R.color.ft_orange,null))
+            set1.setColor(resources.getColor(R.color.ft_orange,null))
             set1.setDrawValues(false)
             val dataSets: ArrayList<IBarDataSet> = ArrayList()
             dataSets.add(set1)
@@ -199,9 +206,25 @@ class HomeFrag: Fragment() {
         binding.SalesChart.setTouchEnabled(true)
         binding.SalesChart.setPinchZoom(false)
         binding.SalesChart.isDoubleTapToZoomEnabled = false
-        binding.SalesChart.setScaleEnabled(false);
+        binding.SalesChart.setScaleEnabled(false)
         binding.SalesChart.invalidate()
 
     }
+
+    fun GetXLineData():ArrayList<String>{
+        val result = ArrayList<String>()
+        for (i in 0 until ftpOrBokBar.size) {
+            result.add(ftpOrBokBar[i].BarMonths.toString())
+        }
+        return result
+    }
+    fun GetYLineData():ArrayList<BarEntry>{
+        val result = ArrayList<BarEntry>()
+        for (i in 0 until ftpOrBokBar.size) {
+            result.add(BarEntry(i.toFloat(), ftpOrBokBar[i].BarSum!!.toFloat()))
+        }
+        return result
+    }
+
 
 }
