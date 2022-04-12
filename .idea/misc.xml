@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_accept_check_icon.xml" value="0.2885" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_calendar_icon.xml" value="0.2885" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_circle_fill.xml" value="0.2985" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_delete_trash_remove_icon.xml" value="0.336" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_radius_fill.xml" value="0.2985" />
@@ -49,6 +50,7 @@
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_splash.xml" value="0.35052083333333334" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_my_product.xml" value="0.67" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_new_service.xml" value="0.5" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_orbok.xml" value="0.5252225519287834" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_pending_book_order.xml" value="0.5" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_prop_attribute.xml" value="0.2911500641299701" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_prop_attribute_container.xml" value="0.2911500641299701" />

@@ -11,15 +11,25 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp">
 
-        
+
         <ImageView
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/ft_calendar_icon"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="@dimen/_10sdp"
+            android:src="@drawable/ft_calendar_icon"
+            app:tint="@color/ft_light_black" />
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:src="@drawable/ft_notification_bill_icon"
             />
+
     </RelativeLayout>
 
 

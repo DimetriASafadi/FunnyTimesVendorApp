@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_10sdp"
+    android:background="@drawable/ft_radius_fill"
+    >
+    <LinearLayout
+        android:id="@+id/WholeOrBok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/OrBokImage"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            app:riv_corner_radius="@dimen/_5sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:src="@color/ft_orange"
+
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+
+            >
+            <TextView
+                android:id="@+id/OrBokName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محمد خالد عبدالمجيد"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_black"
+                android:alpha="0.9"
+                android:maxLines="1"
+                android:textSize="@dimen/_10ssp"
+                android:layout_marginVertical="@dimen/_3sdp"
+                />
+
+            <TextView
+                android:id="@+id/OrBokId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#E3YU99OP7M"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_grey_9"
+                android:textSize="@dimen/_9ssp"
+                android:maxLines="1"
+                android:layout_marginVertical="@dimen/_1sdp"
+                />
+
+            <TextView
+                android:id="@+id/OrBokCreationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2021/8/8"
+                android:drawableStart="@drawable/ft_watch_clock_time_icon"
+                android:drawablePadding="@dimen/_3sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_grey_3"
+                android:textSize="@dimen/_9ssp"
+                android:maxLines="1"
+                android:layout_marginVertical="@dimen/_3sdp"
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(2)"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textColor="@color/ft_black"
+            android:alpha="0.9"
+            android:maxLines="1"
+            android:layout_marginVertical="@dimen/_7sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:textSize="@dimen/_10ssp"
+            android:layout_gravity="top"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="40 ر.س"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textColor="@color/ft_dark_blue"
+            android:textStyle="bold"
+            android:layout_marginVertical="@dimen/_7sdp"
+            android:alpha="0.9"
+            android:maxLines="1"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:textSize="@dimen/_10ssp"
+            android:layout_gravity="top"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/TopSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        >
+
+        <TextView
+            android:id="@+id/OrBokAll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@color/ft_green"
+            android:text="مكتملة"
+            android:maxLines="1"
+            android:background="@drawable/ft_radius_fill_light"
+            android:backgroundTint="@color/ft_light_green"
+            />
+
+        <TextView
+            android:id="@+id/OrBokPending"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/ft_menu_unselected"
+            android:text="محمد سالم"
+            android:maxLines="1"
+            android:background="@drawable/ft_radius_fill_light"
+            android:backgroundTint="@color/ft_grey"
+            />
+        <TextView
+            android:id="@+id/OrBokCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@color/ft_menu_unselected"
+            android:text="الرياض حي الرياض"
+            android:drawableStart="@drawable/ft_location_pin_icon"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:maxLines="1"
+            android:background="@drawable/ft_radius_fill_light"
+            android:backgroundTint="@color/ft_grey"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>
