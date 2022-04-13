@@ -1,5 +1,6 @@
 package com.example.funnytimesvendorapp.MainMenuSection.HomeSection
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.example.funnytimesvendorapp.CommonSection.Constants
 import com.example.funnytimesvendorapp.Models.FTPMyItem
 import com.example.funnytimesvendorapp.Models.FTPOrBokBar
 import com.example.funnytimesvendorapp.Models.FTPOrdBok
+import com.example.funnytimesvendorapp.MyProductSection.MyProductScreen
 import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.RecViews.MyItemsRecView
 import com.example.funnytimesvendorapp.RecViews.OrBokRecView
@@ -69,6 +71,10 @@ class HomeFrag: Fragment() {
         myItemsRecView = MyItemsRecView(ftpMyItem,requireContext())
         binding.MyItemsRecycler.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         binding.MyItemsRecycler.adapter = myItemsRecView
+
+        binding.MyItems.setOnClickListener {
+            startActivity(Intent(requireContext(),MyProductScreen::class.java))
+        }
 
         Home_Request()
 

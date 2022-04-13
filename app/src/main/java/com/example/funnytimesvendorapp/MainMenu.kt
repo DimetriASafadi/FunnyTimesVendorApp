@@ -78,8 +78,8 @@ class MainMenu : AppCompatActivity() {
             false
         }
         binding.AddButton.setOnClickListener {
-
-            val intent = Intent(this,NewClinicScreen::class.java)
+            val intent = Intent(this,EditChaletPriceScreen::class.java)
+            intent.putExtra("ItemId","64")
             startActivity(intent)
         }
 

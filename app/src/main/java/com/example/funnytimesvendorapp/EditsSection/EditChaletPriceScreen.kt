@@ -310,7 +310,7 @@ class EditChaletPriceScreen : AppCompatActivity() {
                         }
                     }else{
                         if (proppriceType == "fix"){
-                            binding.PropertyPrice.setText(priceTable.getInt("price"))
+                            binding.PropertyPrice.setText(priceTable.getInt("price").toString())
                             binding.PropertyDeposit.setText(data.getString("deposit").toString())
                         }else{
                             binding.PriceSaturday.setText(priceTable.getInt("Sat").toString())

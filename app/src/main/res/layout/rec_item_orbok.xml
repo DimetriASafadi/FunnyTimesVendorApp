@@ -25,8 +25,9 @@
             />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginVertical="@dimen/_5sdp"
             android:orientation="vertical"
             android:gravity="center_vertical"
@@ -36,7 +37,7 @@
                 android:id="@+id/OrBokName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="محمد خالد عبدالمجيد"
+                android:text="ساعى بأفضل الجودات"
                 android:fontFamily="@font/montserrat_arabic"
                 android:textColor="@color/ft_black"
                 android:alpha="0.9"
@@ -75,6 +76,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/OrBokItemsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="(2)"
@@ -89,9 +91,9 @@
             />
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/OrBokPrice"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="40 ر.س"
             android:fontFamily="@font/montserrat_arabic"
             android:textColor="@color/ft_dark_blue"
@@ -102,6 +104,7 @@
             android:layout_marginEnd="@dimen/_5sdp"
             android:textSize="@dimen/_10ssp"
             android:layout_gravity="top"
+            android:gravity="end"
             />
 
     </LinearLayout>
@@ -117,7 +120,7 @@
         >
 
         <TextView
-            android:id="@+id/OrBokAll"
+            android:id="@+id/OrBokStatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -134,7 +137,7 @@
             />
 
         <TextView
-            android:id="@+id/OrBokPending"
+            android:id="@+id/OrBokCustomer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -142,7 +145,7 @@
             android:paddingVertical="@dimen/_5sdp"
             android:layout_marginHorizontal="@dimen/_5sdp"
             android:fontFamily="@font/montserrat_arabic"
-            android:textSize="@dimen/_11ssp"
+            android:textSize="@dimen/_9ssp"
             android:textColor="@color/ft_menu_unselected"
             android:text="محمد سالم"
             android:maxLines="1"
@@ -150,7 +153,7 @@
             android:backgroundTint="@color/ft_grey"
             />
         <TextView
-            android:id="@+id/OrBokCancel"
+            android:id="@+id/OrBokLocation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
