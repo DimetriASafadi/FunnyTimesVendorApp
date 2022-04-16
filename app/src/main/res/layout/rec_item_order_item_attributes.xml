@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_4sdp"
+            >
+            <TextView
+                android:id="@+id/AttributesName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="الكمية :"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_menu_unselected"
+                android:textSize="@dimen/_9ssp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/ft_black"
+            android:alpha="0.1"
+            />
+        <TextView
+            android:id="@+id/AttributesValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2 قطعة"
+            android:gravity="center"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_8ssp"
+            />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

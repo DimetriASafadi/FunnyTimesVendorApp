@@ -1,6 +1,7 @@
 package com.example.funnytimesvendorapp.RecViews
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.funnytimesvendorapp.Models.FTPMyOrder
+import com.example.funnytimesvendorapp.OrBokSection.FoodScreen
+import com.example.funnytimesvendorapp.OrBokSection.ProductScreen
 import com.example.funnytimesvendorapp.R
 import com.makeramen.roundedimageview.RoundedImageView
 
@@ -56,6 +59,14 @@ class MyOrdRecView (val data : ArrayList<FTPMyOrder>, val context: Context): Rec
 
         holder.OrBokCustomer.text = data[position].OrderCustomer.toString()
         holder.OrBokLocation.text = data[position].OrderLat.toString()+"|"+data[position].OrderLng.toString()
+
+        holder.WholeOrBok.setOnClickListener {
+            if (data[position].OrderItems[0].ItemDetails?.ItemType.toString() == "food"){
+                context.startActivity(Intent(context, FoodScreen::class.java))
+            }else{
+                context.startActivity(Intent(context, ProductScreen::class.java))
+            }
+        }
 
 
 

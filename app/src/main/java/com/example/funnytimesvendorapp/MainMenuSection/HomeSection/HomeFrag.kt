@@ -126,14 +126,10 @@ class HomeFrag: Fragment() {
                     commonFuncs.hideLoadingDialog()
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
-                    val map = java.util.HashMap<String, String>()
-
-
+                    val map = HashMap<String, String>()
                     if (commonFuncs.IsInSP(requireContext(), Constants.KeyUserToken)){
                         map["Authorization"] = "Bearer "+commonFuncs.GetFromSP(requireContext(), Constants.KeyUserToken)
                     }
-                    map["Authorization"] = "Bearer "+"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5MTU5NWQ5ZS1iYjA5LTQ0MjMtOGY0YS0xZTdlMzI1ODBhNGQiLCJqdGkiOiJlYTFmYWNkNjAxZTMyYzJhZThlOTgwZjlkMGUxZjhiY2NlOTk4Mjk5OTVlNzJlZDU3OTMyMTRkOWFiNGI5MzU5MDcxNDhmMDk1ZGE5ZTk2MiIsImlhdCI6MTY0Nzc3Njg4OCwibmJmIjoxNjQ3Nzc2ODg4LCJleHAiOjE2NzkzMTI4ODgsInN1YiI6IjM3NCIsInNjb3BlcyI6W119.U_54ouTLkTMHfO6wVI_tys_suzB7gsZ4BcSQvn9PS4he1hV1PmLLAISlgmhHk_qTIyV__bLu4i5w6s7kj_U_1pmb_2UIjlUwZxvBu6GEWI5JV0BdLfdF81pByg3hSAy3IhHC-iRZ2VXOkWvhUKbzvrKMT9o96NA-NhsB3nDjqCCpcuKqsnN78-rKz7-AYHT3kx8WzR9ISXgGtAtbuGuPY0VOywv4OjZ7qZR821Jqstv6WU1okkiZtOer_I5eANuuTn7M5N00IHlj7aQj0v-Q9BViI2pCH4bukNGXLYH0Y4bp0hRwVgJGQLfJQIXGRdkxWc6eUrx7FeyoaNMmN737rDSFcICtrFQ9Lb3evPL_motCQsts8gCaLGhEnYTFM69gyisJsuA0bB756i3JFkJn5k5qhtffO0obDfChZSKV2qN0ITZxZNdPGOoNU5UIN0y_wuMPpwYYrRwPRxbDYfqTLB_8enaDDYVwOs8lXGrWyFIY3-HUZBqKIKehyyjVNaqEkCCV1fetvnLxO2zZZXGdc64CY0uX55FvyK0yIKPP5rdwk4SZ1ut8qiewTfWdpkDuRKaULm3dWymzOmx2Y8-5JxTeH8cTgvIxAxcEuaytodW7-BvAgff_pSyUpdYjvKB5iemD577OJFmjGn3nlPp39APPDdA85yzV6J4D5h7uGZ8"
-
                     return map
                 }
             }

@@ -19,6 +19,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FunnyTimesVendorApp">
         <activity
+            android:name=".OrBokSection.ProductScreen"
+            android:exported="false" />
+        <activity
+            android:name=".OrBokSection.FoodScreen"
+            android:exported="false" />
+        <activity
+            android:name=".OrBokSection.ServiceScreen"
+            android:exported="false" />
+        <activity
+            android:name=".OrBokSection.BookScreen"
+            android:exported="false" />
+        <activity
             android:name=".EditsSection.EditChaletPriceScreen"
             android:configChanges="locale|orientation"
             android:exported="true"

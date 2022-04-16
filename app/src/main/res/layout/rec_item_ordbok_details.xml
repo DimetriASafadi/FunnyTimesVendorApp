@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/ItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:text="بيانات الطلب"
+        android:layout_gravity="start"
+        android:textColor="@color/ft_dark_blue"
+        android:textSize="@dimen/_9ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/ft_stroke_square_borders"
+        android:layout_margin="@dimen/_10sdp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_4sdp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="الكمية :"
+                    android:drawableStart="@drawable/ft_item_quantity_icon"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_menu_unselected"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/ft_black"
+                android:alpha="0.1"
+                />
+            <TextView
+                android:id="@+id/ItemQuantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2 قطعة"
+                android:gravity="center"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_8ssp"
+                />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_4sdp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="النوع :"
+                    android:drawableStart="@drawable/ft_item_type_icon"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_menu_unselected"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/ft_black"
+                android:alpha="0.1"
+                />
+            <TextView
+                android:id="@+id/ItemType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ملابس"
+                android:gravity="center"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_8ssp" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_4sdp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="السعر :"
+                    android:drawableStart="@drawable/ft_item_payment_icon"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_menu_unselected"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/ft_black"
+                android:alpha="0.1"
+                />
+            <TextView
+                android:id="@+id/ItemPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="40 ر.س"
+                android:gravity="center"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_8ssp"
+                />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_4sdp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="وقت الطلب :"
+                    android:drawableStart="@drawable/ft_item_clock_icon"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_menu_unselected"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/ft_black"
+                android:alpha="0.1"
+                />
+            <TextView
+                android:id="@+id/ItemCreatedAt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2 قطعة"
+                android:gravity="center"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_8ssp" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_4sdp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="طريقة الدفع :"
+                    android:drawableStart="@drawable/ft_item_price_icon"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_menu_unselected"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/ft_black"
+                android:alpha="0.1"
+                />
+            <TextView
+                android:id="@+id/ItemPaymentMethod"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2 قطعة"
+                android:gravity="center"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_8ssp" />
+
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ItemAttributesRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

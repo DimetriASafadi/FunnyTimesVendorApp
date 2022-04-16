@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrBokSection.ServiceScreen">
+
+
+    <ImageView
+        android:id="@+id/ServiceImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_190sdp"
+        android:src="@color/ft_orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp">
+
+                <RelativeLayout
+                    android:id="@+id/backBtn"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:alpha="0.1"
+                        android:src="@color/ft_black" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ft_android_back_arrow"
+                        app:tint="@color/ft_white" />
+                </RelativeLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ft_radius_top_fill"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/ServiceOrderName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:maxLines="2"
+                    android:text="بلوفر لون أبيض ماركة أصلية"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:textColor="@color/ft_black"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ServiceOrderId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:text="#E3YU99OP7M"
+                    android:textColor="@color/ft_grey_9"
+                    android:textSize="@dimen/_11ssp" />
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ServiceCustomerImage"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@color/ft_orange" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:layout_toStartOf="@+id/ServiceCustomerPhone"
+                        android:layout_toEndOf="@+id/ServiceCustomerImage"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ServiceCustomerName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_3sdp"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:maxLines="1"
+                            android:text="asdwqdqwdwqd"
+                            android:textColor="@color/ft_orange"
+                            android:textDirection="rtl"
+                            android:textSize="@dimen/_9ssp" />
+
+                        <TextView
+                            android:id="@+id/ServiceCustomerLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_3sdp"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:maxLines="1"
+                            android:text="asdwqdqwdwqd"
+                            android:textColor="@color/ft_menu_unselected"
+                            android:textDirection="rtl"
+                            android:textSize="@dimen/_9ssp" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ServiceCustomerMessage"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="@dimen/_2sdp"
+                        android:src="@drawable/ft_message_chat_icon" />
+
+                    <ImageView
+                        android:id="@+id/ServiceCustomerPhone"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="@dimen/_2sdp"
+                        android:layout_toStartOf="@+id/ServiceCustomerMessage"
+                        android:src="@drawable/ft_call_phone_icon" />
+
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:text="بيانات الطلب"
+                    android:layout_gravity="start"
+                    android:textColor="@color/ft_black"
+                    android:textSize="@dimen/_10ssp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/ft_stroke_square_borders"
+                    android:layout_margin="@dimen/_10sdp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="الكمية :"
+                                android:drawableStart="@drawable/ft_item_quantity_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServiceQuantity"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2 قطعة"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp"
+                            />
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="النوع :"
+                                android:drawableStart="@drawable/ft_item_type_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServiceType"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ملابس"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp" />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="السعر :"
+                                android:drawableStart="@drawable/ft_item_payment_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServicePrice"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="40 ر.س"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp"
+                            />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="وقت الطلب :"
+                                android:drawableStart="@drawable/ft_item_clock_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServiceCreatedAt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2 قطعة"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp" />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="طريقة الدفع :"
+                                android:drawableStart="@drawable/ft_item_price_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServicePaymentMethod"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2 قطعة"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp" />
+
+
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ServiceAttributesRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:text="عنوان المشتري"
+                    android:layout_gravity="start"
+                    android:textColor="@color/ft_black"
+                    android:textSize="@dimen/_10ssp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_margin="@dimen/_10sdp">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/ServiceCustomerPosition"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ft_placeholder_map"
+                        app:riv_corner_radius="@dimen/_10sdp" />
+
+                    <ImageView
+                        android:id="@+id/ServiceToGoogleMap"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:src="@drawable/ft_go_to_map_icon" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:text="ملاحظات المشتري"
+                    android:layout_gravity="start"
+                    android:textColor="@color/ft_black"
+                    android:textSize="@dimen/_10ssp" />
+
+                <TextView
+                    android:id="@+id/ServiceCustomerNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:text="عنوان المشتري"
+                    android:background="@drawable/ft_radius_fill"
+                    android:backgroundTint="@color/ft_grey_12"
+                    android:layout_gravity="start"
+                    android:textColor="@color/ft_grey_1"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:background="@drawable/ft_radius_top_fill"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <TextView
+            android:id="@+id/AcceptOrBok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:background="@drawable/ft_radius_fill_light"
+            android:backgroundTint="@color/ft_dark_blue"
+            android:fontFamily="@font/montserrat_arabic"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_7sdp"
+            android:text="قبول الطلب"
+            android:textColor="@color/ft_white"
+            android:textSize="@dimen/_10ssp" />
+
+        <TextView
+            android:id="@+id/CancelOrBok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:background="@drawable/ft_radius_fill_light"
+            android:backgroundTint="@color/ft_grey_8"
+            android:fontFamily="@font/montserrat_arabic"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_7sdp"
+            android:text="رفض الطلب"
+            android:textColor="@color/ft_black"
+            android:textSize="@dimen/_10ssp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

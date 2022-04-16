@@ -12,6 +12,7 @@
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_radius_stroke_orange.xml" value="0.2885" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_radius_stroke_red.xml" value="0.2885" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_spinner_background.xml" value="0.182" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_stroke_square_borders.xml" value="0.2885" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ft_upload_cloud_icon.xml" value="0.336" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/drawable/ic_group_34203.xml" value="0.2885" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ft_delete_trash_remove_icon.xml" value="0.2911500641299701" />
@@ -25,12 +26,14 @@
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_frag_home.xml" value="0.2911500641299701" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_frag_setting.xml" value="0.2911500641299701" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_frag_user.xml" value="0.2911500641299701" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_book.xml" value="0.2911500641299701" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_code_confirm.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_edit_chalet.xml" value="0.25" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_edit_chalet_price.xml" value="0.2911500641299701" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_edit_clinic.xml" value="0.2911500641299701" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_edit_food.xml" value="0.2911500641299701" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_edit_product.xml" value="0.2911500641299701" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_food.xml" value="0.25" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_main_menu.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_my_product.xml" value="0.2911500641299701" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_new_chalet.xml" value="0.33" />
@@ -42,15 +45,19 @@
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_password_code_confirm.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_phone_confirm.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_phone_password.xml" value="0.3546875" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_product.xml" value="0.27960666951688756" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_provider_category.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_provider_details.xml" value="0.33" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_provider_location.xml" value="0.3546875" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_service.xml" value="0.27960666951688756" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_sign_in.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_sign_up.xml" value="0.3546875" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/ftp_screen_splash.xml" value="0.35052083333333334" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_my_product.xml" value="0.67" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_new_service.xml" value="0.5" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_orbok.xml" value="0.5252225519287834" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_ordbok_details.xml" value="0.5" />
+        <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_order_item_attributes.xml" value="0.5" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_pending_book_order.xml" value="0.5" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_prop_attribute.xml" value="0.2911500641299701" />
         <entry key="..\:/Android/Testing/FunnyTimesVendorApp/app/src/main/res/layout/rec_item_prop_attribute_container.xml" value="0.2911500641299701" />
