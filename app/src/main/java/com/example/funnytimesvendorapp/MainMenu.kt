@@ -78,8 +78,7 @@ class MainMenu : AppCompatActivity() {
             false
         }
         binding.AddButton.setOnClickListener {
-            val intent = Intent(this,EditChaletPriceScreen::class.java)
-            intent.putExtra("ItemId","64")
+            val intent = Intent(this,NewFoodScreen::class.java)
             startActivity(intent)
         }
 

@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.funnytimesvendorapp.Models.FTPMyOrder
-import com.example.funnytimesvendorapp.OrBokSection.FoodScreen
+import com.example.funnytimesvendorapp.OrBokSection.OrderScreen
 import com.example.funnytimesvendorapp.OrBokSection.ProductScreen
 import com.example.funnytimesvendorapp.R
 import com.makeramen.roundedimageview.RoundedImageView
@@ -62,7 +62,7 @@ class MyOrdRecView (val data : ArrayList<FTPMyOrder>, val context: Context): Rec
 
         holder.WholeOrBok.setOnClickListener {
             if (data[position].OrderItems[0].ItemDetails?.ItemType.toString() == "food"){
-                context.startActivity(Intent(context, FoodScreen::class.java))
+                context.startActivity(Intent(context, OrderScreen::class.java))
             }else{
                 context.startActivity(Intent(context, ProductScreen::class.java))
             }

@@ -11,12 +11,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.funnytimesvendorapp.Models.FTPOrdBok
-import com.example.funnytimesvendorapp.OrBokSection.FoodScreen
-import com.example.funnytimesvendorapp.OrBokSection.ProductScreen
+import com.example.funnytimesvendorapp.OrBokSection.OrderScreen
+import com.example.funnytimesvendorapp.OrBokSection.ServiceScreen
 import com.example.funnytimesvendorapp.R
 import com.makeramen.roundedimageview.RoundedImageView
 
-class OrBokRecView (val data : ArrayList<FTPOrdBok>, val context: Context): RecyclerView.Adapter<OrBokViewHolder>() {
+class OrBokRecView (val data : ArrayList<FTPOrdBok>, val context: Context,var itemsType:String): RecyclerView.Adapter<OrBokViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrBokViewHolder {
         return OrBokViewHolder(LayoutInflater.from(context).inflate(R.layout.rec_item_pending_book_order, parent, false))    }
@@ -37,11 +37,16 @@ class OrBokRecView (val data : ArrayList<FTPOrdBok>, val context: Context): Recy
         holder.OrBokCreationDate.text = data[position].ObCreatedAt.toString()
 
         holder.WholeOrBok.setOnClickListener {
-            if (data[position].ObType == "food"){
-                context.startActivity(Intent(context,FoodScreen::class.java))
+            if (itemsType == "order"){
+                val intent = Intent(context,OrderScreen::class.java)
+                intent.putExtra("itemid",data[position].ObId.toString())
+                context.startActivity(intent)
             }else{
-                context.startActivity(Intent(context,ProductScreen::class.java))
+                val intent = Intent(context,ServiceScreen::class.java)
+                intent.putExtra("itemid",data[position].ObId.toString())
+                context.startActivity(intent)
             }
+
         }
 
 

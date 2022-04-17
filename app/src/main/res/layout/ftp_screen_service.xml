@@ -176,7 +176,7 @@
                     android:layout_marginHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_arabic"
-                    android:text="بيانات الطلب"
+                    android:text="بيانات الحجز"
                     android:layout_gravity="start"
                     android:textColor="@color/ft_black"
                     android:textSize="@dimen/_10ssp" />
@@ -207,56 +207,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="الكمية :"
-                                android:drawableStart="@drawable/ft_item_quantity_icon"
-                                android:drawablePadding="@dimen/_3sdp"
-                                android:fontFamily="@font/montserrat_arabic"
-                                android:textColor="@color/ft_menu_unselected"
-                                android:textSize="@dimen/_9ssp" />
-
-                        </LinearLayout>
-
-
-                        <View
-                            android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/ft_black"
-                            android:alpha="0.1"
-                            />
-                        <TextView
-                            android:id="@+id/ServiceQuantity"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="2 قطعة"
-                            android:gravity="center"
-                            android:fontFamily="@font/montserrat_arabic"
-                            android:textColor="@color/ft_dark_blue"
-                            android:textSize="@dimen/_8ssp"
-                            />
-
-
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        >
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:paddingVertical="@dimen/_4sdp"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="النوع :"
+                                android:text="نوع الخدمة :"
                                 android:drawableStart="@drawable/ft_item_type_icon"
                                 android:drawablePadding="@dimen/_3sdp"
                                 android:fontFamily="@font/montserrat_arabic"
@@ -277,16 +228,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="ملابس"
+                            android:text="2 قطعة"
                             android:gravity="center"
                             android:fontFamily="@font/montserrat_arabic"
                             android:textColor="@color/ft_dark_blue"
-                            android:textSize="@dimen/_8ssp" />
+                            android:textSize="@dimen/_8ssp"
+                            />
 
 
 
                     </LinearLayout>
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -326,6 +277,55 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="ملابس"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp" />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="العربون :"
+                                android:drawableStart="@drawable/ft_item_payment_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServiceDeposit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="40 ر.س"
                             android:gravity="center"
                             android:fontFamily="@font/montserrat_arabic"
@@ -355,7 +355,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="وقت الطلب :"
+                                android:text="تاريخ الدخول :"
                                 android:drawableStart="@drawable/ft_item_clock_icon"
                                 android:drawablePadding="@dimen/_3sdp"
                                 android:fontFamily="@font/montserrat_arabic"
@@ -372,7 +372,7 @@
                             android:alpha="0.1"
                             />
                         <TextView
-                            android:id="@+id/ServiceCreatedAt"
+                            android:id="@+id/ServiceStartDate"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -385,6 +385,151 @@
 
 
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="تاريخ الخروج :"
+                                android:drawableStart="@drawable/ft_item_clock_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServiceEndDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2 قطعة"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp" />
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="وقت الدخول :"
+                                android:drawableStart="@drawable/ft_item_clock_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServiceStartTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2 قطعة"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp" />
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="وقت الخروج :"
+                                android:drawableStart="@drawable/ft_item_clock_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServiceEndTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2 قطعة"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp" />
+
+
+
+                    </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -510,7 +655,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_100sdp" />
+                    android:layout_height="@dimen/_150sdp" />
 
             </LinearLayout>
 

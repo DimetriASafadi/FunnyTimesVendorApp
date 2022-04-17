@@ -22,7 +22,7 @@ class OrderItemsRecView (val data : ArrayList<FTPMyOrderItem>, val context: Cont
     override fun onBindViewHolder(holder: OrderItemViewHolder, position: Int) {
 
 
-        holder.ItemName.text = data[position].ItemDetails?.ItemName.toString() + "("+data[position].ItemTotal+")"
+        holder.ItemName.text = data[position].ItemDetails?.ItemName.toString() + " ("+data[position].ItemTotal+" ريال"+")"
         holder.ItemQuantity.text = data[position].ItemQuantity.toString()
         holder.ItemType.text = data[position].ItemDetails?.ItemType.toString()
         holder.ItemPrice.text = data[position].ItemPrice

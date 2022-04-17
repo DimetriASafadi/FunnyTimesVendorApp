@@ -8,11 +8,11 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
-import com.example.funnytimesvendorapp.Models.FTPMyItem
 import com.example.funnytimesvendorapp.Models.FTPMyOrderItem
-import com.example.funnytimesvendorapp.Models.FTPOrBokBar
+import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.RecViews.OrderItemsRecView
 import com.example.funnytimesvendorapp.databinding.FtpScreenFoodBinding
 import com.google.gson.GsonBuilder
@@ -20,7 +20,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.nio.charset.Charset
 
-class FoodScreen : AppCompatActivity() {
+class OrderScreen : AppCompatActivity() {
 
     lateinit var binding:FtpScreenFoodBinding
 
@@ -49,14 +49,14 @@ class FoodScreen : AppCompatActivity() {
         binding.OrderItemsRecycler.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         binding.OrderItemsRecycler.adapter = orderItemsRecView
 
-        Food_Order_Request()
+        Order_Details_Request()
     }
 
 
 
 
 
-    fun Food_Order_Request(){
+    fun Order_Details_Request(){
         val url = Constants.APIMain + "api/vendor-app/order/$itemid"
         try {
             val stringRequest = object : StringRequest(
@@ -85,8 +85,11 @@ class FoodScreen : AppCompatActivity() {
                     binding.FoodCustomerName.text = username
                     binding.FoodCustomerLocation.text = lat+","+lng
 
-
-
+                    Glide.with(this)
+                        .load(fTPMyOrderItem[0].ItemDetails?.ItemImg.toString())
+                        .centerCrop()
+                        .placeholder(R.drawable.ft_broken_image)
+                        .into(binding.FoodImage)
 
 
                 }, Response.ErrorListener { error ->
@@ -103,8 +106,8 @@ class FoodScreen : AppCompatActivity() {
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val map = HashMap<String,String>()
-                    if (commonFuncs.IsInSP(this@FoodScreen, Constants.KeyUserToken)){
-                        map["Authorization"] = "Bearer "+commonFuncs.GetFromSP(this@FoodScreen, Constants.KeyUserToken)
+                    if (commonFuncs.IsInSP(this@OrderScreen, Constants.KeyUserToken)){
+                        map["Authorization"] = "Bearer "+commonFuncs.GetFromSP(this@OrderScreen, Constants.KeyUserToken)
                     }
                     return map
                 }

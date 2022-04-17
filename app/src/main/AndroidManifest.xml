@@ -20,16 +20,24 @@
         android:theme="@style/Theme.FunnyTimesVendorApp">
         <activity
             android:name=".OrBokSection.ProductScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
-            android:name=".OrBokSection.FoodScreen"
-            android:exported="false" />
+            android:name=".OrBokSection.OrderScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".OrBokSection.ServiceScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".OrBokSection.BookScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".EditsSection.EditChaletPriceScreen"
             android:configChanges="locale|orientation"

@@ -64,7 +64,7 @@ class HomeFrag: Fragment() {
 
 
 
-        orBokRecView = OrBokRecView(fTPOrdBoks,requireContext())
+        orBokRecView = OrBokRecView(fTPOrdBoks,requireContext(),"service")
         binding.OrBokRecycler.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         binding.OrBokRecycler.adapter = orBokRecView
 
@@ -99,9 +99,10 @@ class HomeFrag: Fragment() {
                     val data = jsonobj.getJSONObject("data")
                     val bookingCount = data.getJSONArray("bookingCount")
                     val order = data.getJSONArray("order")
+                    val booking = data.getJSONArray("booking")
                     val product = data.getJSONArray("product")
                     val gson = GsonBuilder().create()
-                    fTPOrdBoks.addAll(gson.fromJson(order.toString(),Array<FTPOrdBok>::class.java).toList())
+                    fTPOrdBoks.addAll(gson.fromJson(booking.toString(),Array<FTPOrdBok>::class.java).toList())
                     ftpMyItem.addAll(gson.fromJson(product.toString(),Array<FTPMyItem>::class.java).toList())
                     ftpOrBokBar.addAll(gson.fromJson(bookingCount.toString(),Array<FTPOrBokBar>::class.java).toList())
                     xdata.addAll(GetXLineData())
