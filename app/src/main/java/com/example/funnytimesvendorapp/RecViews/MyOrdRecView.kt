@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.funnytimesvendorapp.Models.FTPMyOrder
 import com.example.funnytimesvendorapp.OrBokSection.OrderScreen
-import com.example.funnytimesvendorapp.OrBokSection.ProductScreen
 import com.example.funnytimesvendorapp.R
 import com.makeramen.roundedimageview.RoundedImageView
 
@@ -61,11 +60,9 @@ class MyOrdRecView (val data : ArrayList<FTPMyOrder>, val context: Context): Rec
         holder.OrBokLocation.text = data[position].OrderLat.toString()+"|"+data[position].OrderLng.toString()
 
         holder.WholeOrBok.setOnClickListener {
-            if (data[position].OrderItems[0].ItemDetails?.ItemType.toString() == "food"){
-                context.startActivity(Intent(context, OrderScreen::class.java))
-            }else{
-                context.startActivity(Intent(context, ProductScreen::class.java))
-            }
+            val intent = Intent(context, OrderScreen::class.java)
+            intent.putExtra("itemid",data[position].OrderId.toString())
+            context.startActivity(intent)
         }
 
 

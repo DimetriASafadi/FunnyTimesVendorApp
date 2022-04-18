@@ -1,6 +1,7 @@
 package com.example.funnytimesvendorapp.MainMenuSection.HomeSection
 
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -73,6 +74,11 @@ class HomeFrag: Fragment() {
         binding.MyItemsRecycler.adapter = myItemsRecView
 
         binding.MyItems.setOnClickListener {
+            startActivity(Intent(requireContext(),MyProductScreen::class.java))
+        }
+
+        binding.AllMyItems.paintFlags = binding.AllMyItems.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        binding.AllMyItems.setOnClickListener {
             startActivity(Intent(requireContext(),MyProductScreen::class.java))
         }
 
@@ -192,13 +198,13 @@ class HomeFrag: Fragment() {
             set1 = binding.SalesChart.data.getDataSetByIndex(0) as BarDataSet
             set1.values = ydata
           //  set1.setColors(resources.getColor(R.color.ft_orange,null))
-            set1.setColor(resources.getColor(R.color.ft_orange,null))
+            set1.color = resources.getColor(R.color.ft_orange,null)
             binding.SalesChart.data.notifyDataChanged()
             binding.SalesChart.notifyDataSetChanged()
         } else {
             set1 = BarDataSet(ydata, "Data Set")
           //  set1.setColors(resources.getColor(R.color.ft_orange,null))
-            set1.setColor(resources.getColor(R.color.ft_orange,null))
+            set1.color = resources.getColor(R.color.ft_orange,null)
             set1.setDrawValues(false)
             val dataSets: ArrayList<IBarDataSet> = ArrayList()
             dataSets.add(set1)

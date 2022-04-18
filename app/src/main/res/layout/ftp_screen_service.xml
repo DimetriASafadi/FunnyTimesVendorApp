@@ -338,6 +338,56 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/SectionPeriod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/_4sdp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="الفترة :"
+                                android:drawableStart="@drawable/ft_item_clock_icon"
+                                android:drawablePadding="@dimen/_3sdp"
+                                android:fontFamily="@font/montserrat_arabic"
+                                android:textColor="@color/ft_menu_unselected"
+                                android:textSize="@dimen/_9ssp" />
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/ft_black"
+                            android:alpha="0.1"
+                            />
+                        <TextView
+                            android:id="@+id/ServicePeriod"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2 قطعة"
+                            android:gravity="center"
+                            android:fontFamily="@font/montserrat_arabic"
+                            android:textColor="@color/ft_dark_blue"
+                            android:textSize="@dimen/_8ssp" />
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/SectionStartDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -385,7 +435,9 @@
 
 
                     </LinearLayout>
+
                     <LinearLayout
+                        android:id="@+id/SectionEndDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -434,6 +486,7 @@
 
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/SectionStartTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -482,6 +535,7 @@
 
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/SectionEndTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"

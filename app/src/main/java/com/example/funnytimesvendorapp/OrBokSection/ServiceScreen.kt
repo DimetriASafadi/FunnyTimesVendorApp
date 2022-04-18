@@ -3,6 +3,7 @@ package com.example.funnytimesvendorapp.OrBokSection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -10,6 +11,7 @@ import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants
+import com.example.funnytimesvendorapp.CommonSection.Constants.GOOGLE_MAP_TEST_KEY
 import com.example.funnytimesvendorapp.Models.FTPMyOrderItem
 import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.databinding.FtpScreenServiceBinding
@@ -37,6 +39,7 @@ class ServiceScreen : AppCompatActivity() {
 
     fun Service_Details_Request(){
         val url = Constants.APIMain + "api/vendor-app/booking/$itemid"
+        commonFuncs.showLoadingDialog(this)
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.GET, url, Response.Listener<String> { response ->
@@ -49,31 +52,21 @@ class ServiceScreen : AppCompatActivity() {
                     val name = data.getString("name")
                     val type = data.getString("type")
                     val total = data.getInt("total")
-                    val price = nesteddata.getString("price")
+                    val deposit = nesteddata.getString("deposit")
                     val booking_type = data.getInt("booking_type")
+                    val start_date = data.getString("start_date").toString()
+                    val end_date = data.getString("end_date").toString()
+                    val start_hour = data.getString("start_hour").toString()
+                    val end_hour = data.getString("end_hour").toString()
+                    val period = data.getInt("period").toString()
+
+
+                    val lat = nesteddata.getString("lat").toString()
+                    val lng = nesteddata.getString("lng").toString()
 
                     val username = data.getString("username")
                     val payment_gateway = data.getString("payment_gateway")
 
-
-                    binding.ServiceOrderName.text = name
-                    binding.ServiceOrderId.text = "طلب رقم :$id"
-                    binding.ServiceCustomerName.text = username
-                    binding.ServiceCustomerLocation.text = nesteddata.getString("lat")+","+nesteddata.getString("lng")
-                    binding.ServiceType.text = type
-                    binding.ServicePrice.text = total.toString()
-                    binding.ServiceDeposit.text = price
-
-                    if (booking_type == 1){
-
-                    }else if (booking_type == 2){
-
-                    }else if(booking_type == 3){
-
-                    }else if (booking_type == 4){
-
-
-                    }
 
 
                     Glide.with(this)
@@ -81,6 +74,61 @@ class ServiceScreen : AppCompatActivity() {
                         .centerCrop()
                         .placeholder(R.drawable.ft_broken_image)
                         .into(binding.ServiceImage)
+
+                    binding.ServiceOrderName.text = name
+                    binding.ServiceOrderId.text = "طلب رقم :$id"
+                    binding.ServiceCustomerName.text = username
+                    binding.ServiceCustomerLocation.text = nesteddata.getString("lat")+","+nesteddata.getString("lng")
+                    binding.ServiceType.text = type
+                    binding.ServicePrice.text = total.toString()
+                    binding.ServiceDeposit.text = deposit
+                    binding.ServicePeriod.text = period
+                    binding.ServiceStartDate.text = start_date
+                    binding.ServiceEndDate.text = end_date
+                    binding.ServiceStartTime.text = start_hour
+                    binding.ServiceEndTime.text = end_hour
+                    binding.ServicePaymentMethod.text = payment_gateway
+
+                    if (booking_type == 1){
+                        binding.SectionStartDate.visibility = View.VISIBLE
+                        binding.SectionEndDate.visibility = View.VISIBLE
+                        binding.SectionStartTime.visibility = View.GONE
+                        binding.SectionEndTime.visibility = View.GONE
+                        binding.SectionPeriod.visibility = View.GONE
+
+                    }else if (booking_type == 2){
+                        binding.SectionStartDate.visibility = View.VISIBLE
+                        binding.SectionEndDate.visibility = View.GONE
+                        binding.SectionStartTime.visibility = View.VISIBLE
+                        binding.SectionEndTime.visibility = View.VISIBLE
+                        binding.SectionPeriod.visibility = View.GONE
+
+                    }else if(booking_type == 3){
+                        binding.SectionStartDate.visibility = View.VISIBLE
+                        binding.SectionEndDate.visibility = View.GONE
+                        binding.SectionStartTime.visibility = View.GONE
+                        binding.SectionEndTime.visibility = View.GONE
+                        binding.SectionPeriod.visibility = View.VISIBLE
+
+                    }else if (booking_type == 4){
+                        binding.SectionStartDate.visibility = View.VISIBLE
+                        binding.SectionEndDate.visibility = View.GONE
+                        binding.SectionStartTime.visibility = View.VISIBLE
+                        binding.SectionEndTime.visibility = View.GONE
+                        binding.SectionPeriod.visibility = View.GONE
+
+                    }
+
+                    val url = "https://maps.googleapis.com/maps/api/staticmap?size=1100x795&markers=color:red|label:S|$lat,$lng&key=$GOOGLE_MAP_TEST_KEY"
+
+                    Glide.with(this)
+                        .load(url)
+                        .centerCrop()
+                        .placeholder(R.drawable.ft_broken_image)
+                        .into(binding.ServiceImage)
+
+
+                    commonFuncs.hideLoadingDialog()
 
                 }, Response.ErrorListener { error ->
                     if (error.networkResponse != null && error.networkResponse.data != null) {
@@ -93,6 +141,7 @@ class ServiceScreen : AppCompatActivity() {
                         commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
                         Log.e("eResponsew", "RequestError:$error")
                     }
+                    commonFuncs.hideLoadingDialog()
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val map = HashMap<String,String>()
@@ -106,6 +155,7 @@ class ServiceScreen : AppCompatActivity() {
             requestQueue.add(stringRequest)
         }catch (error: JSONException){
             Log.e("Response", error.toString())
+            commonFuncs.hideLoadingDialog()
         }
     }
 }

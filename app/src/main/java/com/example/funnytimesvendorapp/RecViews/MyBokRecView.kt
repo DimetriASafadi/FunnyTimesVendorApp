@@ -1,6 +1,7 @@
 package com.example.funnytimesvendorapp.RecViews
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.funnytimesvendorapp.Models.FTPMyBook
+import com.example.funnytimesvendorapp.OrBokSection.OrderScreen
+import com.example.funnytimesvendorapp.OrBokSection.ServiceScreen
 import com.example.funnytimesvendorapp.R
 import com.makeramen.roundedimageview.RoundedImageView
 
@@ -57,6 +60,12 @@ class MyBokRecView (val data : ArrayList<FTPMyBook>, val context: Context): Recy
 
         holder.OrBokCustomer.text = data[position].BookUsername.toString()
         holder.OrBokLocation.text = data[position].BookAddress.toString()
+
+        holder.WholeOrBok.setOnClickListener {
+            val intent = Intent(context, ServiceScreen::class.java)
+            intent.putExtra("itemid",data[position].BookId.toString())
+            context.startActivity(intent)
+        }
 
 
 

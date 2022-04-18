@@ -18,11 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FunnyTimesVendorApp">
-        <activity
-            android:name=".OrBokSection.ProductScreen"
-            android:configChanges="locale|orientation"
-            android:exported="true"
-            android:theme="@style/SplashTheme" />
+
         <activity
             android:name=".OrBokSection.OrderScreen"
             android:configChanges="locale|orientation"
@@ -33,11 +29,7 @@
             android:configChanges="locale|orientation"
             android:exported="true"
             android:theme="@style/SplashTheme" />
-        <activity
-            android:name=".OrBokSection.BookScreen"
-            android:configChanges="locale|orientation"
-            android:exported="true"
-            android:theme="@style/SplashTheme" />
+
         <activity
             android:name=".EditsSection.EditChaletPriceScreen"
             android:configChanges="locale|orientation"

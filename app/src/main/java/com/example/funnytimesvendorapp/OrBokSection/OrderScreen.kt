@@ -58,6 +58,7 @@ class OrderScreen : AppCompatActivity() {
 
     fun Order_Details_Request(){
         val url = Constants.APIMain + "api/vendor-app/order/$itemid"
+        commonFuncs.showLoadingDialog(this)
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.GET, url, Response.Listener<String> { response ->
@@ -91,6 +92,7 @@ class OrderScreen : AppCompatActivity() {
                         .placeholder(R.drawable.ft_broken_image)
                         .into(binding.FoodImage)
 
+                    commonFuncs.hideLoadingDialog()
 
                 }, Response.ErrorListener { error ->
                     if (error.networkResponse != null && error.networkResponse.data != null) {
@@ -103,6 +105,7 @@ class OrderScreen : AppCompatActivity() {
                         commonFuncs.showDefaultDialog(this,"خطأ في الاتصال","حصل خطأ ما")
                         Log.e("eResponsew", "RequestError:$error")
                     }
+                    commonFuncs.hideLoadingDialog()
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val map = HashMap<String,String>()
@@ -116,6 +119,7 @@ class OrderScreen : AppCompatActivity() {
             requestQueue.add(stringRequest)
         }catch (error: JSONException){
             Log.e("Response", error.toString())
+            commonFuncs.hideLoadingDialog()
         }
     }
 

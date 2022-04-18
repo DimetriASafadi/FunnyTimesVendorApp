@@ -78,7 +78,7 @@ class MainMenu : AppCompatActivity() {
             false
         }
         binding.AddButton.setOnClickListener {
-            val intent = Intent(this,NewFoodScreen::class.java)
+            val intent = Intent(this,NewChaletScreen::class.java)
             startActivity(intent)
         }
 

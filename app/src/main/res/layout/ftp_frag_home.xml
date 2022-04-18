@@ -209,16 +209,38 @@
         android:layout_height="wrap_content"
         />
 
-    <TextView
-        android:id="@+id/MyItemsTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="عقاراتي"
-        android:fontFamily="@font/montserrat_arabic"
-        android:textSize="@dimen/_12ssp"
-        android:layout_margin="@dimen/_10sdp"
-        android:textColor="@color/ft_dark_blue"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/MyItemsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="عقاراتي"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textSize="@dimen/_12ssp"
+                android:layout_margin="@dimen/_10sdp"
+                android:textColor="@color/ft_dark_blue"
+                />
+
+            <TextView
+                android:id="@+id/AllMyItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_10sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="شاهد أكثر"
+                android:textColor="@color/ft_grey_1"
+                android:textSize="@dimen/_10ssp" />
+
+        </RelativeLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MyItemsRecycler"
