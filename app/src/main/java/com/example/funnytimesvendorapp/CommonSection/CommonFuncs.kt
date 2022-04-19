@@ -229,5 +229,8 @@ class CommonFuncs {
         return File(path)
     }
 
+    infix fun Any?.ifNull(block: () -> Unit) {
+        if (this == null) block()
+    }
 
 }
