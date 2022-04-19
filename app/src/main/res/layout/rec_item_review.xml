@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_10sdp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ReviewOwnerImage"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@color/ft_orange"
+
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            >
+            <TextView
+                android:id="@+id/ReviewOwnerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محمد خالد عبدالمجيد"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_10ssp"
+                />
+            <TextView
+                android:id="@+id/ReviewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2021/8/8"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_grey_3"
+                android:textSize="@dimen/_9ssp"
+                />
+
+
+        </LinearLayout>
+
+        <com.willy.ratingbar.BaseRatingBar
+            android:id="@+id/ReviewRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srb_starHeight="@dimen/_10sdp"
+            app:srb_starWidth="@dimen/_10sdp"
+            app:srb_starPadding="@dimen/_3sdp"
+            app:srb_rating="5"
+            app:srb_stepSize="0.5"
+            app:srb_clickable="false"
+            android:clickable="false"
+            app:srb_drawableFilled="@drawable/ft_rate_star_fill_icon"
+            app:srb_drawableEmpty="@drawable/ft_rate_star_empty_icon"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ReviewComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="خدمو ر dqw dqwd qwd qwdqw dqw fqw qwf qwd qwdqw fqw qw qwr wqrq w qائعة جداا"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textSize="@dimen/_8ssp"
+        android:textColor="@color/ft_grey_3"
+        android:layout_marginTop="@dimen/_5sdp"
+        />
+
+</LinearLayout>

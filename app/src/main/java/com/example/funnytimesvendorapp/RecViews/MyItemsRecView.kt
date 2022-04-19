@@ -18,6 +18,10 @@ import com.example.funnytimesvendorapp.EditsSection.EditProductScreen
 import com.example.funnytimesvendorapp.Models.FTPMyItem
 import com.example.funnytimesvendorapp.MyProductSection.MyProductScreen
 import com.example.funnytimesvendorapp.R
+import com.example.funnytimesvendorapp.SectionItems.FoodScreen
+import com.example.funnytimesvendorapp.SectionItems.ProductScreen
+import com.example.funnytimesvendorapp.SectionService.ChaletScreen
+import com.example.funnytimesvendorapp.SectionService.ClinicScreen
 import com.makeramen.roundedimageview.RoundedImageView
 import com.willy.ratingbar.BaseRatingBar
 
@@ -51,19 +55,19 @@ class MyItemsRecView (val data : ArrayList<FTPMyItem>, val context: Context) : R
 
         holder.WholeItem.setOnClickListener {
             if (data[position].ItemType == "booking"){
-                val intent = Intent(context, EditChaletScreen::class.java)
+                val intent = Intent(context, ChaletScreen::class.java)
                 intent.putExtra("ItemId",data[position].ItemId.toString())
                 context.startActivity(intent)
             }else if (data[position].ItemType == "food"){
-                val intent = Intent(context, EditFoodScreen::class.java)
+                val intent = Intent(context, FoodScreen::class.java)
                 intent.putExtra("ItemId",data[position].ItemId.toString())
                 context.startActivity(intent)
             }else if (data[position].ItemType == "shop"){
-                val intent = Intent(context, EditProductScreen::class.java)
+                val intent = Intent(context, ProductScreen::class.java)
                 intent.putExtra("ItemId",data[position].ItemId.toString())
                 context.startActivity(intent)
             }else if (data[position].ItemType == "service"){
-                val intent = Intent(context, EditClinicScreen::class.java)
+                val intent = Intent(context, ClinicScreen::class.java)
                 intent.putExtra("ItemId",data[position].ItemId.toString())
                 context.startActivity(intent)
             }

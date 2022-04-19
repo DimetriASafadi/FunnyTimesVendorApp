@@ -1,6 +1,7 @@
 package com.example.funnytimesvendorapp.EditsSection
 
 import android.app.Dialog
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,7 @@ import com.example.funnytimesvendorapp.Models.*
 import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.RecViews.PropertyAttrContainersRecView
 import com.example.funnytimesvendorapp.RecViews.PropertyPhotoRecView
+import com.example.funnytimesvendorapp.SectionService.ChaletScreen
 import com.example.funnytimesvendorapp.SpinnerAdapters.SPropertyCityAdapter
 import com.example.funnytimesvendorapp.SpinnerAdapters.SPropertySubCatAdapter
 import com.example.funnytimesvendorapp.databinding.FtpScreenEditChaletBinding
@@ -97,6 +99,11 @@ class EditChaletScreen : AppCompatActivity(), OnMapReadyCallback {
         }
         binding.backBtn.setOnClickListener {
             finish()
+        }
+        binding.PropertyEditPriceBtn.setOnClickListener {
+            val intent = Intent(this, EditChaletPriceScreen::class.java)
+            intent.putExtra("ItemId",propid)
+            startActivity(intent)
         }
         binding.PropertyPhotosRecycler.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.HORIZONTAL,

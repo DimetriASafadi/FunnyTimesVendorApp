@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <TextView
+        android:id="@+id/ProAttName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ft_radius_fill_light"
+        android:textColor="@color/ft_white"
+        android:backgroundTint="@color/ft_dark_blue"
+        android:text="أبيض"
+        android:textSize="@dimen/_10ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:paddingVertical="@dimen/_7sdp"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:layout_margin="@dimen/_5sdp"
+        />
+
+</LinearLayout>

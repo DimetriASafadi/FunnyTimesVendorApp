@@ -267,6 +267,23 @@
                 />
 
             <TextView
+                android:id="@+id/PropertyEditPriceBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="تعديل سعر العقار"
+                android:gravity="center"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/ft_radius_fill_light"
+                android:backgroundTint="@color/ft_orange"
+                android:paddingVertical="@dimen/_10sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="@color/ft_white"
+                android:textStyle="bold"
+                />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10sdp"

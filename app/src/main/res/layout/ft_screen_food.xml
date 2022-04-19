@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SectionItems.FoodScreen">
+
+    <ImageView
+        android:id="@+id/FoodImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_190sdp"
+        android:src="@color/ft_orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp">
+
+                <RelativeLayout
+                    android:id="@+id/FoodBack"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:alpha="0.1"
+                        android:src="@color/ft_black" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ft_android_back_arrow"
+                        app:tint="@color/ft_white" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/FoodFavorite"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ItemEditBtn"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:alpha="0.1"
+                        android:src="@color/ft_black" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ft_edit_pencil_icon" />
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/ft_radius_top_fill"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    >
+
+                    <TextView
+                        android:id="@+id/FoodName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_toStartOf="@+id/FoodPrice"
+                        android:fontFamily="@font/montserrat_arabic"
+                        android:maxLines="2"
+                        android:textColor="@color/ft_dark_blue"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/FoodPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:fontFamily="@font/montserrat_arabic"
+                        android:textColor="@color/ft_black"
+                        android:textSize="@dimen/_11ssp" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/FoodCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_toStartOf="@+id/FoodRating"
+                        android:fontFamily="@font/montserrat_arabic"
+                        android:maxLines="2"
+                        android:textColor="@color/ft_menu_unselected"
+                        android:textSize="@dimen/_11ssp" />
+
+                    <com.willy.ratingbar.BaseRatingBar
+                        android:id="@+id/FoodRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        app:srb_clickable="false"
+                        app:srb_drawableEmpty="@drawable/ft_rate_star_empty_icon"
+                        app:srb_drawableFilled="@drawable/ft_rate_star_fill_icon"
+                        app:srb_rating="5"
+                        app:srb_starHeight="@dimen/_10sdp"
+                        app:srb_starPadding="@dimen/_3sdp"
+                        app:srb_starWidth="@dimen/_10sdp"
+                        app:srb_stepSize="0.5" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="الوصف"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_black"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
+                    />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/VendorImage"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@color/ft_orange"
+                        />
+
+                    <TextView
+                        android:id="@+id/FoodVendorName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:layout_toStartOf="@+id/VendorFacebook"
+                        android:layout_toEndOf="@+id/VendorImage"
+                        android:fontFamily="@font/montserrat_arabic"
+                        android:maxLines="1"
+                        android:textColor="@color/ft_orange"
+                        android:textDirection="rtl"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <ImageView
+                        android:id="@+id/VendorInstagram"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginHorizontal="@dimen/_2sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ft_owner_instagram" />
+
+                    <ImageView
+                        android:id="@+id/VendorWhatsapp"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginHorizontal="@dimen/_2sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/VendorInstagram"
+                        android:src="@drawable/ft_owner_whatsapp" />
+
+                    <ImageView
+                        android:id="@+id/VendorFacebook"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginHorizontal="@dimen/_2sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/VendorWhatsapp"
+                        android:src="@drawable/ft_owner_facebook" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/FoodDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_grey_3"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="معرض الصور"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_black"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/FoodGalleryRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="الموقع على الخريطة"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_black"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    >
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ft_placeholder_map"
+                        app:riv_corner_radius="@dimen/_10sdp" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/ft_go_to_map_icon"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="@dimen/_5sdp"
+                        />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/ReviewsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تقييمات العملاء"
+                    android:fontFamily="@font/montserrat_arabic"
+                    android:textColor="@color/ft_black"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/FoodReviewsRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"/>
+
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

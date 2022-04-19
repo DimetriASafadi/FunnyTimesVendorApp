@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_10sdp"
+    >
+    <TextView
+        android:id="@+id/AttContainerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="اللون"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textColor="@color/ft_black"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/AttContainerRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        />
+</LinearLayout>

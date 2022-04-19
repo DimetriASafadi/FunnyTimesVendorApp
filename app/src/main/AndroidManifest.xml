@@ -20,6 +20,26 @@
         android:theme="@style/Theme.FunnyTimesVendorApp">
 
         <activity
+            android:name=".SectionService.ChaletScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".SectionService.ClinicScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".SectionItems.ProductScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".SectionItems.FoodScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
             android:name=".OrBokSection.OrderScreen"
             android:configChanges="locale|orientation"
             android:exported="true"
