@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_10sdp"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <TextView
+        android:id="@+id/CalDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textColor="@color/ft_menu_unselected"
+        android:text="Sun"
+        android:textSize="@dimen/_12ssp"
+        />
+
+    <RelativeLayout
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/CalDaySelected"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerInParent="true"
+            android:src="@color/ft_orange" />
+
+        <TextView
+                android:id="@+id/CalDayNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="22"
+            android:textColor="@color/ft_white"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/CalDayMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textColor="@color/ft_dark_blue"
+        android:text="May"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:textSize="@dimen/_10ssp"
+        />
+
+
+</LinearLayout>

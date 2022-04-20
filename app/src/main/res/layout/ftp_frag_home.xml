@@ -19,7 +19,7 @@
 
 
         <ImageView
-            android:id="@+id/MyItems"
+            android:id="@+id/CalendarBtn"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:layout_alignParentStart="true"
@@ -233,8 +233,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:padding="@dimen/_10sdp"
                 android:fontFamily="@font/montserrat_arabic"
+                android:padding="@dimen/_10sdp"
                 android:text="شاهد أكثر"
                 android:textColor="@color/ft_grey_1"
                 android:textSize="@dimen/_10ssp" />

@@ -22,6 +22,7 @@ import com.example.funnytimesvendorapp.MyProductSection.MyProductScreen
 import com.example.funnytimesvendorapp.R
 import com.example.funnytimesvendorapp.RecViews.MyItemsRecView
 import com.example.funnytimesvendorapp.RecViews.OrBokRecView
+import com.example.funnytimesvendorapp.SectionCalendar.CalendarScreen
 import com.example.funnytimesvendorapp.databinding.FtpFragHomeBinding
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
@@ -73,8 +74,8 @@ class HomeFrag: Fragment() {
         binding.MyItemsRecycler.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         binding.MyItemsRecycler.adapter = myItemsRecView
 
-        binding.MyItems.setOnClickListener {
-            startActivity(Intent(requireContext(),MyProductScreen::class.java))
+        binding.CalendarBtn.setOnClickListener {
+            startActivity(Intent(requireContext(),CalendarScreen::class.java))
         }
 
         binding.AllMyItems.paintFlags = binding.AllMyItems.paintFlags or Paint.UNDERLINE_TEXT_FLAG
