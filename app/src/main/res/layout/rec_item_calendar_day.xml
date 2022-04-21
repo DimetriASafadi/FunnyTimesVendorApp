@@ -6,6 +6,7 @@
     android:layout_margin="@dimen/_10sdp"
     android:orientation="vertical"
     android:gravity="center"
+    android:id="@+id/WholeCalendar"
     >
 
     <TextView
@@ -31,7 +32,7 @@
             android:src="@color/ft_orange" />
 
         <TextView
-                android:id="@+id/CalDayNum"
+            android:id="@+id/CalDayNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

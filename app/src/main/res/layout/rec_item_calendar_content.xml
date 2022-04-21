@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_80sdp"
+    android:layout_margin="@dimen/_10sdp"
+    android:orientation="horizontal"
+    android:id="@+id/WholeCalContent"
+    >
+    <View
+        android:layout_width="@dimen/_5sdp"
+        android:layout_height="match_parent"
+        android:background="@drawable/ft_radius_fill_right"
+        android:backgroundTint="@color/ft_grey_13"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_10sdp"
+        android:gravity="center_vertical"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginVertical="@dimen/_5sdp"
+        >
+        <TextView
+            android:id="@+id/BookCustomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="@dimen/_10ssp"
+            android:text="علي خالد"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textColor="@color/ft_dark_blue"
+            />
+        <TextView
+            android:id="@+id/BookProperty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="@dimen/_9ssp"
+            android:text="شاليه السعودية مع مسبح"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textColor="@color/ft_black"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            />
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/BookSystem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="@dimen/_9ssp"
+            android:text="10PM to 10AM"
+            android:fontFamily="@font/montserrat_arabic"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:textColor="@color/ft_grey_14"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -50,5 +50,30 @@
             />
     </androidx.core.widget.NestedScrollView>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/CalContentRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/CalContentIsEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="لا يوجد أي حجوزات"
+            android:fontFamily="@font/montserrat_arabic"
+            android:textColor="@color/tk_weak_black"
+            android:textSize="@dimen/_12ssp"
+            />
+
+    </RelativeLayout>
+
+
+
 
 </LinearLayout>

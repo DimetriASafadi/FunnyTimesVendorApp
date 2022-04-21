@@ -20,7 +20,9 @@
         android:theme="@style/Theme.FunnyTimesVendorApp">
         <activity
             android:name=".SectionCalendar.CalendarScreen"
-            android:exported="false" />
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SectionService.ChaletScreen"
             android:configChanges="locale|orientation"
