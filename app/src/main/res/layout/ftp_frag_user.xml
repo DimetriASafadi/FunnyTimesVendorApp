@@ -1,6 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_300sdp"
+        android:src="@drawable/ft_radius_fill_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/ft_dark_blue" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toStartOf="@+id/notificationBtn"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/VendorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_arabic"
+            android:maxLines="1"
+            android:text="محمد سالم"
+            android:textColor="@color/ft_white"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/VendorEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_arabic"
+            android:maxLines="1"
+            android:text="mohammed@gmail.com"
+            android:textColor="@color/ft_white"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/notificationBtn"
+        android:layout_width="@dimen/_22sdp"
+        android:layout_height="@dimen/_22sdp"
+        android:src="@drawable/ft_notification_bill_icon"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:tint="@color/ft_white" />
+
+    <TextView
+        android:id="@+id/TotalEarnings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$550.40"
+        android:textColor="@color/ft_white"
+        android:textSize="@dimen/_18ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_arabic"
+        android:text="رصيدك الحالي"
+        android:textColor="@color/ft_white"
+        android:textSize="@dimen/_10ssp"
+        android:alpha="0.8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TotalEarnings" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_280sdp"
+        app:cardElevation="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardBackgroundColor="@color/ft_white"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="52dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/ft_withdraw_arrow_icon"
+            android:drawablePadding="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="سحب الرصيد"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_12ssp"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_margin="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/UserImage"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ft_auth_location_holder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/UserEditProfile"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignStart="@+id/UserImage"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/UserImage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerInParent="true"
+                android:src="@color/ft_white" />
+
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ft_edit_pencil_icon"
+                app:tint="@color/ft_dark_blue" />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/_10sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:textColor="@color/ft_dark_blue"
+                android:text="آخر التحويلات"
+                android:textSize="@dimen/_12ssp"
+                />
+
+            <TextView
+                android:id="@+id/MoreTransactions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="شاهد أكثر"
+                android:textColor="@color/ft_grey_1"
+                android:textSize="@dimen/_12ssp" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/TransactionsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="آخر التقييمات"
+                android:textColor="@color/ft_dark_blue"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/MoreReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fontFamily="@font/montserrat_arabic"
+                android:text="شاهد أكثر"
+                android:textColor="@color/ft_grey_1"
+                android:textSize="@dimen/_12ssp" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ReviewsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

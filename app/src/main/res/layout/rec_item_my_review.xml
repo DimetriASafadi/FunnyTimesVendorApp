@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/ft_radius_fill"
+    android:backgroundTint="@color/ft_grey_15"
+    android:gravity="center_vertical"
+    android:layout_margin="@dimen/_10sdp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ReviewCustomerImage"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:src="@drawable/cast_album_art_placeholder"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        >
+
+        <TextView
+            android:id="@+id/ReviewCustomerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="عبد المجيد محمد"
+            android:textColor="@color/ft_dark_blue"
+            android:textSize="@dimen/_10ssp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:layout_marginVertical="@dimen/_3sdp"
+            />
+        <TextView
+            android:id="@+id/ReviewCustomerComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="خدمة رائعة جدا وسريعة"
+            android:textSize="@dimen/_8ssp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:layout_marginVertical="@dimen/_3sdp"
+
+            />
+
+
+    </LinearLayout>
+
+    <com.willy.ratingbar.BaseRatingBar
+        android:id="@+id/ReviewCustomerRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_7sdp"
+        app:srb_clickable="false"
+        android:clickable="false"
+        app:srb_drawableEmpty="@drawable/ft_rate_star_empty_icon"
+        app:srb_drawableFilled="@drawable/ft_rate_star_fill_icon"
+        app:srb_rating="5"
+        app:srb_starHeight="@dimen/_10sdp"
+        app:srb_starPadding="@dimen/_3sdp"
+        app:srb_starWidth="@dimen/_10sdp"
+        app:srb_stepSize="0.5" />
+
+</LinearLayout>

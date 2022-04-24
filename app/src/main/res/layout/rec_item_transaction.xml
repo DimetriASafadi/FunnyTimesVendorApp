@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ft_radius_fill"
+    android:backgroundTint="@color/ft_grey_15"
+    android:gravity="center_vertical"
+    android:layout_margin="@dimen/_10sdp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_10sdp"
+        >
+
+        <TextView
+            android:id="@+id/TransProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="عبد المجيد محمد"
+            android:textColor="@color/ft_black"
+            android:textSize="@dimen/_10ssp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:layout_marginVertical="@dimen/_3sdp"
+            android:maxLines="1"
+            />
+        <TextView
+            android:id="@+id/TransDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="خدمة رائعة جدا وسريعة"
+            android:textSize="@dimen/_8ssp"
+            android:fontFamily="@font/montserrat_arabic"
+            android:layout_marginVertical="@dimen/_3sdp"
+            android:textColor="@color/ft_grey_1"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/TransValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+$75.67"
+        android:maxLines="1"
+        android:textDirection="ltr"
+        android:textColor="@color/ft_dark_blue"
+        android:textSize="@dimen/_10ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_marginVertical="@dimen/_3sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        />
+
+</LinearLayout>
