@@ -18,6 +18,7 @@ import com.example.funnytimesvendorapp.CommonSection.CommonFuncs
 import com.example.funnytimesvendorapp.CommonSection.Constants.APIMain
 import com.example.funnytimesvendorapp.CommonSection.Constants.KeyUserToken
 import com.example.funnytimesvendorapp.R
+import com.example.funnytimesvendorapp.SectionCalendar.CalendarScreen
 import com.example.funnytimesvendorapp.databinding.FtpDialogResetPasswordBinding
 import com.example.funnytimesvendorapp.databinding.FtpFragSettingBinding
 import org.json.JSONException
@@ -43,6 +44,10 @@ class SettingFrag: Fragment() {
     ): View? {
         _binding = FtpFragSettingBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        binding.CalendarBtn.setOnClickListener {
+            startActivity(Intent(requireContext(), CalendarScreen::class.java))
+        }
 
         binding.SettingTerms.setOnClickListener {
             val intent = Intent(requireContext(),TermsPolicesScreen::class.java)
@@ -122,7 +127,7 @@ class SettingFrag: Fragment() {
 
     fun resetPassword_Request(rOPassword:String,rNPassword:String,rCPassword:String) {
         commonFuncs.showLoadingDialog(requireActivity())
-        val url = APIMain + "api/auth/user/updatePassword"
+        val url = APIMain + "api/vendor-app/auth/user/updatePassword"
         try {
             val stringRequest = object : StringRequest(
                 Request.Method.PATCH, url, Response.Listener<String> { response ->

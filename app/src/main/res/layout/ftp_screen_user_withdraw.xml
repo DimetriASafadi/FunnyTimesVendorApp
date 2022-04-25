@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainMenuSection.UserSection.UserWithdrawScreen">
+
+    <RelativeLayout
+        android:id="@+id/TopSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="سحب الرصيد"
+            android:textColor="@color/ft_black"
+            android:textSize="@dimen/_12ssp" />
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ft_android_back_arrow"
+            app:tint="@color/ft_black" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="عنوان الرسالة"
+        android:textColor="@color/ft_dark_blue"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_margin="@dimen/_10sdp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ft_radius_stroke"
+        android:paddingVertical="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        >
+        <Spinner
+            android:id="@+id/WithdrawMethodSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="المبلغ"
+        android:textColor="@color/ft_dark_blue"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_margin="@dimen/_10sdp"
+        />
+    <EditText
+        android:id="@+id/MoneyAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="المبلغ المراد سحبه"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textSize="@dimen/_10ssp"
+        android:inputType="numberDecimal"
+        android:textColor="@color/ft_black"
+        android:textColorHint="@color/ft_grey_2"
+        android:background="@drawable/ft_radius_stroke"
+        android:paddingVertical="@dimen/_7sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:maxLines="1"
+        />
+
+    <LinearLayout
+        android:id="@+id/BankSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IBAN"
+        android:textColor="@color/ft_dark_blue"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_margin="@dimen/_10sdp"
+        />
+    <EditText
+        android:id="@+id/IBAN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AL47 2121 1009 0000 0002 3569 8741 : مثال"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/ft_black"
+        android:textColorHint="@color/ft_grey_2"
+        android:background="@drawable/ft_radius_stroke"
+        android:paddingVertical="@dimen/_7sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:maxLines="1"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="اسم البنك"
+        android:textColor="@color/ft_dark_blue"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_margin="@dimen/_10sdp"
+        />
+    <EditText
+        android:id="@+id/BankName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="اكتب اسم البنك هنا"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/ft_black"
+        android:textColorHint="@color/ft_grey_2"
+        android:background="@drawable/ft_radius_stroke"
+        android:paddingVertical="@dimen/_7sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:maxLines="1"
+        />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/PaypalSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="حساب الباي بال"
+        android:textColor="@color/ft_dark_blue"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_margin="@dimen/_10sdp"
+        />
+    <EditText
+        android:id="@+id/PaypalEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="اسم حسابك الباي بال"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/ft_black"
+        android:textColorHint="@color/ft_grey_2"
+        android:background="@drawable/ft_radius_stroke"
+        android:paddingVertical="@dimen/_7sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:maxLines="1"
+        />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/WithDrawBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="إرسال طلب السحب"
+        android:paddingVertical="@dimen/_9sdp"
+        android:textColor="@color/ft_white"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:gravity="center"
+        android:background="@drawable/ft_radius_fill_light"
+        android:backgroundTint="@color/ft_orange"
+
+        />
+
+
+</LinearLayout>

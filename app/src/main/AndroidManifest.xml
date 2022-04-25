@@ -19,6 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FunnyTimesVendorApp">
         <activity
+            android:name=".MainMenuSection.UserSection.UserWithdrawScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".MainMenuSection.SettingSection.ContactUsScreen"
+            android:configChanges="locale|orientation"
+            android:exported="true"
+            android:theme="@style/SplashTheme" />
+        <activity
             android:name=".MainMenuSection.SettingSection.TermsPolicesScreen"
             android:configChanges="locale|orientation"
             android:exported="true"

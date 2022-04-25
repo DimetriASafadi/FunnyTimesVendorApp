@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainMenuSection.SettingSection.ContactUsScreen">
+
+    <RelativeLayout
+        android:id="@+id/TopSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/montserrat_arabic"
+            android:text="تواصل معنا"
+            android:textColor="@color/ft_black"
+            android:textSize="@dimen/_12ssp" />
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ft_android_back_arrow"
+            app:tint="@color/ft_black" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="عنوان الرسالة"
+        android:textColor="@color/ft_dark_blue"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_margin="@dimen/_10sdp"
+        />
+
+    <EditText
+        android:id="@+id/MessageTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="اكتب هنا"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/ft_black"
+        android:textColorHint="@color/ft_grey_2"
+        android:background="@drawable/ft_radius_stroke"
+        android:paddingVertical="@dimen/_7sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:maxLines="1"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="نص الرسالة"
+        android:textColor="@color/ft_dark_blue"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_margin="@dimen/_10sdp"
+        />
+
+    <EditText
+        android:id="@+id/MessageContent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:hint="اكتب هنا"
+        android:gravity="start"
+        android:fontFamily="@font/montserrat_arabic"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/ft_black"
+        android:textColorHint="@color/ft_grey_2"
+        android:background="@drawable/ft_radius_stroke"
+        android:paddingVertical="@dimen/_7sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="إرسال"
+        android:paddingVertical="@dimen/_9sdp"
+        android:textColor="@color/ft_white"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="@font/montserrat_arabic"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:gravity="center"
+        android:background="@drawable/ft_radius_fill_light"
+        android:backgroundTint="@color/ft_orange"
+
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_30sdp"
+        >
+        <ImageView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/t_message_blue_icon"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            />
+        <ImageView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/t_whatsapp_messae_blue_icon"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

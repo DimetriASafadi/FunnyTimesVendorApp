@@ -69,6 +69,10 @@ class UserFrag: Fragment() {
         binding.UserEditProfile.setOnClickListener {
             startActivity(Intent(requireContext(),UserEditProfileScreen::class.java))
         }
+        binding.WithdrawMoney.setOnClickListener {
+            startActivity(Intent(requireContext(),UserWithdrawScreen::class.java))
+        }
+
 
         getUserProfile_Request()
         return view
