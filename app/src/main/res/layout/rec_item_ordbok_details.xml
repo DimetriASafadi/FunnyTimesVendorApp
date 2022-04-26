@@ -40,12 +40,13 @@
                 android:paddingVertical="@dimen/_4sdp"
                 >
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="الكمية :"
                     android:drawableStart="@drawable/ft_item_quantity_icon"
                     android:drawablePadding="@dimen/_3sdp"
+                    android:layout_marginHorizontal="@dimen/_30sdp"
                     android:fontFamily="@font/montserrat_arabic"
                     android:textColor="@color/ft_menu_unselected"
                     android:textSize="@dimen/_9ssp" />
@@ -89,12 +90,13 @@
                 android:paddingVertical="@dimen/_4sdp"
                 >
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="النوع :"
                     android:drawableStart="@drawable/ft_item_type_icon"
                     android:drawablePadding="@dimen/_3sdp"
+                    android:layout_marginHorizontal="@dimen/_30sdp"
                     android:fontFamily="@font/montserrat_arabic"
                     android:textColor="@color/ft_menu_unselected"
                     android:textSize="@dimen/_9ssp" />
@@ -138,12 +140,13 @@
                 android:paddingVertical="@dimen/_4sdp"
                 >
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="السعر :"
                     android:drawableStart="@drawable/ft_item_payment_icon"
                     android:drawablePadding="@dimen/_3sdp"
+                    android:layout_marginHorizontal="@dimen/_31sdp"
                     android:fontFamily="@font/montserrat_arabic"
                     android:textColor="@color/ft_menu_unselected"
                     android:textSize="@dimen/_9ssp" />
@@ -188,12 +191,13 @@
                 android:paddingVertical="@dimen/_4sdp"
                 >
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="وقت الطلب :"
                     android:drawableStart="@drawable/ft_item_clock_icon"
                     android:drawablePadding="@dimen/_3sdp"
+                    android:layout_marginHorizontal="@dimen/_30sdp"
                     android:fontFamily="@font/montserrat_arabic"
                     android:textColor="@color/ft_menu_unselected"
                     android:textSize="@dimen/_9ssp" />
@@ -237,12 +241,13 @@
                 android:paddingVertical="@dimen/_4sdp"
                 >
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="طريقة الدفع :"
                     android:drawableStart="@drawable/ft_item_price_icon"
                     android:drawablePadding="@dimen/_3sdp"
+                    android:layout_marginHorizontal="@dimen/_31sdp"
                     android:fontFamily="@font/montserrat_arabic"
                     android:textColor="@color/ft_menu_unselected"
                     android:textSize="@dimen/_9ssp" />

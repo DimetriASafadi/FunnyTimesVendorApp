@@ -21,10 +21,11 @@
             >
             <TextView
                 android:id="@+id/AttributesName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="الكمية :"
+                android:layout_marginHorizontal="@dimen/_30sdp"
                 android:fontFamily="@font/montserrat_arabic"
                 android:textColor="@color/ft_menu_unselected"
                 android:textSize="@dimen/_9ssp" />

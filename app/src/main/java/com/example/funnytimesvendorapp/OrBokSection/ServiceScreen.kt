@@ -49,10 +49,9 @@ class ServiceScreen : AppCompatActivity() {
                     var nesteddata:JSONObject? = null
                     if (!data.isNull("data")){
                         nesteddata = data.getJSONObject("data")
-                        val deposit = nesteddata.getString("deposit")
+//                        val deposit = nesteddata.getString("deposit")
                         val lat = nesteddata.getString("lat").toString()
                         val lng = nesteddata.getString("lng").toString()
-                        binding.ServiceDeposit.text = deposit
                         val url = "https://maps.googleapis.com/maps/api/staticmap?size=1100x795&markers=color:red|label:S|$lat,$lng&key=$GOOGLE_MAP_TEST_KEY"
                         binding.ServiceCustomerLocation.text = nesteddata.getString("lat")+","+nesteddata.getString("lng")
 
@@ -91,6 +90,7 @@ class ServiceScreen : AppCompatActivity() {
                     binding.ServiceCustomerName.text = username
                     binding.ServiceType.text = type
                     binding.ServicePrice.text = total.toString()
+                    binding.ServiceDeposit.text = total.toString()
                     binding.ServicePeriod.text = period.toString()
                     binding.ServiceStartDate.text = start_date
                     binding.ServiceEndDate.text = end_date
